@@ -40,7 +40,7 @@ export default async function BlogIndex({
             <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted">
               {dbConfigured()
                 ? 'The first post will appear here the moment one is published.'
-                : 'The blog goes live once the Supabase connection is wired up. Posts can then be published over the API.'}
+                : 'The blog goes live once the database connection is wired up. Posts can then be published over the API.'}
             </p>
           </div>
         ) : (

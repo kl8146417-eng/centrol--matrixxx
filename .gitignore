@@ -27,6 +27,10 @@ pnpm-debug.log*
 .env.development
 .env.production
 
+# local secret scratch files (token pepper, etc.) — never commit
+*.tmp
+.pepper.tmp
+
 # vercel
 .vercel
 
