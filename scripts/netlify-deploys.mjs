@@ -32,7 +32,23 @@ if (cmd === 'list') {
   console.log('build triggered:', r.status, b.id ?? b.message ?? JSON.stringify(b).slice(0, 200));
 } else if (cmd === 'log') {
   const id = process.argv[3];
+  // Try the build record + its log endpoints.
   const r = await fetch(`https://api.netlify.com/api/v1/deploys/${id}`, { headers: h });
   const d = await r.json();
-  console.log(JSON.stringify({ state: d.state, error: d.error_message, summary: d.summary, log: d.log_access_attributes?.url }, null, 2));
+  console.log('state:', d.state, '| error:', d.error_message);
+  // Find the associated build.
+  const br = await fetch(`https://api.netlify.com/api/v1/sites/${SITE_ID}/builds?per_page=10`, { headers: h });
+  const builds = await br.json();
+  const build = builds.find((b) => b.deploy_id === id) ?? builds[0];
+  if (build) {
+    console.log('build_id:', build.id, '| done:', build.done, '| error:', build.error);
+    const lr = await fetch(`https://api.netlify.com/api/v1/builds/${build.id}/log`, { headers: h });
+    if (lr.ok) {
+      const text = await lr.text();
+      console.log('--- BUILD LOG (tail) ---');
+      console.log(text.slice(-4000));
+    } else {
+      console.log('log fetch status:', lr.status);
+    }
+  }
 }

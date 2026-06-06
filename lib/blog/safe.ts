@@ -5,6 +5,9 @@ import { listPublished, getBySlug } from '@/lib/blog/posts';
 import type { Post } from '@/lib/db/schema';
 
 export function dbConfigured(): boolean {
+  // Never touch the DB during the Next.js production build (sitemap/RSS are
+  // generated then). The DB is queried at request time instead.
+  if (process.env.NEXT_PHASE === 'phase-production-build') return false;
   return Boolean(
     process.env.NETLIFY_DATABASE_URL ||
       process.env.NETLIFY_DATABASE_URL_UNPOOLED ||
