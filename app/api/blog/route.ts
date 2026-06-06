@@ -2,6 +2,7 @@ import { authenticate } from '@/lib/auth/token';
 import { rateLimit } from '@/lib/rate-limit';
 import { createPostSchema, fieldErrors } from '@/lib/validation';
 import { createPost, listPublished } from '@/lib/blog/posts';
+import { dbConfigured } from '@/lib/blog/safe';
 import { json, error, serializePost } from '@/lib/http';
 
 export const dynamic = 'force-dynamic';
@@ -47,6 +48,12 @@ export async function GET(req: Request) {
   const page = Number(url.searchParams.get('page')) || 1;
   const perPage = Number(url.searchParams.get('perPage')) || 12;
   const q = url.searchParams.get('q') ?? undefined;
+
+  // Public endpoint: when the database isn't configured yet, return an empty
+  // page instead of a 500 so the blog reads cleanly before content exists.
+  if (!dbConfigured()) {
+    return json({ posts: [], page, perPage, total: 0, totalPages: 0 });
+  }
 
   try {
     const result = await listPublished({ page, perPage, q });
