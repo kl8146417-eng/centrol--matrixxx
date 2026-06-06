@@ -37,5 +37,8 @@ pnpm-debug.log*
 /_frames/
 __pycache__/
 
+# large local-only media (screen recording used for analysis)
+*.mp4
+
 # Local Netlify folder
 .netlify
