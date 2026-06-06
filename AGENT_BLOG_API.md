@@ -1,14 +1,13 @@
 # Centrol Matrix — Blog API for AI agents
 
 This is the only file an automation needs to publish a blog post to
-`https://centrolmatrix.com` (currently `https://centrol-matrix.netlify.app`).
-Send one authenticated HTTP request. No login, no dashboard.
+`https://centrolmatrix.com`. Send one authenticated HTTP request. No login, no dashboard.
 
 ---
 
 ## 1. What you need
 
-- **Base URL:** `https://centrol-matrix.netlify.app` (swap for the custom domain once live).
+- **Base URL:** `https://centrolmatrix.com` (the `centrol-matrix.netlify.app` subdomain also works).
 - **A bearer token** with the `blog:write` scope. Ask the site owner to mint one:
   `npm run issue-token "my agent name"`. The token looks like `cm_xxxxxxxx…` and is shown once.
 - Send it on every write request:
@@ -63,7 +62,7 @@ Rules:
   "title": "How we automate carousel posting",
   "status": "published",
   "readingTime": 3,
-  "url": "https://centrol-matrix.netlify.app/blog/automate-carousel-posting",
+  "url": "https://centrolmatrix.com/blog/automate-carousel-posting",
   "...": "..."
 }
 ```
@@ -113,7 +112,7 @@ A `422` looks like:
 
 ### curl
 ```bash
-curl -X POST https://centrol-matrix.netlify.app/api/blog \
+curl -X POST https://centrolmatrix.com/api/blog \
   -H "Authorization: Bearer $CM_BLOG_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -126,7 +125,7 @@ curl -X POST https://centrol-matrix.netlify.app/api/blog \
 
 ### Node / fetch
 ```js
-const res = await fetch("https://centrol-matrix.netlify.app/api/blog", {
+const res = await fetch("https://centrolmatrix.com/api/blog", {
   method: "POST",
   headers: {
     Authorization: `Bearer ${process.env.CM_BLOG_TOKEN}`,
@@ -147,7 +146,7 @@ console.log(res.status, post.url);
 import os, requests
 
 r = requests.post(
-    "https://centrol-matrix.netlify.app/api/blog",
+    "https://centrolmatrix.com/api/blog",
     headers={"Authorization": f"Bearer {os.environ['CM_BLOG_TOKEN']}"},
     json={
         "title": "Hello from the automation",
@@ -160,7 +159,7 @@ print(r.status_code, r.json().get("url"))
 
 ### n8n (the "SEO + Blog Post" agent)
 1. Add an **HTTP Request** node.
-2. Method `POST`, URL `https://centrol-matrix.netlify.app/api/blog`.
+2. Method `POST`, URL `https://centrolmatrix.com/api/blog`.
 3. Authentication → **Header Auth** → name `Authorization`, value `Bearer cm_…`.
 4. Body → JSON → map your generated `title`, `excerpt`, `contentMarkdown`, `tags`.
 5. The node's response gives you the live `url`. Done.
