@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  # Do not set `publish` — @netlify/plugin-nextjs v5 derives the correct output
+  # location itself. Setting it to .next or the project root makes the plugin fail.
+
+# Required for Next.js App Router on Netlify: enables SSR/ISR, API routes,
+# dynamic sitemap/RSS, and the token-authenticated blog endpoints.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Match the local toolchain (Node 24). Netlify supports 18/20/22 in prod;
+  # pin to a maintained LTS that builds Next 14 cleanly.
+  NODE_VERSION = "20"

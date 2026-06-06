@@ -1,0 +1,52 @@
+import {
+  pgTable,
+  uuid,
+  text,
+  integer,
+  boolean,
+  timestamp,
+  pgEnum,
+  uniqueIndex,
+} from 'drizzle-orm/pg-core';
+
+export const postStatus = pgEnum('post_status', ['draft', 'published']);
+
+export const apiTokens = pgTable('api_tokens', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  label: text('label').notNull(),
+  tokenHash: text('token_hash').notNull().unique(),
+  scopes: text('scopes').array().notNull().default(['blog:write']),
+  revoked: boolean('revoked').notNull().default(false),
+  expiresAt: timestamp('expires_at', { withTimezone: true }),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  lastUsedAt: timestamp('last_used_at', { withTimezone: true }),
+});
+
+export const posts = pgTable(
+  'posts',
+  {
+    id: uuid('id').defaultRandom().primaryKey(),
+    slug: text('slug').notNull(),
+    title: text('title').notNull(),
+    excerpt: text('excerpt'),
+    contentMarkdown: text('content_markdown'),
+    contentHtml: text('content_html').notNull(),
+    coverImageUrl: text('cover_image_url'),
+    tags: text('tags').array().notNull().default([]),
+    author: text('author').notNull().default('Centrol Matrix'),
+    status: postStatus('status').notNull().default('published'),
+    readingTime: integer('reading_time').notNull().default(1),
+    publishedAt: timestamp('published_at', { withTimezone: true }),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+    createdByToken: uuid('created_by_token').references(() => apiTokens.id),
+    deletedAt: timestamp('deleted_at', { withTimezone: true }),
+  },
+  (t) => ({
+    slugIdx: uniqueIndex('posts_slug_idx').on(t.slug),
+  })
+);
+
+export type Post = typeof posts.$inferSelect;
+export type NewPost = typeof posts.$inferInsert;
+export type ApiToken = typeof apiTokens.$inferSelect;

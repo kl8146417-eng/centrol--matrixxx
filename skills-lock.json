@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "skills": {
+    "ai-content-collaboration": {
+      "source": "rampstackco/claude-skills",
+      "sourceType": "github",
+      "skillPath": "skills/ai-content-collaboration/SKILL.md",
+      "computedHash": "065b295304bd63aed46af20d7c0bffcc6bf14ef75406f91529b546b22a78246c"
+    },
+    "ai-slop-cleaner": {
+      "source": "yeachan-heo/oh-my-codex",
+      "sourceType": "github",
+      "skillPath": "skills/ai-slop-cleaner/SKILL.md",
+      "computedHash": "cca0b993e60c5d2c6a8b14edd49cc1306776b9bba5c4d5c91abb82d65a86ba0a"
+    },
+    "anti-slop": {
+      "source": "rand/cc-polymath",
+      "sourceType": "github",
+      "skillPath": "skills/anti-slop/SKILL.md",
+      "computedHash": "76efa981799d4d9454aef081ae02fd21cc38f56450d0d8bd33c5f50221f53543"
+    },
+    "ck:frontend-design": {
+      "source": "binjuhor/shadcn-lar",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/frontend-design/SKILL.md",
+      "computedHash": "4c283628315e9a58a1bc5f62980780ed6d5881253ba963e811d7ee9c10dd06f9"
+    },
+    "design-taste-frontend": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "899b84384f74f540ea5284d9b2e9234e050998b42eacc805410b518d4226c0b3"
+    },
+    "design-taste-frontend-v1": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill-v1/SKILL.md",
+      "computedHash": "8d59c96751feacf88f341a43151eae6f4fd748978884c4552293b8841573d776"
+    },
+    "deslop": {
+      "source": "brianlovin/claude-config",
+      "sourceType": "github",
+      "skillPath": "skills/deslop/SKILL.md",
+      "computedHash": "72f1f9e44634a062c3725c3d82b4f53ffbe0dfb82aa38ef3a0ef30a3111a3d7a"
+    },
+    "frontend-code-review": {
+      "source": "langgenius/dify",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/frontend-code-review/SKILL.md",
+      "computedHash": "22350280ebf3cccf570b61642741f47b315266cd3fda493de64691929344b902"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "516bd2154eb843a8240e43d5b285229129853114ad7075a5e141e1c08e408c84"
+    },
+    "frontend-testing": {
+      "source": "langgenius/dify",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/frontend-testing/SKILL.md",
+      "computedHash": "7e8145620f0c11bae6fe29c793b0acc7555c174f501fd2b7c00debc498a78ec5"
+    },
+    "frontend-ui-engineering": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-ui-engineering/SKILL.md",
+      "computedHash": "195659873a8fe0bac6947e44731c3e23b97ec2caf2c124ce4c808658c555f98d"
+    },
+    "imagegen-frontend-mobile": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/imagegen-frontend-mobile/SKILL.md",
+      "computedHash": "7c1d1dc59cd0df4063b8621af543bf5dea1d576b261507e17b0323c69680b048"
+    },
+    "imagegen-frontend-web": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/imagegen-frontend-web/SKILL.md",
+      "computedHash": "27255c7c50181e58add156b2aa2bd5325285b85f04027e4c8b73742d98d7be0a"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "b45b2876561b6fe330ef2cdcb793750473584dff3d27de0744cfefab3e62a0fb"
+    },
+    "premium-frontend-ui": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "skillPath": "skills/premium-frontend-ui/SKILL.md",
+      "computedHash": "e7f3d02a0233beafdd6fe5335427388109b9699ebcdc6a8782a8bada2826d916"
+    },
+    "slop": {
+      "source": "jellydn/my-ai-tools",
+      "sourceType": "github",
+      "skillPath": "skills/slop/SKILL.md",
+      "computedHash": "698218cb785efae87a22bd23610175bcf605a2add55f329aa7010bff6f088436"
+    },
+    "slop-detector": {
+      "source": "athola/claude-night-market",
+      "sourceType": "github",
+      "skillPath": "plugins/scribe/skills/slop-detector/SKILL.md",
+      "computedHash": "80f882832b2a767ce763a8ed9948b2252392aea81cb7af46078cefc6c1e5ee1e"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "6337038fe1fe6bbe1b9f252ab678ee575859190bab6f0f246f4061824eb40875"
+    },
+    "vercel-microfrontends": {
+      "source": "vercel/microfrontends",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-microfrontends/SKILL.md",
+      "computedHash": "cabdceabe3985a640fb5b5569aae0fdab7d0bcb2d077197ad43e485c1b05da07"
+    },
+    "workflow-clean-code-angular": {
+      "source": "neogenz/skills",
+      "sourceType": "github",
+      "skillPath": "skills/workflow-clean-code-angular/SKILL.md",
+      "computedHash": "854cd29a22a8fab3c017c405a615af3b3655c8f4af5279d63beef1969caa3aa2"
+    }
+  }
+}

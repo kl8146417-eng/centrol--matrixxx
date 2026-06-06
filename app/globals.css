@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: #ffffff;
+  color: #0e0e0e;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Lenis manages scroll; let it own the html element. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Focus-visible ring per the anti-slop spec: pink, 4px offset. */
+:focus-visible {
+  outline: 2px solid #e63a8e;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Selection uses the one accent. */
+::selection {
+  background: #e63a8e;
+  color: #ffffff;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #0e0e0e;
+  color: #fff;
+  padding: 12px 18px;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+/* Editorial hairline rule. */
+.hairline {
+  border-top: 1px solid rgba(14, 14, 14, 0.12);
+}
+
+/* Rendered blog post content (sanitized HTML). Editorial typography, one accent. */
+.prose-cm {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #1a1a1a;
+}
+.prose-cm > * + * {
+  margin-top: 1.15em;
+}
+.prose-cm h2,
+.prose-cm h3,
+.prose-cm h4 {
+  font-family: var(--font-display), Georgia, serif;
+  color: #0e0e0e;
+  line-height: 1.2;
+  margin-top: 1.8em;
+}
+.prose-cm h2 {
+  font-size: 30px;
+}
+.prose-cm h3 {
+  font-size: 24px;
+}
+.prose-cm a {
+  color: #e63a8e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-cm a:hover {
+  color: #c92e78;
+}
+.prose-cm strong {
+  color: #0e0e0e;
+}
+.prose-cm blockquote {
+  border-left: 2px solid #e63a8e;
+  padding-left: 1.25em;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #0e0e0e;
+}
+.prose-cm ul,
+.prose-cm ol {
+  padding-left: 1.4em;
+}
+.prose-cm ul {
+  list-style: disc;
+}
+.prose-cm ol {
+  list-style: decimal;
+}
+.prose-cm li + li {
+  margin-top: 0.4em;
+}
+.prose-cm code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: rgba(14, 14, 14, 0.06);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+.prose-cm pre {
+  background: #0b0b0c;
+  color: #f4f4f5;
+  padding: 1.25em;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+.prose-cm pre code {
+  background: transparent;
+  padding: 0;
+}
+.prose-cm img {
+  border-radius: 12px;
+}
+
+/* Honor reduced motion globally: kill transforms/animations down to instant. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
