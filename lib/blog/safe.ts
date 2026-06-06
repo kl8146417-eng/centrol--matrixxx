@@ -1,12 +1,15 @@
 // Wrappers used by server-rendered pages so the site builds and renders even
-// before the Supabase DATABASE_URL is provided. They degrade to empty results
-// instead of throwing.
+// before the database is provisioned. They degrade to empty results instead of throwing.
 
 import { listPublished, getBySlug } from '@/lib/blog/posts';
 import type { Post } from '@/lib/db/schema';
 
 export function dbConfigured(): boolean {
-  return Boolean(process.env.DATABASE_URL);
+  return Boolean(
+    process.env.NETLIFY_DATABASE_URL ||
+      process.env.NETLIFY_DATABASE_URL_UNPOOLED ||
+      process.env.DATABASE_URL
+  );
 }
 
 export async function safeListPublished(page = 1) {

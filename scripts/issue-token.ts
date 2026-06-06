@@ -18,9 +18,12 @@ function hashToken(plaintext: string): string {
 }
 
 async function main() {
-  const url = process.env.DATABASE_URL;
+  const url =
+    process.env.NETLIFY_DATABASE_URL_UNPOOLED ??
+    process.env.NETLIFY_DATABASE_URL ??
+    process.env.DATABASE_URL;
   if (!url) {
-    console.error('DATABASE_URL is not set.');
+    console.error('No database URL set (NETLIFY_DATABASE_URL or DATABASE_URL).');
     process.exit(1);
   }
 

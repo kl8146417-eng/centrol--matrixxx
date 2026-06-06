@@ -70,16 +70,17 @@ about your website. No, really."*). Every visible string gets an anti-slop pass.
 | Animation | **GSAP** (+ ScrollTrigger) | headline stagger, portal reveal, scroll reveals |
 | Smooth scroll | **Lenis** | the "buttery" feel from the refs |
 | Carousel/gallery | custom crossfade hook (no Swiper signature) | matches portal + work gallery |
-| Blog storage | **Supabase (Postgres)** via **Drizzle ORM** | typed schema, easy migrations, Supabase connection string |
+| Blog storage | **Netlify DB (Postgres, powered by Neon)** via **Drizzle ORM** | typed schema, easy migrations, connection auto-injected on Netlify |
 | Blog auth | bearer token (hashed) in `Authorization` header | so automations can publish |
 | Content render | **MDX / sanitized HTML** | posts arrive as Markdown or HTML, rendered safely |
 | Forms | API route → email (Resend) + DB row | contact + "scope my project" |
 | Analytics | GA4 + Search Console (IDs TBD by client) | injected via env, not hard-coded |
-| Hosting | **Vercel** | Next.js-native; Vercel features are fine to use |
+| Hosting | **Netlify** (`@netlify/plugin-nextjs`) | builds the App Router; DB lives on the same platform |
 
-> Hosting is **Vercel** and the DB is **Supabase**. Connect to Supabase Postgres over its pooled
-> connection string (use the connection-pooling URL for serverless functions). Vercel-native
-> features (Edge config, ISR, `@vercel/og`, etc.) are allowed.
+> Hosting and the database are both on **Netlify**. Netlify DB (powered by Neon) injects
+> `NETLIFY_DATABASE_URL` after `netlify db init`; the app uses the Neon serverless driver
+> (`drizzle-orm/neon-http`). Locally, `DATABASE_URL` is the fallback. Continuous deploy from the
+> GitHub repo `taqs-gif/centrol-matrix`.
 
 ---
 
@@ -262,8 +263,8 @@ curl -X POST https://centrolmatrix.com/api/blog \
 - [ ] Final logo file + favicon (confirm the LinkedIn mark).
 - [ ] GA4 ID, Search Console verification, any GTM/tag IDs.
 - [ ] Real hero/work photos & videos.
-- [x] Hosting: **Vercel**.
-- [ ] Supabase project + Postgres connection string (pooled URL for serverless).
+- [x] Hosting: **Netlify** (site `centrol-matrix`, repo `taqs-gif/centrol-matrix`).
+- [ ] Run `netlify db init` to provision Netlify DB (auto-injects `NETLIFY_DATABASE_URL`).
 - [ ] Confirm services copy (we draft human descriptions; client approves).
 - [ ] Tagline for the hero (or approve a drafted one).
 ```

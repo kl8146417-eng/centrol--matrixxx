@@ -1,25 +1,28 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
+import { drizzle } from 'drizzle-orm/neon-http';
+import { neon } from '@neondatabase/serverless';
 import * as schema from './schema';
 
-const connectionString = process.env.DATABASE_URL;
+// Netlify DB (powered by Neon) auto-injects NETLIFY_DATABASE_URL at build/runtime.
+// Fall back to DATABASE_URL for local dev or other Postgres providers.
+const connectionString =
+  process.env.NETLIFY_DATABASE_URL ??
+  process.env.NETLIFY_DATABASE_URL_UNPOOLED ??
+  process.env.DATABASE_URL;
 
 // Lazily created so the app can build/render static pages even before the
-// Supabase connection string is provided. Routes that need the DB will throw
-// a clear error if it's missing.
-let client: ReturnType<typeof postgres> | undefined;
+// database is provisioned. Routes that need the DB throw a clear error if it's missing.
 let dbInstance: ReturnType<typeof drizzle<typeof schema>> | undefined;
 
 export function getDb() {
   if (!connectionString) {
     throw new Error(
-      'DATABASE_URL is not set. Add the Supabase pooled connection string to .env.local.'
+      'No database URL set. On Netlify this is NETLIFY_DATABASE_URL (run `netlify db init`). ' +
+        'Locally, set DATABASE_URL (or NETLIFY_DATABASE_URL) in .env.local.'
     );
   }
   if (!dbInstance) {
-    // prepare:false is required for Supabase's transaction-mode pooler (pgbouncer).
-    client = postgres(connectionString, { prepare: false });
-    dbInstance = drizzle(client, { schema });
+    const sql = neon(connectionString);
+    dbInstance = drizzle(sql, { schema });
   }
   return dbInstance;
 }

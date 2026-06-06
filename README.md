@@ -13,9 +13,9 @@ Built per `CLAUDE.md` (build contract) and `PLAN.md` (the why). Editorial, hand-
 
 - Next.js 14 (App Router) + TypeScript
 - Tailwind CSS, GSAP + Lenis (motion / smooth scroll)
-- Supabase (Postgres) via Drizzle ORM — blog storage
+- Netlify DB (Postgres, powered by Neon) via Drizzle ORM — blog storage
 - Zod (validation), remark/rehype + sanitize (blog content), Resend (contact email)
-- Hosting: Vercel
+- Hosting: Netlify (`@netlify/plugin-nextjs`)
 
 ---
 
@@ -36,7 +36,8 @@ See `.env.example`. Minimum to run locally: nothing. To enable the blog + email:
 
 | Var | Needed for |
 |---|---|
-| `DATABASE_URL` | Blog (Supabase **pooled** connection string) |
+| `NETLIFY_DATABASE_URL` | Blog — auto-injected on Netlify after `netlify db init` |
+| `DATABASE_URL` | Blog — local dev fallback (any Postgres/Neon URL) |
 | `CM_TOKEN_PEPPER` | Blog token hashing (any long random string) |
 | `RESEND_API_KEY` | Contact form email delivery |
 | `CONTACT_TO_EMAIL` | Where contact emails go |
@@ -46,19 +47,27 @@ See `.env.example`. Minimum to run locally: nothing. To enable the blog + email:
 
 ---
 
-## Database (Supabase)
+## Database (Netlify DB)
 
-1. Create a Supabase project. Copy the **pooled** connection string
-   (Project Settings → Database → Connection pooling) into `DATABASE_URL`.
-2. Generate + run migrations:
+Netlify DB is Postgres powered by Neon, provisioned straight from Netlify.
 
 ```bash
-pnpm db:generate     # creates SQL in ./drizzle from lib/db/schema.ts
-pnpm db:migrate      # applies them
-# or, for quick dev: pnpm db:push
+# from the linked project:
+netlify db init          # creates the database, injects NETLIFY_DATABASE_URL
 ```
 
-Tables: `posts`, `api_tokens` (see `lib/db/schema.ts`).
+Then create the tables. For local migration runs, pull the URL into your shell
+(or .env.local as DATABASE_URL):
+
+```bash
+netlify env:get NETLIFY_DATABASE_URL    # copy into .env.local if running scripts locally
+npm run db:generate                     # creates SQL in ./drizzle from lib/db/schema.ts
+npm run db:migrate                      # applies them
+# or, for quick dev: npm run db:push
+```
+
+Tables: `posts`, `api_tokens` (see `lib/db/schema.ts`). The app reads
+`NETLIFY_DATABASE_URL` first, then `DATABASE_URL`.
 
 ---
 
@@ -133,6 +142,12 @@ drizzle/      generated migrations
 ```
 
 ---
+
+## Deploy (Netlify)
+
+Connect `taqs-gif/centrol-matrix` in the Netlify dashboard (Build & deploy → Continuous
+deployment → Link repository). `netlify.toml` sets the build command and the Next.js runtime
+plugin; leave the publish directory blank. Run `netlify db init` once to provision the database.
 
 ## Still placeholder (swap when assets arrive)
 

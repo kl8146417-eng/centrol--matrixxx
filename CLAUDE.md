@@ -82,10 +82,11 @@ Fonts exposed as CSS vars `--font-display`, `--font-sans` via `next/font`.
 - **Tailwind CSS** (+ minimal CSS modules for the circular clip)
 - **GSAP** + ScrollTrigger, **Lenis** for smooth scroll
 - Custom crossfade carousel hook (no Swiper/Embla)
-- **Supabase (Postgres)** via **Drizzle ORM** — use the pooled connection string for serverless
+- **Netlify DB (Postgres, powered by Neon)** via **Drizzle ORM** (`drizzle-orm/neon-http` +
+  `@neondatabase/serverless`). Connection comes from `NETLIFY_DATABASE_URL` (auto-injected on
+  Netlify after `netlify db init`); falls back to `DATABASE_URL` locally.
 - **Zod** for validation, **remark/rehype** + sanitize for blog content, **Resend** for email
-- **Hosting: Vercel.** Vercel-native features (ISR, `@vercel/og`, Edge config) are allowed.
-  Still read all config from env; never hard-code keys.
+- **Hosting: Netlify** via `@netlify/plugin-nextjs`. Read all config from env; never hard-code keys.
 
 Package manager: `pnpm` preferred (fall back to `npm` if unavailable).
 
@@ -265,7 +266,8 @@ curl -X POST $BASE/api/blog \
 ## 10. Environment variables
 
 ```
-DATABASE_URL=postgres://...            # Supabase pooled connection string (serverless)
+NETLIFY_DATABASE_URL=postgres://...    # auto-injected on Netlify after `netlify db init`
+DATABASE_URL=postgres://...            # local-dev fallback (any Postgres/Neon URL)
 CM_TOKEN_PEPPER=...                    # extra secret mixed into token hashing
 RESEND_API_KEY=...                     # contact form email (optional until contact built)
 CONTACT_TO_EMAIL=contact@centrolmatrix.com
@@ -302,8 +304,8 @@ client-side and never commit secrets**. Add `.env*` to `.gitignore`.
 ## 13. Known open items (client to supply)
 
 - Final logo/favicon (LinkedIn mark is a placeholder), GA4 + Search Console IDs, real
-  photos/videos, **Supabase** project + pooled connection string, approved services copy and
-  hero tagline. (Hosting is Vercel.) Track these in `PLAN.md §9`. Use tasteful placeholders until
+  photos/videos, **Netlify DB** provisioned via `netlify db init`, approved services copy and
+  hero tagline. (Hosting is Netlify.) Track these in `PLAN.md §9`. Use tasteful placeholders until
   provided.
 ```
 
