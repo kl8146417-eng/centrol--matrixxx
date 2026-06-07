@@ -32,31 +32,37 @@ export const hero = {
 } as const;
 
 // Work / products we've shipped. Framed as portfolio ONLY — never as "old brands".
+// `url` is the live destination each marquee item links to.
 export const work = [
   {
     name: 'DUPGS',
-    domain: 'dupgs.in',
+    domain: 'dupgs.com',
+    url: 'https://dupgs.com',
     blurb: 'A consumer platform we designed, shipped, and now run as a live product.',
   },
   {
     name: 'AngleForge',
-    domain: 'angleforge.com',
+    domain: 'angleforge.studio',
+    url: 'https://angleforge.studio',
     blurb: 'Product-listing tooling that turns raw images into ready-to-publish catalog pages.',
   },
   {
-    name: 'GiftFeels',
-    domain: 'giftfeels.in',
-    blurb: 'A gifting product, designed and built end to end and published to app stores.',
+    name: 'CheaperAI',
+    domain: 'cheaperai.tech',
+    url: 'https://cheaperai.tech',
+    blurb: 'A leaner way to run AI workloads without paying enterprise prices for them.',
   },
   {
-    name: 'recl.app',
-    domain: 'recl.app',
-    blurb: 'A mobile app we built and published to iOS and Android.',
+    name: 'Kangaroo Housing',
+    domain: 'kanagroohousing.in',
+    url: 'https://kanagroohousing.in',
+    blurb: 'A housing platform built to help people find the right place faster.',
   },
   {
-    name: 'DelhiPGS',
-    domain: 'dupgs.in',
-    blurb: 'A discovery platform connecting people with the spaces they need.',
+    name: 'WWF NGO',
+    domain: 'wwfngo.org',
+    url: 'https://wwfngo.org',
+    blurb: 'A nonprofit site built to tell the story and move people to act.',
   },
 ] as const;
 

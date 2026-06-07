@@ -3,14 +3,18 @@
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { usePortfolioRotation } from '@/hooks/usePortfolioRotation';
 import { PauseButton } from '@/components/PauseButton';
 import { portalFrames } from '@/content/placeholders';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function PortfolioPortal() {
   const { index, paused, toggle } = usePortfolioRotation(portalFrames.length, 1500);
   const wrapRef = useRef<HTMLDivElement>(null);
   const stackRef = useRef<HTMLDivElement>(null);
+  const growRef = useRef<HTMLDivElement>(null);
 
   // Reveal: scale 0 -> 1, opacity 0 -> 1, ~0.7s after load.
   useEffect(() => {
@@ -54,11 +58,100 @@ export function PortfolioPortal() {
     };
   }, []);
 
+  // Scroll-driven growth: a fixed dark circle, pinned to the portal's live
+  // screen position and matched to its size, scales up as you scroll the hero
+  // until it fills the viewport — so the portal itself appears to swell out and
+  // flood the page with its colour. Sits behind the portal media (z-0), so at
+  // rest it's perfectly hidden under the real circle. Reverses on scroll-up and
+  // flips surrounding chrome to light past the crossover.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const grow = growRef.current;
+    const hero = wrap?.closest('.hero-section') as HTMLElement | null;
+    if (!wrap || !grow || !hero) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      gsap.set(grow, { opacity: 0 });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // Pin the grow-circle to the portal's current footprint (centre + size).
+      const sync = () => {
+        const r = wrap.getBoundingClientRect();
+        gsap.set(grow, {
+          width: r.width,
+          height: r.height,
+          left: r.left + r.width / 2,
+          top: r.top + r.height / 2,
+          xPercent: -50,
+          yPercent: -50,
+        });
+      };
+      sync();
+
+      // Scale needed to cover the viewport diagonal from the portal's footprint.
+      const targetScale = () => {
+        const base = wrap.getBoundingClientRect().width || 1;
+        const diag = Math.hypot(window.innerWidth, window.innerHeight);
+        return (diag / base) * 1.2;
+      };
+
+      gsap.set(grow, { scale: 1, opacity: 1, transformOrigin: '50% 50%' });
+
+      // Toggle the fixed circle's visibility so it only paints while the hero
+      // is in play. Once the hero has scrolled away, hide it completely so it
+      // can never cover later sections (e.g. the footer).
+      const show = (on: boolean) =>
+        gsap.set(grow, { autoAlpha: on ? 1 : 0 });
+
+      const st = ScrollTrigger.create({
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2,
+        onRefresh: (self) => {
+          sync();
+          // Hidden when we're already past the hero on refresh/resize.
+          show(self.progress < 1);
+        },
+        onUpdate: (self) => {
+          const p = self.progress;
+          sync();
+          gsap.set(grow, { scale: 1 + (targetScale() - 1) * p });
+          document.documentElement.toggleAttribute('data-hero-dark', p > 0.45);
+        },
+        // Hero scrolled out of view: kill the fixed circle entirely.
+        onLeave: () => show(false),
+        // Scrolling back into the hero: bring it back.
+        onEnterBack: () => show(true),
+        onLeaveBack: () => document.documentElement.removeAttribute('data-hero-dark'),
+      });
+
+      return () => {
+        st.kill();
+        document.documentElement.removeAttribute('data-hero-dark');
+      };
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="relative mx-auto mt-16 sm:mt-20" style={{ width: 'clamp(320px, 55vw, 700px)' }}>
+      {/* Scroll-driven growing circle — fixed, pinned to the portal, behind the
+          media. Becomes the page background as it swells out. */}
+      <div
+        ref={growRef}
+        aria-hidden
+        className="pointer-events-none fixed z-0 rounded-full bg-ink-section"
+        style={{ willChange: 'transform' }}
+      />
+
       <div
         ref={wrapRef}
-        className="relative overflow-hidden rounded-full bg-ink-section"
+        className="relative z-10 overflow-hidden rounded-full bg-ink-section"
         style={{ aspectRatio: '1 / 1', willChange: 'transform, opacity' }}
       >
         <div ref={stackRef} className="absolute inset-0">
@@ -93,7 +186,7 @@ export function PortfolioPortal() {
         </div>
       </div>
 
-      <p className="mt-5 text-center text-[13px] uppercase tracking-wordmark text-muted">
+      <p className="hero-portal-caption mt-5 text-center text-[13px] uppercase tracking-wordmark text-muted">
         {portalFrames[index].label} · work we&apos;ve shipped
       </p>
     </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { nav, site } from '@/content/site';
+import { Logo } from '@/components/Logo';
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -22,10 +23,8 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-editorial items-center justify-between px-5 sm:px-8">
-        <Link href="/" className="group flex items-baseline gap-3" aria-label={`${site.name} home`}>
-          <span className="font-display text-2xl font-bold leading-none text-ink">
-            {site.monogram}
-          </span>
+        <Link href="/" className="group flex items-center gap-3" aria-label={`${site.name} home`}>
+          <Logo className="h-7 w-auto text-ink transition-opacity duration-200 group-hover:opacity-60" />
           <span className="hidden text-[13px] font-medium uppercase tracking-wordmark text-ink sm:inline">
             {site.wordmark}
           </span>

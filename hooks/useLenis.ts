@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
  * Initializes Lenis smooth scroll and ties it to a rAF loop.
@@ -17,6 +18,9 @@ export function useLenis() {
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+
+    // Keep ScrollTrigger in sync with Lenis so scrubbed animations stay smooth.
+    lenis.on('scroll', ScrollTrigger.update);
 
     let frame = 0;
     const raf = (time: number) => {

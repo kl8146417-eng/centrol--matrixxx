@@ -35,16 +35,16 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Focus-visible ring per the anti-slop spec: pink, 4px offset. */
+/* Focus-visible ring per the anti-slop spec: corporate blue, 4px offset. */
 :focus-visible {
-  outline: 2px solid #e63a8e;
+  outline: 2px solid #1d4ed8;
   outline-offset: 4px;
   border-radius: 2px;
 }
 
-/* Selection uses the one accent. */
+/* Selection / text-highlight color. */
 ::selection {
-  background: #e63a8e;
+  background: #213da0;
   color: #ffffff;
 }
 
@@ -65,6 +65,28 @@ html.lenis body {
 /* Editorial hairline rule. */
 .hairline {
   border-top: 1px solid rgba(14, 14, 14, 0.12);
+}
+
+/* --- Hero scroll backdrop ---
+   As the dark portal circle expands to fill the viewport, flip the hero text
+   to light so it stays readable over the dark fill. Smooth, not abrupt. */
+.hero-section h1,
+.hero-section .hero-lede,
+.hero-section .hero-portal-caption {
+  transition: color 0.4s ease;
+}
+html[data-hero-dark] .hero-section h1,
+html[data-hero-dark] .hero-section h1 span {
+  color: #ffffff !important;
+}
+html[data-hero-dark] .hero-section h1 [data-hero-accent] {
+  color: #ff5ea8 !important;
+}
+html[data-hero-dark] .hero-section .hero-lede {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+html[data-hero-dark] .hero-section .hero-portal-caption {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Rendered blog post content (sanitized HTML). Editorial typography, one accent. */
@@ -92,18 +114,18 @@ html.lenis body {
   font-size: 24px;
 }
 .prose-cm a {
-  color: #e63a8e;
+  color: #79a4df;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .prose-cm a:hover {
-  color: #c92e78;
+  color: #213da0;
 }
 .prose-cm strong {
   color: #0e0e0e;
 }
 .prose-cm blockquote {
-  border-left: 2px solid #e63a8e;
+  border-left: 2px solid #1d4ed8;
   padding-left: 1.25em;
   font-family: var(--font-display), Georgia, serif;
   font-style: italic;

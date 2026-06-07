@@ -46,3 +46,6 @@ __pycache__/
 
 # Local Netlify folder
 .netlify
+
+# favicon source archive (extracted into /public + /favicon_io)
+favicon_io.zip

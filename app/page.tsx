@@ -9,11 +9,14 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <BrandMarquee />
-      <ServicesGrid />
-      <AgentSystem />
-      <SelectedWork />
-      <CTASection />
+      {/* Opaque layer that scrolls up over the hero's fixed dark backdrop. */}
+      <div className="relative z-10 bg-bg">
+        <BrandMarquee />
+        <ServicesGrid />
+        <AgentSystem />
+        <SelectedWork />
+        <CTASection />
+      </div>
     </>
   );
 }

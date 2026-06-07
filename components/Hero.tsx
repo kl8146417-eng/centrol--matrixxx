@@ -6,7 +6,7 @@ import { hero } from '@/content/site';
 import { PortfolioPortal } from '@/components/PortfolioPortal';
 
 export function Hero() {
-  const rootRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -38,8 +38,8 @@ export function Hero() {
   }, []);
 
   return (
-    <section ref={rootRef} className="px-5 pb-8 pt-32 sm:px-8 sm:pt-40">
-      <div className="mx-auto max-w-editorial">
+    <section ref={rootRef} className="hero-section relative px-5 pb-8 pt-32 sm:px-8 sm:pt-40">
+      <div className="relative z-10 mx-auto max-w-editorial">
         <h1 className="font-display text-display-xl text-ink">
           <span data-hero-line className="block opacity-0">
             {hero.line1}
@@ -52,13 +52,15 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-ink-soft">
+        <p className="hero-lede mt-8 max-w-xl text-[17px] leading-relaxed text-ink-soft">
           We build websites, content engines, and AI automations that earn their keep. No theme
           packs, no filler, no work you have to redo in six months.
         </p>
       </div>
 
-      <PortfolioPortal />
+      <div className="relative z-10">
+        <PortfolioPortal />
+      </div>
     </section>
   );
 }

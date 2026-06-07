@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { nav, site, work } from '@/content/site';
+import { Logo } from '@/components/Logo';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -8,6 +9,7 @@ export function Footer() {
       <div className="mx-auto max-w-editorial px-5 py-16 sm:px-8 sm:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
+            <Logo className="mb-7 h-8 w-auto text-white" title={`${site.name} logo`} />
             <p className="font-display text-3xl leading-tight">
               Tell us what you&apos;re building.
             </p>

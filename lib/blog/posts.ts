@@ -142,3 +142,37 @@ export async function getById(id: string): Promise<Post | null> {
   const [row] = await db.select().from(posts).where(eq(posts.id, id)).limit(1);
   return row && !row.deletedAt ? row : null;
 }
+
+/**
+ * Admin listing — every non-deleted post (drafts + published), newest first.
+ * Optional status filter and search. Used by the private dashboard only.
+ */
+export async function adminListPosts(
+  opts: { page?: number; perPage?: number; q?: string; status?: 'draft' | 'published' } = {}
+) {
+  const db = getDb();
+  const page = Math.max(1, opts.page ?? 1);
+  const perPage = Math.min(100, Math.max(1, opts.perPage ?? 50));
+  const offset = (page - 1) * perPage;
+
+  const filters = [isNull(posts.deletedAt)];
+  if (opts.status) filters.push(eq(posts.status, opts.status));
+  if (opts.q)
+    filters.push(or(like(posts.title, `%${opts.q}%`), like(posts.excerpt, `%${opts.q}%`))!);
+  const where = and(...filters);
+
+  const rows = await db
+    .select()
+    .from(posts)
+    .where(where)
+    .orderBy(desc(posts.updatedAt))
+    .limit(perPage)
+    .offset(offset);
+
+  const [{ count }] = await db
+    .select({ count: sql<number>`count(*)::int` })
+    .from(posts)
+    .where(where);
+
+  return { posts: rows, page, perPage, total: count, totalPages: Math.ceil(count / perPage) };
+}
