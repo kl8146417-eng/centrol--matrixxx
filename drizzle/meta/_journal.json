@@ -8,6 +8,13 @@
       "when": 1780777160626,
       "tag": "0000_create_blog_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1780777160627,
+      "tag": "0001_create_media_table",
+      "breakpoints": true
     }
   ]
 }

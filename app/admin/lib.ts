@@ -140,6 +140,31 @@ export async function deletePost(id: string): Promise<void> {
   await parse(res);
 }
 
+export type UploadResult = {
+  id: string;
+  url: string;
+  mimeType: string;
+  byteSize: number;
+  width: number | null;
+  height: number | null;
+};
+
+/**
+ * Upload an image file to /api/media. The bytes are stored in our database and
+ * served back at a public centrolmatrix.com/media/<id>.<ext> URL — use that as
+ * a cover or inline image so nothing depends on a third-party host.
+ */
+export async function uploadMedia(file: File): Promise<UploadResult> {
+  const form = new FormData();
+  form.append('file', file);
+  const res = await fetch('/api/media', {
+    method: 'POST',
+    headers: authHeaders(false), // let the browser set the multipart boundary
+    body: form,
+  });
+  return parse<UploadResult>(res);
+}
+
 /** Render markdown to the exact sanitized HTML the site stores (for preview). */
 export async function renderPreview(markdown: string): Promise<string> {
   const res = await fetch('/api/blog/preview', {

@@ -10,6 +10,7 @@ import {
   createPost,
   renderPreview,
   updatePost,
+  uploadMedia,
 } from './lib';
 
 type Props = { existing?: AdminPost };
@@ -35,6 +36,11 @@ export default function PostEditor({ existing }: Props) {
   const [showPreview, setShowPreview] = useState(false);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
 
+  const [coverUploading, setCoverUploading] = useState(false);
+  const [bodyUploading, setBodyUploading] = useState(false);
+  const coverFileRef = useRef<HTMLInputElement>(null);
+  const bodyFileRef = useRef<HTMLInputElement>(null);
+
   // Faithful preview, debounced, using the same renderer the API stores.
   useEffect(() => {
     if (!showPreview) return;
@@ -44,11 +50,7 @@ export default function PostEditor({ existing }: Props) {
     return () => clearTimeout(t);
   }, [body, showPreview]);
 
-  function insertImage() {
-    const url = window.prompt('Image URL (paste a hosted image link):');
-    if (!url) return;
-    const alt = window.prompt('Short description of the image (alt text):') ?? '';
-    const snippet = `\n\n![${alt}](${url.trim()})\n\n`;
+  function insertSnippet(snippet: string) {
     const el = bodyRef.current;
     if (!el) {
       setBody((b) => b + snippet);
@@ -63,6 +65,46 @@ export default function PostEditor({ existing }: Props) {
       const pos = start + snippet.length;
       el.setSelectionRange(pos, pos);
     });
+  }
+
+  function insertImage() {
+    const url = window.prompt('Image URL (paste a hosted image link):');
+    if (!url) return;
+    const alt = window.prompt('Short description of the image (alt text):') ?? '';
+    insertSnippet(`\n\n![${alt}](${url.trim()})\n\n`);
+  }
+
+  async function onCoverFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = ''; // allow re-selecting the same file
+    if (!file) return;
+    setErr(null);
+    setCoverUploading(true);
+    try {
+      const { url } = await uploadMedia(file);
+      setCover(url);
+    } catch (e) {
+      setErr(e instanceof ApiError ? e.message : 'Upload failed.');
+    } finally {
+      setCoverUploading(false);
+    }
+  }
+
+  async function onBodyImageFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    setErr(null);
+    setBodyUploading(true);
+    try {
+      const { url } = await uploadMedia(file);
+      const alt = window.prompt('Short description of the image (alt text):') ?? '';
+      insertSnippet(`\n\n![${alt}](${url})\n\n`);
+    } catch (e) {
+      setErr(e instanceof ApiError ? e.message : 'Upload failed.');
+    } finally {
+      setBodyUploading(false);
+    }
   }
 
   function wrap(before: string, after = before) {
@@ -211,12 +253,31 @@ export default function PostEditor({ existing }: Props) {
           </label>
 
           <label className="admin-field">
-            <span className="admin-label">Cover image URL</span>
+            <span className="admin-label admin-bodylabel">
+              <span>Cover image</span>
+              <span className="admin-toolbtns">
+                <button
+                  type="button"
+                  className="admin-tool admin-tool--accent"
+                  onClick={() => coverFileRef.current?.click()}
+                  disabled={coverUploading}
+                >
+                  {coverUploading ? 'Uploading…' : 'Upload image'}
+                </button>
+              </span>
+            </span>
+            <input
+              ref={coverFileRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              onChange={onCoverFile}
+              hidden
+            />
             <input
               className="admin-input"
               value={cover}
               onChange={(e) => setCover(e.target.value)}
-              placeholder="https://…/cover.jpg"
+              placeholder="Paste a URL, or upload to host it on centrolmatrix.com"
             />
             {cover.trim() && (
               // eslint-disable-next-line @next/next/no-img-element
@@ -250,11 +311,26 @@ export default function PostEditor({ existing }: Props) {
                 <button type="button" className="admin-tool" onClick={() => wrap('[', '](url)')}>
                   Link
                 </button>
-                <button type="button" className="admin-tool admin-tool--accent" onClick={insertImage}>
-                  + Image
+                <button type="button" className="admin-tool" onClick={insertImage}>
+                  + Image URL
+                </button>
+                <button
+                  type="button"
+                  className="admin-tool admin-tool--accent"
+                  onClick={() => bodyFileRef.current?.click()}
+                  disabled={bodyUploading}
+                >
+                  {bodyUploading ? 'Uploading…' : '↑ Upload image'}
                 </button>
               </span>
             </div>
+            <input
+              ref={bodyFileRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              onChange={onBodyImageFile}
+              hidden
+            />
             <textarea
               ref={bodyRef}
               className="admin-textarea admin-textarea--body"
@@ -263,7 +339,8 @@ export default function PostEditor({ existing }: Props) {
               placeholder={'Write in Markdown.\n\n## A heading\n\nA paragraph, then an image with the + Image button.'}
             />
             <p className="admin-hint">
-              Markdown. Use <b>+ Image</b> to drop in a hosted image. Status:{' '}
+              Markdown. <b>+ Image URL</b> drops in a hosted link; <b>↑ Upload image</b> stores it
+              on centrolmatrix.com. Status:{' '}
               <b>{status === 'published' ? 'Published' : 'Draft'}</b>.
             </p>
           </div>

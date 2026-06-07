@@ -30,6 +30,14 @@ export const updatePostSchema = postFields
 export type CreatePostInput = z.infer<typeof createPostSchema>;
 export type UpdatePostInput = z.infer<typeof updatePostSchema>;
 
+// JSON body for POST /api/media when not using multipart/form-data.
+export const uploadMediaSchema = z.object({
+  imageBase64: z.string().min(1, 'imageBase64 is required'),
+  filename: z.string().max(200).optional(),
+});
+
+export type UploadMediaInput = z.infer<typeof uploadMediaSchema>;
+
 /** Flatten Zod errors into { field: message } for clean 422 responses. */
 export function fieldErrors(error: z.ZodError): Record<string, string> {
   const out: Record<string, string> = {};

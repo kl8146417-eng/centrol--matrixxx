@@ -88,6 +88,62 @@ The post is live immediately at that `url`, and appears on `/blog`, in `sitemap.
 
 ---
 
+## 3a. Upload a cover image (host it on our domain)
+
+The blog only stores a **public image URL** (`coverImageUrl`) — it does not store the post
+without one being reachable. If you generated or downloaded an image and need a public URL on
+`centrolmatrix.com`, upload it first, then use the returned `url` as `coverImageUrl`.
+
+`POST /api/media` — scope `blog:write`. The bytes are stored in our database and served back at
+a stable URL `https://centrolmatrix.com/media/<id>.<ext>`.
+
+**Accepted:** JPEG, PNG, or WebP. **Max 5 MB.**
+
+Two ways to send it:
+
+### A. JSON with base64 (easiest for scripts)
+```jsonc
+{
+  "imageBase64": "/9j/4AAQSkZJRg…",   // bare base64 OR a full "data:image/jpeg;base64,…" URI
+  "filename": "cover.jpg"             // optional, cosmetic
+}
+```
+```bash
+curl -X POST https://centrolmatrix.com/api/media \
+  -H "Authorization: Bearer $CM_BLOG_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "{\"imageBase64\":\"$(base64 -w0 cover.jpg)\",\"filename\":\"cover.jpg\"}"
+```
+
+### B. multipart/form-data with a file
+```bash
+curl -X POST https://centrolmatrix.com/api/media \
+  -H "Authorization: Bearer $CM_BLOG_TOKEN" \
+  -F "file=@cover.jpg;type=image/jpeg"
+```
+
+### Response — `201 Created`
+```json
+{
+  "id": "8b1f…uuid",
+  "url": "https://centrolmatrix.com/media/8b1f…uuid.jpg",
+  "mimeType": "image/jpeg",
+  "byteSize": 184213,
+  "width": 1600,
+  "height": 900
+}
+```
+
+Then create the post with that URL:
+```json
+{ "title": "…", "contentMarkdown": "…", "coverImageUrl": "https://centrolmatrix.com/media/8b1f…uuid.jpg" }
+```
+
+Upload errors: `413` too large (>5 MB), `415` unsupported type (send JPEG/PNG/WebP),
+`422` empty/missing image, `503` storage not configured.
+
+---
+
 ## 4. Responses & errors
 
 | Code | Meaning | What to do |

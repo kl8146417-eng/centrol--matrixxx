@@ -16,7 +16,7 @@ export const site = {
 } as const;
 
 export const nav = [
-  { label: 'Work', href: '/work' },
+  { label: 'Work', href: '/websites' },
   { label: 'Services', href: '/services' },
   { label: 'Apps', href: '/apps' },
   { label: 'About', href: '/about' },
@@ -32,39 +32,118 @@ export const hero = {
 } as const;
 
 // Work / products we've shipped. Framed as portfolio ONLY — never as "old brands".
-// `url` is the live destination each marquee item links to.
-export const work = [
+// - `url`     : the live destination the card/marquee links to.
+// - `viewUrl` : what the "See now" modal opens in an iframe (demos use their demo URL).
+// - `image`   : homepage screenshot served from /public/work.
+// - `home`    : show in the three-card row on the home page.
+// - `embed`   : the two scroll-choreographed live embeds at the top of home.
+export type WorkItem = {
+  name: string;
+  domain: string;
+  url: string;
+  image: string;
+  blurb: string;
+  viewUrl?: string;
+  embedUrl?: string;
+  home?: boolean;
+  // Whether the live site allows being shown inside an iframe. Sites that send
+  // X-Frame-Options / restrictive CSP can't be previewed inline, so the "See
+  // now" modal falls back to the screenshot + an open-in-new-tab button.
+  framable?: boolean;
+};
+
+export const work: WorkItem[] = [
+  // --- The two live demo sites: powering the scroll embeds on the home page. ---
+  {
+    name: 'Hotel prototype',
+    domain: 'hoteldemosite.vishalchauhan.in',
+    url: 'https://hoteldemosite.vishalchauhan.in/',
+    viewUrl: 'https://hoteldemosite.vishalchauhan.in/',
+    embedUrl: 'https://hoteldemosite.vishalchauhan.in/',
+    image: '/work/hotel-demo.png',
+    framable: true,
+    blurb: 'A booking-ready hotel website prototype — rooms, rates, and a clean reservation flow.',
+  },
+  {
+    name: 'Dental website',
+    domain: 'dental-demo.vishalchauhan.in',
+    url: 'https://dental-demo.vishalchauhan.in/',
+    viewUrl: 'https://dental-demo.vishalchauhan.in/',
+    embedUrl: 'https://dental-demo.vishalchauhan.in/',
+    image: '/work/dental-demo.png',
+    framable: true,
+    blurb: 'A family dental clinic site built to explain treatments and take appointments.',
+  },
+
+  // --- Featured on the home page (the three cards under the embeds). ---
+  {
+    name: 'GiftFeels',
+    domain: 'giftfeels.in',
+    url: 'https://giftfeels.in',
+    image: '/work/giftfeels.png',
+    home: true,
+    blurb: 'A gifting app we designed and shipped to iOS and Android.',
+  },
   {
     name: 'DUPGS',
     domain: 'dupgs.com',
     url: 'https://dupgs.com',
-    blurb: 'A consumer platform we designed, shipped, and now run as a live product.',
+    image: '/work/dupgs.png',
+    home: true,
+    blurb: 'A Delhi PG and rooms marketplace we designed, shipped, and run.',
   },
   {
     name: 'AngleForge',
     domain: 'angleforge.studio',
     url: 'https://angleforge.studio',
-    blurb: 'Product-listing tooling that turns raw images into ready-to-publish catalog pages.',
+    image: '/work/angleforge.png',
+    home: true,
+    blurb: 'Turns one product photo into ten marketplace-ready shots in under a minute.',
+  },
+
+  // --- The rest of the portfolio (shown on /websites). ---
+  {
+    name: 'Soni Singh Artistry',
+    domain: 'sonisinghartistry.com',
+    url: 'https://sonisinghartistry.com/',
+    image: '/work/sonisingh-portfolio.png',
+    framable: true,
+    blurb: 'A bridal makeup artist’s portfolio site built to book consultations.',
+  },
+  {
+    name: 'Kangaroo House',
+    domain: 'kangaroohousing.in',
+    url: 'https://kangaroohousing.in',
+    image: '/work/kangaroo-housing.png',
+    blurb: 'A student-housing site built to fill rooms near East Delhi colleges.',
+  },
+  {
+    name: 'recl.app',
+    domain: 'recl.app',
+    url: 'https://recl.app',
+    image: '/work/recl.png',
+    blurb: 'Save what matters, then actually recall it — summaries, search, and daily nudges.',
+  },
+  {
+    name: 'Waste Pickers Welfare Foundation',
+    domain: 'wwfngo.org',
+    url: 'https://wwfngo.org',
+    image: '/work/wwfngo.png',
+    blurb: 'An NGO site for a Delhi foundation supporting waste pickers and their families.',
   },
   {
     name: 'CheaperAI',
     domain: 'cheaperai.tech',
     url: 'https://cheaperai.tech',
+    image: '/work/cheaperai.png',
     blurb: 'A leaner way to run AI workloads without paying enterprise prices for them.',
   },
-  {
-    name: 'Kangaroo Housing',
-    domain: 'kanagroohousing.in',
-    url: 'https://kanagroohousing.in',
-    blurb: 'A housing platform built to help people find the right place faster.',
-  },
-  {
-    name: 'WWF NGO',
-    domain: 'wwfngo.org',
-    url: 'https://wwfngo.org',
-    blurb: 'A nonprofit site built to tell the story and move people to act.',
-  },
-] as const;
+];
+
+// The two scroll-choreographed embeds at the top of the home page.
+export const homeEmbeds = work.filter((w) => w.embedUrl);
+// The three featured cards under the embeds on the home page.
+export const homeFeatured = work.filter((w) => w.home);
 
 // Services — the reference image explicitly says NOT to use AI-generated descriptions.
 // These are short, human, plain-spoken. Client can refine.

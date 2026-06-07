@@ -7,9 +7,18 @@ import {
   timestamp,
   pgEnum,
   uniqueIndex,
+  customType,
 } from 'drizzle-orm/pg-core';
 
 export const postStatus = pgEnum('post_status', ['draft', 'published']);
+
+// Postgres bytea <-> Node Buffer. Stores raw image bytes so uploaded covers
+// live in the same database as the posts (no third-party image host needed).
+const bytea = customType<{ data: Buffer; default: false }>({
+  dataType() {
+    return 'bytea';
+  },
+});
 
 export const apiTokens = pgTable('api_tokens', {
   id: uuid('id').defaultRandom().primaryKey(),
@@ -47,6 +56,22 @@ export const posts = pgTable(
   })
 );
 
+// Uploaded images (blog covers, inline media). Bytes live in Postgres and are
+// served back at a stable public URL: /media/<id>.<ext>
+export const media = pgTable('media', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  filename: text('filename'),
+  mimeType: text('mime_type').notNull().default('image/jpeg'),
+  byteSize: integer('byte_size').notNull(),
+  width: integer('width'),
+  height: integer('height'),
+  data: bytea('data').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  uploadedByToken: uuid('uploaded_by_token').references(() => apiTokens.id),
+});
+
 export type Post = typeof posts.$inferSelect;
 export type NewPost = typeof posts.$inferInsert;
 export type ApiToken = typeof apiTokens.$inferSelect;
+export type Media = typeof media.$inferSelect;
+export type NewMedia = typeof media.$inferInsert;
