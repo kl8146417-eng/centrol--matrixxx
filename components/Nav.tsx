@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { nav, site } from '@/content/site';
 import { Logo } from '@/components/Logo';
+import { CartButton } from '@/components/CartDrawer';
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ export function Nav() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 lg:gap-6 md:flex" aria-label="Primary">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -46,8 +47,10 @@ export function Nav() {
           >
             Start a project
           </Link>
+          <CartButton />
         </nav>
 
+        <div className="flex items-center gap-2 md:hidden"><CartButton />
         <button
           type="button"
           className="flex h-10 w-10 items-center justify-center md:hidden"
@@ -73,6 +76,7 @@ export function Nav() {
             />
           </span>
         </button>
+        </div>
       </div>
 
       {open && (

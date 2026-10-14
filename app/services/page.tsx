@@ -3,6 +3,7 @@ import { PageHeader } from '@/components/PageHeader';
 import { ServicesGrid } from '@/components/ServicesGrid';
 import { AgentSystem } from '@/components/AgentSystem';
 import { CTASection } from '@/components/CTASection';
+import Link from 'next/link';
 import { studioServices } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -35,6 +36,16 @@ export default function ServicesPage() {
               <p className="mt-3 text-[15px] leading-relaxed text-muted">{s.body}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-editorial px-5 pb-20 sm:px-8">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-ink/10 p-8 sm:flex-row sm:items-center">
+          <div>
+            <h2 className="font-display text-3xl text-ink">Ready to order?</h2>
+            <p className="mt-2 text-[15px] text-muted">Fixed-price packages with checkout, or enquire about scoped work.</p>
+          </div>
+          <Link href="/pricing" className="rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-white hover:bg-accent-dark">See packages &amp; pricing</Link>
         </div>
       </section>
 

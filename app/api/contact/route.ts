@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { json, error } from '@/lib/http';
 import { site } from '@/content/site';
+import { saveContact } from '@/lib/commerce/store';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,6 +29,8 @@ export async function POST(req: Request) {
   if (parsed.data.website) return json({ ok: true });
 
   const { name, email, company, message } = parsed.data;
+  // Keep a copy for the admin inbox (Neon `contacts`, Blobs fallback), even if email isn't configured.
+  await saveContact({ name, email, company, message });
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL ?? site.email;
 

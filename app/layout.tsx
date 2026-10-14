@@ -5,6 +5,8 @@ import { LenisProvider } from '@/components/LenisProvider';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Analytics } from '@/components/Analytics';
+import { CartProvider } from '@/lib/cart';
+import { CartDrawer } from '@/components/CartDrawer';
 import { site } from '@/content/site';
 
 const playfair = Playfair_Display({
@@ -77,11 +79,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        <CartProvider>
         <LenisProvider>
           <Nav />
           <main id="main">{children}</main>
           <Footer />
         </LenisProvider>
+        <CartDrawer />
+        </CartProvider>
         <Analytics />
       </body>
     </html>

@@ -22,6 +22,9 @@ export function Footer() {
             >
               {site.email}
             </a>
+            <a href="https://wa.me/639515680964" target="_blank" rel="noopener noreferrer" className="mt-2 block text-[15px] text-white/80 hover:opacity-60">
+              WhatsApp +63 951 568 0964
+            </a>
           </div>
 
           <nav aria-label="Footer">
@@ -64,7 +67,11 @@ export function Footer() {
           <span>
             © {year} {site.name}. All rights reserved.
           </span>
-          <span className="font-display italic text-accent">Made by hand.</span>
+          <span className="flex flex-wrap gap-4">
+            {[['FAQ', '/faq'], ['Terms', '/terms'], ['Privacy', '/privacy'], ['Refunds', '/refunds'], ['Delivery', '/delivery']].map(([l, h]) => (
+              <Link key={h} href={h} className="hover:text-white/80">{l}</Link>
+            ))}
+          </span>
         </div>
       </div>
     </footer>

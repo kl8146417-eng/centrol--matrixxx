@@ -1,0 +1,535 @@
+{
+  "currency": "USD",
+  "updated": "2026-10-09",
+  "categories": [
+    {
+      "id": "automation",
+      "name": "AI Automation",
+      "tagline": "Hand the repetitive work to software that never sleeps.",
+      "group": "Growth & Automation"
+    },
+    {
+      "id": "growth",
+      "name": "Growth & Strategy",
+      "tagline": "SEO, positioning and one plan that ties site, content and ads to outcomes.",
+      "group": "Growth & Automation"
+    },
+    {
+      "id": "content",
+      "name": "Content Systems",
+      "tagline": "A repeatable engine so the feed never goes quiet.",
+      "group": "Creative"
+    },
+    {
+      "id": "ai_ugc",
+      "name": "AI UGC Ads",
+      "tagline": "Creative volume for Meta & TikTok. Many hooks, many angles, fast.",
+      "group": "Creative"
+    },
+    {
+      "id": "product_mockups",
+      "name": "Lookbook AI",
+      "tagline": "Product, ghost-mannequin & lifestyle imagery from the photos you already have.",
+      "group": "Creative"
+    },
+    {
+      "id": "ad_creatives",
+      "name": "Ad Creatives",
+      "tagline": "Statics and motion concepts packaged by funnel stage (TOF / MOF).",
+      "group": "Creative"
+    },
+    {
+      "id": "beyond",
+      "name": "Real Estate Video",
+      "tagline": "AI visualisation from floor plans and pacing-and-grade edits of property footage.",
+      "group": "Creative"
+    },
+    {
+      "id": "website",
+      "name": "Websites & Storefronts",
+      "tagline": "CRO-minded websites and storefronts, plus apps we design, ship and run.",
+      "group": "Websites & Apps"
+    },
+    {
+      "id": "retainer",
+      "name": "Retainer",
+      "tagline": "An always-on creative pod for brands already spending on ads.",
+      "group": "Retainers & Bundles"
+    },
+    {
+      "id": "bundle",
+      "name": "Bundles",
+      "tagline": "Pre-built combinations at a lower price.",
+      "group": "Retainers & Bundles"
+    },
+    {
+      "id": "addon",
+      "name": "Add-ons",
+      "tagline": "Attach to any package at checkout.",
+      "group": "Add-ons"
+    }
+  ],
+  "services": [
+    {
+      "id": "cm-ai-automation",
+      "name": "AI Automation Consulting",
+      "category": "automation",
+      "description": "We find the repetitive work eating your week and hand it to software that never sleeps.",
+      "deliverables": [
+        "Process audit call",
+        "Automation opportunity map",
+        "Build & hand-off of the first workflows"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-workflow",
+      "name": "Workflow Optimization",
+      "category": "automation",
+      "description": "Map how work actually moves through your business, then cut the steps that cost you time.",
+      "deliverables": [
+        "Workflow mapping",
+        "Bottleneck report",
+        "Streamlined process + tooling"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-ai-ops",
+      "name": "AI-Powered Operations",
+      "category": "automation",
+      "description": "Quiet software running in the background so your team can do the work only people can.",
+      "deliverables": [
+        "Agent setup on our orchestration layer",
+        "Monitoring & alerts",
+        "Monthly tune-ups"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-leadgen",
+      "name": "Lead Generation Pipelines",
+      "category": "automation",
+      "description": "Scrape, qualify, and route leads to the people who can actually close them.",
+      "deliverables": [
+        "Lead scraping & enrichment",
+        "Qualification rules",
+        "Routing into your CRM or inbox"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-seo",
+      "name": "SEO & Organic Growth",
+      "category": "growth",
+      "description": "Technical fixes, real content, and the patience to rank and stay ranked.",
+      "deliverables": [
+        "Technical SEO audit & fixes",
+        "Content plan + blog posts",
+        "Rank tracking"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-strategy",
+      "name": "Digital Marketing Strategy",
+      "category": "growth",
+      "description": "One plan that ties your site, content, and ads to outcomes you can count.",
+      "deliverables": [
+        "Channel & funnel review",
+        "90-day plan",
+        "KPI dashboard"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-brand",
+      "name": "Brand Positioning",
+      "category": "growth",
+      "description": "Decide what you stand for, then say it the same way everywhere.",
+      "deliverables": [
+        "Positioning workshop",
+        "Messaging guide",
+        "Voice & tone examples"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-content-systems",
+      "name": "Content Systems",
+      "category": "content",
+      "description": "A repeatable engine for posts, carousels, and shorts so the feed never goes quiet.",
+      "deliverables": [
+        "Content pillars & calendar",
+        "Carousel + shorts templates",
+        "Automated drafting pipeline"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "cm-repurposing",
+      "name": "Content Repurposing",
+      "category": "content",
+      "description": "Turn one good idea into a week of posts across every channel that matters.",
+      "deliverables": [
+        "One source → multi-channel posts",
+        "Shorts copy at volume",
+        "Omni-posting setup"
+      ],
+      "price_usd": 0,
+      "enquiry": true,
+      "price_note": "Scoped on a call · fixed quote within a day"
+    },
+    {
+      "id": "rail-starter",
+      "name": "Storefront Starter",
+      "category": "website",
+      "description": "Premium Shopify-style clothing storefront with conversion-focused homepage, collection, and PDP templates. Inspired by the ORVA interactive clothing-rail demo.",
+      "deliverables": [
+        "Custom theme or premium theme customization",
+        "Homepage with interactive hero / lookbook section",
+        "Collection + PDP templates (variants, size guide block)",
+        "Shipping, returns, FAQ, contact pages",
+        "Mobile-first polish + basic speed pass",
+        "Pixel / analytics install checklist",
+        "Loom handover (30–45 min)"
+      ],
+      "price_usd": 2997,
+      "price_note": "One-time · fixed scope",
+      "turnaround_days": 14,
+      "popular": true
+    },
+    {
+      "id": "rail-pro",
+      "name": "Storefront Pro",
+      "category": "website",
+      "description": "Full conversion-oriented redesign: custom sections, CRO patterns (trust, urgency, checkout FAQ), catalog polish, and launch QA.",
+      "deliverables": [
+        "Everything in Storefront Starter",
+        "Custom section library (rail, editorial, UGC strip, bundles)",
+        "CRO blocks: reviews, size guide, sticky ATC, checkout FAQ",
+        "Up to 3 revision rounds on design system",
+        "App stack recommendations (reviews, returns, email)",
+        "SEO foundations (titles, alt, redirects if migrating)",
+        "Recorded training for client team"
+      ],
+      "price_usd": 6997,
+      "price_note": "One-time · fixed scope",
+      "turnaround_days": 28,
+      "popular": false
+    },
+    {
+      "id": "ugc-single",
+      "name": "AI UGC Ad — Single",
+      "category": "ai_ugc",
+      "description": "One scroll-stopping vertical UGC-style video ad from your product photos — hook, demo, CTA — ready for Meta/TikTok.",
+      "deliverables": [
+        "1× 15–30s vertical (9:16) MP4",
+        "1× square (1:1) crop",
+        "Hook script + 2 alternate hook lines",
+        "Captions burned in",
+        "1 revision round"
+      ],
+      "price_usd": 129,
+      "price_note": "Per video",
+      "turnaround_days": 3,
+      "popular": false
+    },
+    {
+      "id": "ugc-5pack",
+      "name": "AI UGC Ad — 5-Pack",
+      "category": "ai_ugc",
+      "description": "Five distinct hook/angle variants for creative testing — the minimum viable test set for Meta.",
+      "deliverables": [
+        "5× unique UGC-style videos (different hooks/angles)",
+        "9:16 + 1:1 exports each",
+        "Angle naming sheet for Ads Manager",
+        "2 revision rounds total"
+      ],
+      "price_usd": 497,
+      "price_note": "≈ $99 per video",
+      "turnaround_days": 7,
+      "popular": true
+    },
+    {
+      "id": "ugc-monthly",
+      "name": "UGC Factory — Monthly",
+      "category": "ai_ugc",
+      "description": "Ongoing AI UGC pipeline: 12+ new ad variants every month so creative fatigue never throttles spend.",
+      "deliverables": [
+        "Minimum 12 finished UGC-style videos / month",
+        "Weekly drop cadence (3+/week)",
+        "Hook research from niche ads/trends",
+        "Shared Airtable or Drive tracker",
+        "Slack/email async feedback",
+        "Unused concepts rolled or refreshed next month"
+      ],
+      "price_usd": 1997,
+      "price_note": "Per month · cancel anytime",
+      "turnaround_days": 30,
+      "popular": false,
+      "billing": "monthly"
+    },
+    {
+      "id": "mockups-10",
+      "name": "Lookbook AI — Set of 10",
+      "category": "product_mockups",
+      "description": "Ten on-brand product images: clean packshots, ghost mannequin, and lifestyle scenes from your existing photos.",
+      "deliverables": [
+        "10 AI-enhanced product images",
+        "Mix of studio + lifestyle (client chooses ratio)",
+        "Shopify-ready exports",
+        "Consistent lighting/background rules",
+        "1 revision round"
+      ],
+      "price_usd": 247,
+      "price_note": "≈ $25 per image",
+      "turnaround_days": 5,
+      "popular": false
+    },
+    {
+      "id": "mockups-25",
+      "name": "Lookbook AI — Set of 25",
+      "category": "product_mockups",
+      "description": "Catalog refresh pack for brands stuck on 1–2 photos per SKU — batch lifestyle and on-model imagery.",
+      "deliverables": [
+        "25 AI product / lifestyle images",
+        "Brand style guide locked after first 5 approved",
+        "SKU naming convention",
+        "Meta + Shopify crop variants",
+        "2 revision rounds"
+      ],
+      "price_usd": 497,
+      "price_note": "≈ $20 per image",
+      "turnaround_days": 10,
+      "popular": true
+    },
+    {
+      "id": "creatives-pack",
+      "name": "Creative Burst — Ad Pack",
+      "category": "ad_creatives",
+      "description": "Mixed static + concept pack for Meta/TikTok testing: memes, native stills, benefit grids, and UGC still frames.",
+      "deliverables": [
+        "20 static ad creatives (multiple angles)",
+        "5 video concepts or short motion cuts",
+        "Copy variants per angle",
+        "File naming by funnel stage (TOF/MOF)",
+        "1 strategy loom on how to test"
+      ],
+      "price_usd": 697,
+      "price_note": "20 statics + 5 motion concepts",
+      "turnaround_days": 7,
+      "popular": false
+    },
+    {
+      "id": "growth-retainer",
+      "name": "Growth Pod — Monthly Retainer",
+      "category": "retainer",
+      "description": "Like an agency: continuous creatives + UGC + light site CRO tweaks for clothing brands that already spend on ads.",
+      "deliverables": [
+        "8 AI UGC videos / month",
+        "12 static ad creatives / month",
+        "1 Lookbook mini-set (6 images) / month",
+        "1 homepage or PDP CRO tweak / month",
+        "Bi-weekly async performance review",
+        "Priority 48h turnaround on rush requests (fair use)"
+      ],
+      "price_usd": 2997,
+      "price_note": "Per month · 3-month minimum recommended",
+      "turnaround_days": 30,
+      "popular": true,
+      "billing": "monthly"
+    },
+    {
+      "id": "addon-domain",
+      "name": "Domain Connection",
+      "category": "addon",
+      "description": "Connect custom domain, SSL, DNS records, and email forwarding basics for the new storefront.",
+      "deliverables": [
+        "DNS configuration (A/CNAME)",
+        "SSL verification",
+        "www / apex redirect",
+        "Primary domain set in Shopify or host"
+      ],
+      "price_usd": 97,
+      "price_note": "One-time",
+      "turnaround_days": 2,
+      "popular": false
+    },
+    {
+      "id": "addon-shopify-setup",
+      "name": "Shopify Setup",
+      "category": "addon",
+      "description": "Payments, shipping zones, tax basics, essential apps, and launch checklist if starting from a blank Shopify store.",
+      "deliverables": [
+        "Payment provider connect guide/assist",
+        "Shipping profiles for key markets",
+        "Legal pages placeholders",
+        "Core apps install (reviews, pixel helper)",
+        "Launch checklist walkthrough"
+      ],
+      "price_usd": 497,
+      "price_note": "One-time",
+      "turnaround_days": 5,
+      "popular": false
+    },
+    {
+      "id": "addon-copywriting",
+      "name": "Conversion Copywriting",
+      "category": "addon",
+      "description": "Homepage + PDP + key landing copy rewritten for clothing DTC — benefits, objections, size confidence.",
+      "deliverables": [
+        "Homepage narrative rewrite",
+        "Up to 5 PDP descriptions",
+        "FAQ objection set (8–12 Qs)",
+        "Ad primary text pack (10 variants)"
+      ],
+      "price_usd": 697,
+      "price_note": "One-time",
+      "turnaround_days": 7,
+      "popular": false
+    },
+    {
+      "id": "addon-rush",
+      "name": "Rush Delivery",
+      "category": "addon",
+      "description": "Priority queue — cut standard turnaround roughly in half for eligible packages.",
+      "deliverables": [
+        "Priority scheduling",
+        "Dedicated update channel until delivery",
+        "Same deliverables as parent package"
+      ],
+      "price_usd": 297,
+      "price_note": "Flat $297 or 30% of the package — whichever is higher",
+      "turnaround_days": 0,
+      "popular": false,
+      "pricing": {
+        "type": "percent_min",
+        "percent": 30,
+        "min_usd": 297
+      },
+      "turnaround_factor": 0.5
+    },
+    {
+      "id": "launch-bundle",
+      "name": "Launch Bundle",
+      "category": "bundle",
+      "description": "Everything a brand needs to launch or relaunch: a Storefront Starter storefront, a 25-image Lookbook set to fill it and five UGC ads to drive traffic to it.",
+      "deliverables": [
+        "Storefront Starter",
+        "Lookbook AI — Set of 25",
+        "AI UGC Ad — 5-Pack",
+        "One shared brief & kickoff"
+      ],
+      "includes": [
+        "rail-starter",
+        "mockups-25",
+        "ugc-5pack"
+      ],
+      "price_usd": 3497,
+      "price_note": "Save $494 vs. buying separately",
+      "turnaround_days": 14,
+      "popular": true
+    },
+    {
+      "id": "creative-engine",
+      "name": "Creative Engine — 90 days",
+      "category": "bundle",
+      "description": "A prepaid 90-day creative sprint: three months of UGC Factory plus a Creative Burst ad pack to kick off testing.",
+      "deliverables": [
+        "3 months of UGC Factory (36+ UGC videos)",
+        "Creative Burst ad pack (20 statics + 5 motion)",
+        "Monthly hook research & angle review",
+        "Shared tracker for every asset"
+      ],
+      "includes": [
+        "ugc-monthly",
+        "creatives-pack"
+      ],
+      "price_usd": 5497,
+      "price_note": "Prepaid · save $1,191 vs. monthly",
+      "turnaround_days": 90,
+      "popular": false
+    },
+    {
+      "id": "jewellery-film-pack",
+      "name": "Jewellery Video Pack",
+      "category": "ad_creatives",
+      "description": "Three short vertical videos for one jewellery line: a macro sparkle film, an on-model glamour cut and a UGC-style reaction/unboxing.",
+      "deliverables": [
+        "3 vertical videos (9:16, 10–30 s)",
+        "Macro detail + on-model + UGC reaction",
+        "Hook text and captions",
+        "1 revision round"
+      ],
+      "price_usd": 797,
+      "price_note": "One-time · per collection",
+      "turnaround_days": 7,
+      "popular": false
+    },
+    {
+      "id": "ad-remake",
+      "name": "Ad Remake (video replication)",
+      "category": "ad_creatives",
+      "description": "Send a reference ad or trend that works; we rebuild the format with your product, look and copy.",
+      "deliverables": [
+        "1 remade video (9:16)",
+        "2 hook variations",
+        "Captions + end card",
+        "1 revision round"
+      ],
+      "price_usd": 297,
+      "price_note": "Per reference ad",
+      "turnaround_days": 4,
+      "popular": false
+    },
+    {
+      "id": "property-visualisation",
+      "name": "Property Visualisation Film",
+      "category": "beyond",
+      "description": "Floor plans and a few photos turned into an AI-visualised walkthrough film for listings and pre-sales.",
+      "deliverables": [
+        "30–45 s film (16:9 + 9:16 cut)",
+        "Up to 6 AI-rendered rooms/exteriors",
+        "Music + text overlays",
+        "1 revision round"
+      ],
+      "price_usd": 997,
+      "price_note": "Per property",
+      "turnaround_days": 7,
+      "popular": false
+    },
+    {
+      "id": "property-reel-edit",
+      "name": "Property Reel Edit",
+      "category": "beyond",
+      "description": "Your raw property footage cut into a paced, colour-graded vertical reel with on-screen highlights.",
+      "deliverables": [
+        "1 vertical reel (30–90 s)",
+        "Colour grade + pacing",
+        "Text highlights + music",
+        "1 revision round"
+      ],
+      "price_usd": 197,
+      "price_note": "Per reel · footage supplied",
+      "turnaround_days": 3,
+      "popular": false
+    }
+  ]
+}
