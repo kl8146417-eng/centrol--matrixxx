@@ -226,5 +226,5 @@ export const agents = [
 export const apps = [
   { name: 'GiftFeels', detail: 'Published to iOS and Android.', store: true },
   { name: 'recl.app', detail: 'Published to iOS and Android.', store: true },
-  { name: 'DelhiPGS', detail: 'Live at dupgs.in.', store: false },
+  { name: 'Delhi PGs', detail: 'On Google Play, with the marketplace at dupgs.com.', store: true },
 ] as const;

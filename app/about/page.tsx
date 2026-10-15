@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { CTASection } from '@/components/CTASection';
+import { TeamSection } from '@/components/Team';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -55,6 +56,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <TeamSection />
       <CTASection />
     </>
   );

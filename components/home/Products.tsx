@@ -7,7 +7,7 @@ import { AutoVideo } from './AutoVideo';
 
 const toneCls = { dark: 'bg-ink-section text-white', light: 'bg-[#F4F4F2] text-ink', blue: 'bg-accent text-white' } as const;
 
-function Card({ p, flip }: { p: Product; flip?: boolean }) {
+export function ProductCard({ p, flip }: { p: Product; flip?: boolean }) {
   const dark = p.tone !== 'light';
   const ext = p.url?.startsWith('http');
   return (
@@ -15,7 +15,7 @@ function Card({ p, flip }: { p: Product; flip?: boolean }) {
       <div className={`flex flex-col justify-center p-8 sm:p-12 ${flip ? 'lg:order-2' : ''}`}>
         <div className="flex items-center gap-3">
           {p.icon && <img src={p.icon} alt="" className="h-12 w-12 rounded-xl" />}
-          <p className={`text-[12px] uppercase tracking-wordmark ${dark ? 'text-white/60' : 'text-muted'}`}>{p.kind}</p>
+          <p className={`text-[12px] uppercase tracking-wordmark ${dark ? 'text-white/60' : 'text-muted'}`}>{p.kind}<span className="block normal-case tracking-normal opacity-80">Built by Centrol Matrix</span></p>
         </div>
         <h3 className="mt-5 font-display text-[clamp(40px,4.5vw,64px)] leading-none">{p.name}</h3>
         <p className={`mt-5 max-w-md text-[16px] leading-relaxed ${dark ? 'text-white/75' : 'text-ink-soft'}`}>{p.blurb}</p>
@@ -46,12 +46,12 @@ export function Products() {
   return (
     <section id="products" className="mx-auto max-w-editorial px-5 py-24 sm:px-8 sm:py-32">
       <div data-reveal>
-        <p className="text-[12px] uppercase tracking-wordmark text-accent">Products we built</p>
+        <p className="text-[12px] uppercase tracking-wordmark text-accent">Built by Centrol Matrix</p>
         <h2 className="mt-3 max-w-3xl font-display text-display-md text-ink">We don&apos;t just pitch it. <span className="italic text-accent">We ship it.</span></h2>
-        <p className="mt-4 max-w-xl text-[16px] text-muted">Apps in the stores, a SaaS product and storefront demos, built with the same team that builds for clients.</p>
+        <p className="mt-4 max-w-xl text-[16px] text-muted">Apps in the stores, a SaaS product and storefront demos. Every one designed, built and run by Centrol Matrix, the same team that builds for clients.</p>
       </div>
       <div className="mt-14 space-y-6">
-        {products.map((p, i) => <Card key={p.id} p={p} flip={i % 2 === 1} />)}
+        {products.map((p, i) => <ProductCard key={p.id} p={p} flip={i % 2 === 1} />)}
       </div>
       <div className="mt-16" data-reveal>
         <div className="flex items-end justify-between gap-4">

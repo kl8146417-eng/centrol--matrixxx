@@ -24,6 +24,7 @@ export function CTASection() {
               Or order a package <AnimIcon name="arrow" size={18} />
             </Link>
           </div>
+          <p className="mt-6 text-[14px] text-white/50">No call needed to order: fixed-price packages, pay now or later. Prefer to talk? Message us on WhatsApp.</p>
         </div>
       </div>
     </section>

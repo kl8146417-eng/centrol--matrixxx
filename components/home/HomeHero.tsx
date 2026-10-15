@@ -64,6 +64,15 @@ export function HomeHero() {
             <Link href="/pricing" className="rounded-full border border-white/20 px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white hover:text-ink">See pricing</Link>
             <Link href="/work" className="px-2 py-3.5 text-[15px] text-white/70 underline-offset-4 hover:text-white hover:underline">Watch the work →</Link>
           </div>
+          <a href="#products" data-hero-fade className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-1.5 pl-1.5 pr-4 text-[13px] text-white/70 backdrop-blur-md transition hover:border-white/25">
+            <span className="flex -space-x-2">
+              {['/products/siteory/icon.png', '/products/dupgs/icon.webp', '/products/giftfeels/icon.webp'].map((src) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={src} src={src} alt="" className="h-7 w-7 rounded-full bg-white object-cover ring-2 ring-ink-section" />
+              ))}
+            </span>
+            Makers of Siteory, Delhi PGs and GiftFeels
+          </a>
         </div>
         <div data-hero-cols aria-hidden="true" className="relative h-[420px] lg:col-span-5 lg:h-[100svh]">
           <div className="absolute inset-0 grid grid-cols-3 gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
