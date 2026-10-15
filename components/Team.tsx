@@ -13,7 +13,7 @@ export function TeamSection() {
       <div data-reveal>
         <p className="text-[12px] uppercase tracking-wordmark text-accent">The team</p>
         <h2 className="mt-3 max-w-3xl font-display text-display-md text-ink">Three people. <span className="italic text-accent">Every product on this site.</span></h2>
-        <p className="mt-4 max-w-xl text-[16px] text-muted">Siteory, Delhi PGs, GiftFeels, WishCuts, Hanger Club and ORVA were all built by Centrol Matrix, the same team that builds for clients.</p>
+        <p className="mt-4 max-w-xl text-[16px] text-muted">Recl, Siteory, GiftFeels, WishCuts, Delhi PGs, Hanger Club and ORVA were all built by Centrol Matrix, the same team that builds for clients.</p>
       </div>
       <ul className="mt-12 grid gap-4 sm:grid-cols-3" data-stagger>
         {team.map((m, i) => (
