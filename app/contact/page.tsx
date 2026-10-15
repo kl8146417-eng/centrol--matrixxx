@@ -1,17 +1,17 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { ContactForm } from '@/components/ContactForm';
 import { site } from '@/content/site';
+import { agency } from '@/content/agency';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Start a project with Centrol Matrix.',
-  alternates: { canonical: '/contact' },
-};
+export const metadata: Metadata = pageMeta({ path: '/contact', title: 'Contact', description: 'Start a project with Centrol Matrix. Email contact@centrolmatrix.com or WhatsApp ' + agency.whatsappDisplay + '.' });
 
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Contact", "path": "/contact"}]} />
       <PageHeader
         eyebrow="Contact"
         title="Start a"

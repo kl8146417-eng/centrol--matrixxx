@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { nav, site, work } from '@/content/site';
 import { Logo } from '@/components/Logo';
+import { agency, waLink } from '@/content/agency';
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-ink-section text-white">
+    <footer className="overflow-hidden bg-ink-section text-white">
       <div className="mx-auto max-w-editorial px-5 py-16 sm:px-8 sm:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
@@ -21,6 +22,9 @@ export function Footer() {
               className="mt-6 inline-block text-[15px] text-accent underline-offset-4 hover:underline"
             >
               {site.email}
+            </a>
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="mt-2 block text-[15px] text-white/80 hover:opacity-60">
+              WhatsApp {agency.whatsappDisplay}
             </a>
           </div>
 
@@ -60,11 +64,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <p aria-hidden="true" className="mt-20 select-none whitespace-nowrap font-display text-[clamp(40px,12.5vw,220px)] leading-[0.85] tracking-tight text-white/[0.07]">Centrol Matrix</p>
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>
             © {year} {site.name}. All rights reserved.
           </span>
-          <span className="font-display italic text-accent">Made by hand.</span>
+          <span className="flex flex-wrap gap-4">
+            {[['FAQ', '/faq'], ['Terms', '/terms'], ['Privacy', '/privacy'], ['Refunds', '/refunds'], ['Delivery', '/delivery']].map(([l, h]) => (
+              <Link key={h} href={h} className="hover:text-white/80">{l}</Link>
+            ))}
+          </span>
         </div>
       </div>
     </footer>

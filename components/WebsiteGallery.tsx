@@ -40,7 +40,7 @@ export function WebsiteGallery({ items }: { items: WorkItem[] }) {
                   <div className="relative aspect-[16/10]">
                     <Image
                       src={w.image}
-                      alt={`${w.name} — ${w.domain}`}
+                      alt={`${w.name}, ${w.domain}`}
                       fill
                       sizes="(max-width: 640px) 100vw, 50vw"
                       className="object-contain object-top transition-transform duration-500 group-hover:scale-[1.02]"
@@ -78,7 +78,7 @@ export function WebsiteGallery({ items }: { items: WorkItem[] }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`${active.name} — live preview`}
+          aria-label={`${active.name} live preview`}
           className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6"
         >
           {/* Backdrop. */}
@@ -127,7 +127,7 @@ export function WebsiteGallery({ items }: { items: WorkItem[] }) {
             {active.framable ? (
               <iframe
                 src={active.viewUrl ?? active.url}
-                title={`${active.name} — live site`}
+                title={`${active.name} live site`}
                 className="h-full w-full flex-1 border-0 bg-white"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                 referrerPolicy="no-referrer"
@@ -137,7 +137,7 @@ export function WebsiteGallery({ items }: { items: WorkItem[] }) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={active.image}
-                  alt={`${active.name} — ${active.domain}`}
+                  alt={`${active.name}, ${active.domain}`}
                   className="block w-full"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent p-6 pt-16 text-center">

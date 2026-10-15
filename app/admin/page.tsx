@@ -162,6 +162,9 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
         </div>
         <div className="admin-topbar__actions">
           {label && <span className="admin-keytag">{label}</span>}
+          <Link href="/admin/orders" className="admin-btn">
+            Orders &amp; enquiries
+          </Link>
           <Link href="/admin/new" className="admin-btn admin-btn--primary">
             New post
           </Link>

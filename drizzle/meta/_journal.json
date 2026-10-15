@@ -15,6 +15,13 @@
       "when": 1780777160627,
       "tag": "0001_create_media_table",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1780777160628,
+      "tag": "0002_orders_contacts",
+      "breakpoints": true
     }
   ]
 }

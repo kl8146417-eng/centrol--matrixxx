@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { json, error } from '@/lib/http';
 import { site } from '@/content/site';
+import { saveContact } from '@/lib/commerce/store';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,6 +10,8 @@ const contactSchema = z.object({
   email: z.string().email(),
   company: z.string().max(160).optional(),
   message: z.string().min(10).max(4000),
+  // First-touch attribution (utm/ref/landing page), set client-side.
+  source: z.string().max(600).optional(),
   // Honeypot: real users leave this empty.
   website: z.string().max(0).optional(),
 });
@@ -27,7 +30,12 @@ export async function POST(req: Request) {
   // Honeypot tripped — pretend success, drop silently.
   if (parsed.data.website) return json({ ok: true });
 
-  const { name, email, company, message } = parsed.data;
+  const { name, email, company, source } = parsed.data;
+  const message = source ? `${parsed.data.message}
+
+[source] ${source}` : parsed.data.message;
+  // Keep a copy for the admin inbox (Neon `contacts`, Blobs fallback), even if email isn't configured.
+  await saveContact({ name, email, company, message });
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL ?? site.email;
 

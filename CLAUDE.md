@@ -1,6 +1,11 @@
 # CLAUDE.md — Centrol Matrix website
 
 Build instructions for any AI coding agent (Claude, Copilot, etc.) working in this repo.
+
+> **Current direction (Oct 2026):** `DESIGN.md` (v4 tokens) and `docs/REDESIGN_PLAN.md` (v5:
+> generalist home + `/fashion` cold-email page + `/for/[slug]` sample pages) supersede the home
+> spec in §6 below. Research lives in `docs/research/`.
+
 Read this **before** writing code. It overrides framework defaults. Companion docs:
 `PLAN.md` (the why), `VIDEO_ANALYSIS.md` (the hero reference), `.github/copilot-instructions.md`
 (the anti-slop hard rules).
@@ -32,8 +37,9 @@ Every change to markup, CSS, or copy must pass all of these.
 - **Fonts:** Playfair Display (display serif) + Inter (UI/body) via `next/font`. One display
   style, one italic accent, everything else 14–16px sans. **No** Poppins, no "Inter everywhere"
   as the headline font, no generic Google pairings, no third font.
-- **Color:** white `#FFFFFF` canvas, near-black ink `#0E0E0E`, **one** hot-pink accent `#E63A8E`.
-  Optional near-black section `#0B0B0C` for the services grid. **No** purple→blue gradients, no
+- **Color:** white `#FFFFFF` / warm `#F4F4F2` canvas, near-black ink `#0E0E0E`, **one** blue accent
+  `#1D4ED8` (`#7DA2FF` on dark). Near-black sections `#0B0B0C`. (v4 replaced the old hot pink; see
+  `DESIGN.md`.) **No** purple→blue gradients, no
   teal SaaS gradient, no beige/brass "premium" cliché.
 - **Motion:** justified only. Headline stagger, portal reveal, carousel crossfade, hover
   micro-interactions, Lenis smooth scroll. **No** universal fade-up-on-scroll, no float loops, no
@@ -60,8 +66,8 @@ When building any page/component, read the matching skill first
 ink:        '#0E0E0E',
 'ink-soft': '#1A1A1A',
 muted:      '#6B6B6B',
-accent:     '#E63A8E',
-'accent-dark': '#C92E78',
+accent:     '#1D4ED8',
+'accent-dark': '#1740A6',
 bg:         '#FFFFFF',
 'ink-section': '#0B0B0C',
 ```

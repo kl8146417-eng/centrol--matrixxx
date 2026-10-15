@@ -8,6 +8,7 @@ import {
   pgEnum,
   uniqueIndex,
   customType,
+  jsonb,
 } from 'drizzle-orm/pg-core';
 
 export const postStatus = pgEnum('post_status', ['draft', 'published']);
@@ -75,3 +76,35 @@ export type NewPost = typeof posts.$inferInsert;
 export type ApiToken = typeof apiTokens.$inferSelect;
 export type Media = typeof media.$inferSelect;
 export type NewMedia = typeof media.$inferInsert;
+
+// ---- Commerce (merged agency site): orders + contact enquiries ----
+// Complex nested parts (items, brief, contact, payment, uploads, history) are jsonb.
+
+
+export const orders = pgTable('orders', {
+  id: text('id').primaryKey(), // e.g. CMX-261015-AB2CD
+  token: text('token').notNull(), // customer access token for /order/<id>?t=
+  status: text('status').notNull().default('New'),
+  totalUsd: integer('total_usd_cents').notNull(),
+  email: text('email').notNull(),
+  brandName: text('brand_name'),
+  data: jsonb('data').notNull(), // full order document
+  adminNotes: text('admin_notes').notNull().default(''),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const contacts = pgTable('contacts', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull(),
+  company: text('company'),
+  whatsapp: text('whatsapp'),
+  message: text('message').notNull(),
+  meta: jsonb('meta'),
+  handled: boolean('handled').notNull().default(false),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+export type OrderRow = typeof orders.$inferSelect;
+export type ContactRow = typeof contacts.$inferSelect;

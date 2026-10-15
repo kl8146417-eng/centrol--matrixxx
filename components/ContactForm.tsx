@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { attributionLine, track } from '@/lib/track';
 
 type State = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -11,7 +12,7 @@ export function ContactForm() {
     e.preventDefault();
     setState('sending');
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = { ...Object.fromEntries(new FormData(form).entries()), source: attributionLine() };
 
     try {
       const res = await fetch('/api/contact', {
@@ -20,6 +21,7 @@ export function ContactForm() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error('Request failed');
+      track('contact_submit', { page: window.location.pathname });
       setState('sent');
       form.reset();
     } catch {

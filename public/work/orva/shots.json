@@ -1,0 +1,98 @@
+[
+  {
+    "src": "/work/orva/photos-desktop-home.webp",
+    "sm": "/work/orva/photos-desktop-home-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Home — the hanging rail",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/photos-desktop-home-hover.webp",
+    "sm": "/work/orva/photos-desktop-home-hover-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Hover to turn a garment",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/photos-desktop-quickview.webp",
+    "sm": "/work/orva/photos-desktop-quickview-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Quick view",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/photos-desktop-pdp.webp",
+    "sm": "/work/orva/photos-desktop-pdp-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Product page",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/photos-shop.webp",
+    "sm": "/work/orva/photos-shop-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Shop grid",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/desktop-cart-drawer.webp",
+    "sm": "/work/orva/desktop-cart-drawer-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Cart drawer",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/desktop-lookbook.webp",
+    "sm": "/work/orva/desktop-lookbook-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Lookbook",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/photos-desktop-home-below.webp",
+    "sm": "/work/orva/photos-desktop-home-below-sm.webp",
+    "w": 1440,
+    "h": 900,
+    "title": "Editorial sections",
+    "mobile": false
+  },
+  {
+    "src": "/work/orva/photos-mobile-home.webp",
+    "sm": "/work/orva/photos-mobile-home-sm.webp",
+    "w": 780,
+    "h": 1688,
+    "title": "Mobile rail",
+    "mobile": true
+  },
+  {
+    "src": "/work/orva/photos-mobile-pdp.webp",
+    "sm": "/work/orva/photos-mobile-pdp-sm.webp",
+    "w": 780,
+    "h": 1688,
+    "title": "Mobile product page",
+    "mobile": true
+  },
+  {
+    "src": "/work/orva/mobile-quickview.webp",
+    "sm": "/work/orva/mobile-quickview-sm.webp",
+    "w": 780,
+    "h": 1688,
+    "title": "Mobile quick view",
+    "mobile": true
+  },
+  {
+    "src": "/work/orva/mobile-shop.webp",
+    "sm": "/work/orva/mobile-shop-sm.webp",
+    "w": 780,
+    "h": 1688,
+    "title": "Mobile shop",
+    "mobile": true
+  }
+]
