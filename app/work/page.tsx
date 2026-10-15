@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/PageHeader';
 import { CTASection } from '@/components/CTASection';
-import { VideoGallery, videoCount } from '@/components/shop/VideoGallery';
+import { VideoGallery } from '@/components/shop/VideoGallery';
+import realWork from '@/content/real-work.json';
+const videoCount = realWork.items.length;
 
 export const metadata: Metadata = {
   title: 'Work',
