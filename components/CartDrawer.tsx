@@ -1,14 +1,15 @@
 'use client';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { AnimIcon } from '@/components/icons/AnimIcon';
 import { useCart } from '@/lib/cart';
 import { addons, agency, serviceById, type Currency } from '@/content/agency';
 
 export function CartButton() {
   const { count, setDrawer } = useCart();
   return (
-    <button type="button" onClick={() => setDrawer(true)} aria-label={`Cart, ${count} items`} className="relative flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink transition-opacity hover:opacity-70">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z" /><path d="M9 7a3 3 0 0 1 6 0" /></svg>
+    <button type="button" onClick={() => setDrawer(true)} aria-label={`Cart, ${count} items`} data-icon-host className="relative flex h-10 w-10 items-center justify-center rounded-full border border-current/20 text-current transition-opacity hover:opacity-70">
+      <AnimIcon name="cart" size={18} />
       {count > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[11px] font-semibold text-white">{count}</span>}
     </button>
   );

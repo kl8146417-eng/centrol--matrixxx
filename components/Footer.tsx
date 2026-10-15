@@ -63,7 +63,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <p aria-hidden="true" className="mt-20 select-none whitespace-nowrap font-display text-[clamp(56px,13vw,220px)] leading-[0.85] tracking-tight text-white/[0.07]">Centrol Matrix</p>
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-[13px] text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>
             © {year} {site.name}. All rights reserved.
           </span>

@@ -178,3 +178,11 @@ html[data-hero-dark] .hero-section .hero-portal-caption {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- v4 motion helpers ---- */
+@keyframes cm-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes cm-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+@keyframes cm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  [class*='animate-[cm-'] { animation: none !important; }
+}
