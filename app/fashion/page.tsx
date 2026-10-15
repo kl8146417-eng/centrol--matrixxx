@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMeta({
   description: 'Send the flat lays you already have. We make on-model shots, lookbooks and UGC-style ads from them, checked against the real garment. Your first 3 looks are free.',
 });
 
-const PACKAGES = ['mockups-10', 'mockups-25', 'ugc-5pack', 'ad-remake', 'rail-starter'];
+const PACKAGES = ['mockups-10', 'mockups-25', 'ugc-single', 'ugc-5pack', 'ad-remake', 'rail-starter'];
 const FAQ_QS = [
   'Will people be able to tell it is AI?',
   'Will the AI product images look like my actual product?',
@@ -44,7 +44,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
   const qs = FAQ_QS.map((q) => faq.find((f) => f.q === q)).filter((f): f is NonNullable<typeof f> => !!f);
   const orva = products.find((p) => p.id === 'orva');
   const per10 = services.find((s) => s.id === 'mockups-10');
-  const headline = brand ? `${possessive(brand)} ${product || 'next drop'}, on a model.` : null;
+  const lead = brand ? `${possessive(brand)} ${product || 'next drop'}, ` : 'Your flat lays, ';
   const wa = waLink(brand ? `Hi, this is ${first ? `${first} from ` : ''}${brand}. I'd like the 3 free looks.` : 'Hi, I run a clothing brand and would like the 3 free looks.');
 
   return (
@@ -62,7 +62,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
           <div className="flex flex-col justify-center lg:col-span-7">
             <p className="text-[15px] font-medium text-ink-soft">For clothing and D2C fashion brands</p>
             <h1 className="mt-4 font-display text-[clamp(44px,6.4vw,96px)] leading-[0.98] tracking-[-0.02em]">
-              {headline ?? <>Your flat lays, <span className="italic text-accent">on a model.</span></>}
+              {lead}<span className="italic text-accent">on a model.</span>
             </h1>
             <p className="mt-7 max-w-xl text-[18px] leading-relaxed text-ink-soft">
               Send the product photos you already have. We make on-model shots, lookbooks and UGC-style ads from them, checked against the real garment for colour, print and fit. No studio day, no samples in the post.
@@ -135,8 +135,8 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
               {lookbook.map((p) => (
                 <div key={p.id}>
-                  <BeforeAfter pair={p} className="aspect-[4/5] w-full rounded-3xl" />
-                  <p className="mt-3 text-[14px] font-medium capitalize text-ink">{p.category} <span className="font-normal text-muted">· {p.style === 'ugc' ? 'UGC style' : 'Lookbook'}</span></p>
+                  <BeforeAfter pair={p} className="aspect-[2/3] w-full rounded-3xl" />
+                  <p className="mt-3 text-[14px] font-medium text-ink">{p.category} <span className="font-normal text-muted">· {p.style === 'ugc' ? 'UGC style' : 'Lookbook'}</span></p>
                 </div>
               ))}
             </div>
@@ -144,7 +144,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
         </section>
       )}
 
-      <WorkRail heading="UGC ads and fashion films." />
+      <WorkRail heading="UGC ads and fashion films." only={['fashion', 'ugc', 'jewellery', 'product', 'replication']} />
 
       {/* How it works: the steps stay readable without any script. */}
       <section className="mx-auto max-w-editorial px-5 py-24 sm:px-8 sm:py-32">

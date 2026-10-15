@@ -19,7 +19,7 @@ export default function ProspectPage({ params }: { params: { slug: string } }) {
   if (!p) notFound();
   const expired = p.expires ? new Date(p.expires).getTime() < Date.now() : false;
   const pkg = p.suggest ? serviceById(p.suggest) : undefined;
-  const wa = waLink(`Hi, this is ${p.first && p.first !== 'there' ? `${p.first} from ` : ''}${p.brand}. I saw the samples.`);
+  const wa = waLink(`Hi, this is ${p.first ? `${p.first} from ` : ''}${p.brand}. I saw the samples.`);
 
   return (
     <section className="bg-[#F4F4F2] pb-24 pt-28 text-ink sm:pt-32">
@@ -38,7 +38,7 @@ export default function ProspectPage({ params }: { params: { slug: string } }) {
         ) : (
           <>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {p.looks.map((l, i) => <BeforeAfter key={l.id} pair={l} priority={i === 0} labels={['Your photo', 'Our sample']} className="aspect-[4/5] w-full rounded-3xl" />)}
+              {p.looks.map((l, i) => <BeforeAfter key={l.id} pair={l} priority={i === 0} labels={['Your photo', 'Our sample']} className="aspect-[2/3] w-full rounded-3xl" />)}
               {p.video && (
                 <figure className="overflow-hidden rounded-3xl bg-ink"><div className="relative aspect-[4/5]"><AutoVideo src={p.video.src} poster={p.video.poster} label={`UGC-style sample for ${p.brand}`} className="absolute inset-0 h-full w-full object-cover" /></div></figure>
               )}

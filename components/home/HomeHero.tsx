@@ -50,9 +50,9 @@ export function HomeHero() {
         <div className="relative lg:col-span-5">
           {pair ? (
             <>
-              <BeforeAfter pair={pair} priority className="aspect-[4/5] w-full rounded-[1.75rem]" />
-              <p className="mt-3 text-[13px] text-muted">Drag to compare. A flat lay we turned into an on-model shot. AI-generated sample, made by us.</p>
-              <figure className="absolute -bottom-6 -left-6 hidden w-[34%] overflow-hidden rounded-2xl border-4 border-[#F4F4F2] bg-ink sm:block lg:-left-10">
+              <BeforeAfter pair={pair} priority className="mx-auto aspect-[2/3] w-full max-w-[440px] rounded-[1.75rem] lg:mr-0" />
+              <p className="mx-auto mt-3 max-w-[440px] text-[13px] text-muted lg:mr-0">Drag to compare. A demo pair from our pipeline: garment photo on the left, AI-generated on-model shot on the right. With your brand, we start from your real photos.</p>
+              <figure className="absolute left-0 top-[38%] hidden w-[30%] max-w-[170px] overflow-hidden rounded-2xl border-4 border-[#F4F4F2] bg-ink lg:block xl:-left-6">
                 <div className="relative aspect-[9/16]"><AutoVideo src="/media/real/park-mic-ugc-480.mp4" poster="/media/real/park-mic-ugc-480.webp" label="AI UGC ad sample" className="absolute inset-0 h-full w-full object-cover" /></div>
               </figure>
             </>

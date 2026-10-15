@@ -10,6 +10,8 @@ export type Product = {
   flatScreens?: boolean;
   /** Short line for compact tiles (home). */
   short?: string;
+  /** Cover image for compact tiles, when better than the desktop shot. */
+  thumb?: string;
 };
 
 export const products: Product[] = [
@@ -20,6 +22,7 @@ export const products: Product[] = [
     short: 'Paste a link; it summarises, quizzes you and nudges you until it sticks.',
     blurb: 'Send Recl a YouTube video, podcast, article or PDF. It writes the summary, builds a quiz and keeps nudging you on your schedule until you remember it. Search by meaning, see how ideas connect, and ask questions about everything you saved.',
     stat: 'Paid plans from $9/month (recl.app)',
+    thumb: '/products/recl/feature.webp',
     screens: ['/products/recl/screen-1.webp', '/products/recl/screen-2.webp', '/products/recl/screen-3.webp'], desktop: '/products/recl/desktop.webp',
   },
   {
@@ -64,7 +67,7 @@ export const products: Product[] = [
     short: 'Personal gift pages for birthdays and anniversaries, made in minutes.',
     blurb: 'Pick a template, add photos, memories and a message, and share a private link: birthday surprises, love letters, time capsules, wedding invitations. Paid extras include a personalised song and AI photo keepsakes.',
     stat: '42,696+ people joined (as shown on giftfeels.com, Oct 2026)',
-    screens: [], desktop: '/work/giftfeels.png',
+    screens: [], desktop: '/work/giftfeels-1440.webp',
   },
   {
     id: 'wishcuts', name: 'WishCuts', kind: 'Web app · Video invitations', tone: 'dark', url: 'https://wishcuts.com/', visit: 'https://wishcuts.com/',

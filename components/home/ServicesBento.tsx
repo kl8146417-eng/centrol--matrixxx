@@ -30,7 +30,7 @@ const tiles: Tile[] = [
   { icon: 'monitor', title: 'Websites & storefronts', body: 'Shopify or custom storefronts built to sell, like ORVA, our clothing store you browse like a rail.', href: '/work/orva', price: from(['website']), cls: 'lg:col-span-2',
     media: <img src="/work/orva/photos-desktop-home-sm.webp" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" /> },
   { icon: 'phone', title: 'Mobile & web apps', body: 'Designed, built, shipped to the stores and kept running. Recl and GiftFeels are ours.', href: '/apps', price: 'Scoped on a call', cls: '',
-    media: <div className="absolute inset-0 bg-[#E9E7E2]"><img src="/products/recl/screen-1.webp" alt="" loading="lazy" className="absolute left-1/2 top-6 w-[46%] max-w-[170px] -translate-x-1/2 rounded-[1.2rem] border-[5px] border-[#111] transition-transform duration-700 group-hover:-translate-y-1" /></div> },
+    media: <img src="/products/recl/feature.webp" alt="" loading="lazy" className="absolute inset-x-0 top-0 h-[58%] w-full object-cover object-right transition-transform duration-700 group-hover:scale-[1.04]" /> },
   { icon: 'workflow', title: 'Automation, SEO & leads', body: 'Lead lists, SEO blogs that publish themselves, calling agents and the glue between your tools.', href: '/pricing#automation', price: 'Scoped on a call', cls: '', tone: 'accent',
     media: <img src="/3d/setting.webp" alt="" loading="lazy" className="absolute -right-6 -top-8 w-40 rotate-12 transition-transform duration-700 group-hover:rotate-45" /> },
 ];

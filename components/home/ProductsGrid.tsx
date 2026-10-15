@@ -4,14 +4,14 @@ import { products, type Product } from '@/content/products';
 import { AutoVideo } from './AutoVideo';
 import { AnimIcon } from '@/components/icons/AnimIcon';
 
-const thumb = (p: Product) => p.desktop || p.screens[0];
+const thumb = (p: Product) => p.thumb || p.desktop || p.screens[0];
 
 function Tile({ p }: { p: Product }) {
   const img = thumb(p);
   return (
     <a href={p.visit || p.url} target="_blank" rel="noopener noreferrer" data-icon-host className="group flex flex-col overflow-hidden rounded-3xl bg-white transition hover:-translate-y-1">
-      <div className={`relative aspect-[16/10] overflow-hidden ${p.desktop ? 'bg-[#E9E7E2]' : 'bg-ink-section'}`}>
-        {img && <img src={img} alt={`${p.name} screenshot`} loading="lazy" className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04] ${p.desktop ? 'object-cover object-left-top' : 'object-contain py-4'}`} />}
+      <div className={`relative aspect-[16/10] overflow-hidden ${p.desktop && !p.thumb ? 'bg-[#E9E7E2]' : 'bg-ink-section'}`}>
+        {img && <img src={img} alt={`${p.name} screenshot`} loading="lazy" className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04] ${p.thumb || p.desktop ? 'object-cover object-left-top' : 'object-contain py-4'}`} />}
       </div>
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-center gap-3">
@@ -32,7 +32,8 @@ function Tile({ p }: { p: Product }) {
 /** Home: ORVA as the fashion-web proof, then every product we run as a compact tile. */
 export function ProductsGrid() {
   const orva = products.find((p) => p.id === 'orva');
-  const rest = products.filter((p) => p.id !== 'orva');
+  const hanger = products.find((p) => p.id === 'hanger-club');
+  const rest = products.filter((p) => p.id !== 'orva' && p.id !== 'hanger-club');
   return (
     <section id="products" className="bg-[#F4F4F2] py-24 sm:py-32">
       <div className="mx-auto max-w-editorial px-5 sm:px-8">
@@ -54,6 +55,12 @@ export function ProductsGrid() {
                 <Link href="/work/orva" className="rounded-full bg-white px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-[#7DA2FF]">Read the case study</Link>
                 {orva.visit && <a href={orva.visit} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-6 py-3 text-[15px] font-semibold text-white transition hover:bg-white/20">Try the rail ↗</a>}
               </div>
+              {hanger?.visit && (
+                <a href={hanger.visit} target="_blank" rel="noopener noreferrer" className="mt-8 flex items-center gap-4 rounded-2xl bg-white/5 p-3 pr-5 transition hover:bg-white/10">
+                  <img src={hanger.screens[0]} alt="" className="h-16 w-11 rounded-lg object-cover object-top" loading="lazy" />
+                  <span className="text-[14px] leading-snug text-white/80"><span className="font-semibold text-white">Hanger Club</span>, the same rail as a wardrobe app: add your own pieces from a photo ↗</span>
+                </a>
+              )}
             </div>
           </article>
         )}

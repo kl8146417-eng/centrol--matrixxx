@@ -12,12 +12,15 @@ const preview = (it: It) => it.video.replace(/\.mp4$/, '-480.mp4');
  * One rail of everything we've published, filterable by category. Replaces the doubled
  * marquee: each clip exists once, previews load on hover/focus only, tap opens the full cut.
  */
-export function WorkRail({ dark = true, heading = 'Made in our pipeline.' }: { dark?: boolean; heading?: string }) {
-  const secs = data.sections.filter((s) => data.items.some((i) => i.section === s.id));
+export function WorkRail({ dark = true, heading = 'Made in our pipeline.', only }: { dark?: boolean; heading?: string; only?: string[] }) {
+  const pool = only ? data.items.filter((i) => only.includes(i.section)) : data.items;
+  const secs = data.sections.filter((s) => pool.some((i) => i.section === s.id));
   const [cur, setCur] = useState<string>('all');
   const [open, setOpen] = useState<It | null>(null);
   const rail = useRef<HTMLDivElement>(null);
-  const items = cur === 'all' ? data.items : data.items.filter((i) => i.section === cur);
+  // "All" leads with fashion, the work most visitors come for.
+  const ORDER = ['fashion', 'ugc', 'jewellery', 'product', 'replication', 'social', 'realestate'];
+  const items = cur === 'all' ? [...pool].sort((a, b) => ORDER.indexOf(a.section) - ORDER.indexOf(b.section)) : pool.filter((i) => i.section === cur);
   const sec = secs.find((s) => s.id === cur);
 
   useEffect(() => { rail.current?.scrollTo({ left: 0, behavior: 'smooth' }); }, [cur]);
@@ -38,7 +41,7 @@ export function WorkRail({ dark = true, heading = 'Made in our pipeline.' }: { d
           <div data-reveal className="max-w-2xl">
             <h2 className="font-display text-display-md">{sec ? sec.title : heading}</h2>
             <p className={`mt-3 text-[16px] ${dark ? 'text-white/70' : 'text-muted'}`}>
-              {sec ? sec.blurb : `${data.items.length} published pieces: UGC ads, product films, fashion, jewellery, social clips and property reels. Hover to preview, tap to watch.`}
+              {sec ? sec.blurb : only ? 'Hover to preview, tap to watch the full cut.' : `${data.items.length} published pieces: UGC ads, product films, fashion, jewellery, social clips and property reels. Hover to preview, tap to watch.`}
             </p>
           </div>
           <div role="tablist" aria-label="Work categories" className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:mx-0 lg:flex-wrap lg:justify-end lg:px-0">

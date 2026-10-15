@@ -23,7 +23,7 @@ export type Prospect = {
 
 export const prospects: Prospect[] = [
   // Demo page (our own ORVA garments) so the team can preview the format at /for/demo.
-  { slug: 'demo', brand: 'Your Brand', first: 'there', looks: lookbook.slice(0, 3), suggest: 'mockups-25', note: 'This is a demo built on our own garments. Yours will use your products.' },
+  { slug: 'demo', brand: 'your brand', looks: lookbook.slice(0, 3), suggest: 'mockups-25', note: 'This is a demo built on our own garments. Yours will use your products.' },
 ];
 
 export const prospectBySlug = (slug: string) => prospects.find((p) => p.slug === slug.toLowerCase());
