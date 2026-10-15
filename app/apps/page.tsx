@@ -9,7 +9,7 @@ import { products } from '@/content/products';
 import { ProductCard } from '@/components/home/Products';
 import { agency } from '@/content/agency';
 
-export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Apps & products', description: 'Products built by Centrol Matrix: Siteory, Delhi PGs, GiftFeels, Hanger Club and the ORVA storefront demo.', image: '/og/apps.jpg' });
+export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Apps & products', description: 'Products built by Centrol Matrix: Siteory, Delhi PGs, GiftFeels, WishCuts, Hanger Club and the ORVA storefront demo.', image: '/og/apps.jpg' });
 
 export default function AppsPage() {
   return (
@@ -23,7 +23,15 @@ export default function AppsPage() {
       />
 
       <section className="mx-auto max-w-editorial space-y-6 px-5 py-20 sm:px-8">
-        {products.map((p, i) => <ProductCard key={p.id} p={p} flip={i % 2 === 1} />)}
+        {products.map((p, i) => (
+          <ProductCard key={p.id} p={p} flip={i % 2 === 1} extra={p.id === 'giftfeels' ? (
+            <a href="https://trustmrr.com/startup/giftfeels" target="_blank" rel="noopener noreferrer" className="mt-6 block w-fit" aria-label="GiftFeels verified revenue on TrustMRR">
+              <span className="mb-2 block text-[12px] uppercase tracking-wordmark text-ink-soft">Verified revenue on TrustMRR</span>
+              {/* Official TrustMRR embed badge, rendered live by TrustMRR */}
+              <img src="https://trustmrr.com/api/embed/giftfeels" alt="GiftFeels total revenue, verified by TrustMRR" width={264} height={108} loading="lazy" className="h-auto w-[264px] rounded-xl" />
+            </a>
+          ) : undefined} />
+        ))}
       </section>
 
       <section className="mx-auto max-w-editorial px-5 pb-24 sm:px-8 sm:pb-32">

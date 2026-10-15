@@ -1,3 +1,4 @@
+import type React from 'react';
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { products, type Product } from '@/content/products';
@@ -8,7 +9,7 @@ import { AnimIcon } from '@/components/icons/AnimIcon';
 
 const toneCls = { dark: 'bg-ink-section text-white', light: 'bg-[#F4F4F2] text-ink', blue: 'bg-accent text-white' } as const;
 
-export function ProductCard({ p, flip }: { p: Product; flip?: boolean }) {
+export function ProductCard({ p, flip, extra }: { p: Product; flip?: boolean; extra?: React.ReactNode }) {
   const dark = p.tone !== 'light';
   const ext = p.url?.startsWith('http');
   return (
@@ -23,6 +24,7 @@ export function ProductCard({ p, flip }: { p: Product; flip?: boolean }) {
         <p className={`mt-5 max-w-md text-[16px] leading-relaxed ${dark ? 'text-white/75' : 'text-ink-soft'}`}>{p.blurb}</p>
         {p.features && <ul className="mt-5 flex flex-wrap gap-2">{p.features.map((f) => <li key={f} className={`rounded-full border px-3 py-1 text-[13px] ${dark ? 'border-white/20' : 'border-ink/15'}`}>{f}</li>)}</ul>}
         {p.stat && <p className={`mt-5 text-[14px] font-semibold ${dark ? 'text-white' : 'text-ink'}`}>{p.stat}</p>}
+        {extra}
         <div className="mt-7 flex flex-wrap items-center gap-3">
           {p.visit && (
             <a href={p.visit} target="_blank" rel="noopener noreferrer" data-icon-host

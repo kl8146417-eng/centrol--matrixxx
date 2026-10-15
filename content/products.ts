@@ -41,6 +41,14 @@ export const products: Product[] = [
     ],
   },
   {
+    id: 'wishcuts', name: 'WishCuts', kind: 'Web app · Video invitations', tone: 'dark', url: 'https://wishcuts.com/', visit: 'https://wishcuts.com/',
+    icon: '/products/wishcuts/icon.png',
+    tagline: 'The video invitation for their big day.',
+    blurb: 'Personalised birthday and anniversary invitation videos, made by a designer rather than a template filler. Pick a design, add the names and date, approve a preview, and get a WhatsApp-ready video in 12 to 24 hours.',
+    features: ['Made by a designer', 'Preview before delivery', 'WhatsApp-ready', 'No watermark'],
+    screens: ['/products/wishcuts/poster-1.webp', '/products/wishcuts/poster-2.webp', '/products/wishcuts/poster-3.webp'],
+  },
+  {
     id: 'hanger-club', name: 'Hanger Club', kind: 'Wardrobe app · 3D rail', tone: 'dark', visit: WARDROBE_URL,
     blurb: 'A digital closet on a real rail. Swipe, lift and spin garments by hand, build outfits, and add your own pieces from a photo: AI identifies the item and cuts it out to hang alongside the rest.',
     screens: ['/products/hanger-club/screen-1.webp', '/products/hanger-club/screen-3.webp', '/products/hanger-club/screen-2.webp'],
