@@ -10,7 +10,7 @@ import { AnimIcon } from '@/components/icons/AnimIcon';
 import { waLink } from '@/content/agency';
 
 // Pages whose first screen is light (no dark page header).
-const LIGHT_TOP = ['/checkout', '/order', '/terms', '/privacy', '/refunds', '/delivery', '/admin', '/blog/', '/work/orva'];
+const LIGHT_TOP = ['/fashion', '/for/', '/checkout', '/order', '/terms', '/privacy', '/refunds', '/delivery', '/admin', '/blog/', '/work/orva'];
 
 export function Nav() {
   const [open, setOpen] = useState(false);

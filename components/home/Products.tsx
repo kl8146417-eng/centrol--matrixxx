@@ -2,7 +2,6 @@ import type React from 'react';
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { products, type Product } from '@/content/products';
-import { work } from '@/content/site';
 import { Phone, StoreBadge } from './Phone';
 import { AutoVideo } from './AutoVideo';
 import { AnimIcon } from '@/components/icons/AnimIcon';
@@ -54,35 +53,5 @@ export function ProductCard({ p, flip, extra }: { p: Product; flip?: boolean; ex
         )}
       </div>
     </article>
-  );
-}
-
-export function Products() {
-  return (
-    <section id="products" className="mx-auto max-w-editorial px-5 py-24 sm:px-8 sm:py-32">
-      <div data-reveal>
-        <p className="text-[12px] uppercase tracking-wordmark text-accent">Built by Centrol Matrix</p>
-        <h2 className="mt-3 max-w-3xl font-display text-display-md text-ink">We don&apos;t just pitch it. <span className="italic text-accent">We ship it.</span></h2>
-        <p className="mt-4 max-w-xl text-[16px] text-muted">Apps in the stores, a SaaS product and storefront demos. Every one designed, built and run by Centrol Matrix, the same team that builds for clients.</p>
-      </div>
-      <div className="mt-14 space-y-6">
-        {products.map((p, i) => <ProductCard key={p.id} p={p} flip={i % 2 === 1} />)}
-      </div>
-      <div className="mt-16" data-reveal>
-        <div className="flex items-end justify-between gap-4">
-          <h3 className="font-display text-3xl text-ink">More sites we&apos;ve shipped</h3>
-          <Link href="/websites" className="text-[14px] font-semibold text-accent">See them live →</Link>
-        </div>
-        <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5" data-stagger>
-          {work.filter((w) => !['GiftFeels', 'DUPGS'].includes(w.name)).map((w) => (
-            <a key={w.name} href={w.url} target="_blank" rel="noopener noreferrer" className="group">
-              <div className="overflow-hidden rounded-2xl border border-ink/10"><img src={w.image} alt={`${w.name} website`} loading="lazy" className="aspect-[4/3] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" /></div>
-              <p className="mt-2 text-[14px] font-medium text-ink">{w.name}</p>
-              <p className="text-[12px] text-muted">{w.domain}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }

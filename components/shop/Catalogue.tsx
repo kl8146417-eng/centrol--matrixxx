@@ -4,7 +4,7 @@ import { useCart } from '@/lib/cart';
 import { categories, displayPrice, services, waLink, type Service } from '@/content/agency';
 import { CurrencySwitch } from '@/components/CartDrawer';
 
-function ServiceCard({ s }: { s: Service }) {
+export function ServiceCard({ s }: { s: Service }) {
   const { add, has, setDrawer, money } = useCart();
   const inCart = has(s.id);
   return (

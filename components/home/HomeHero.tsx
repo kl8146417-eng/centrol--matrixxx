@@ -1,69 +1,80 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { AutoVideo } from './AutoVideo';
+import { BeforeAfter } from '@/components/BeforeAfter';
+import { lookbook } from '@/content/lookbook';
+import { products } from '@/content/products';
+import { agency } from '@/content/agency';
 
-// Editorial, asymmetric hero: real work up front, specific copy, no gradients.
-const LINES = [
-  { w: 'Websites', href: '/websites' },
+const DISCIPLINES = [
+  { w: 'UGC ads', href: '/pricing#ai_ugc' },
+  { w: 'Product shoots', href: '/fashion' },
+  { w: 'Websites & storefronts', href: '/pricing#website' },
   { w: 'Apps', href: '/apps' },
-  { w: 'UGC ads', href: '/work#ugc' },
-  { w: 'Product shoots', href: '/work#product' },
+  { w: 'Social & clipping', href: '/pricing#content' },
+  { w: 'Automation', href: '/pricing#automation' },
 ];
+const PROOF = ['recl', 'siteory', 'giftfeels', 'wishcuts'];
 
 export function HomeHero() {
+  const pair = lookbook.find((l) => l.style !== 'ugc') ?? lookbook[0];
+  const proof = PROOF.map((id) => products.find((p) => p.id === id)).filter((p): p is NonNullable<typeof p> => !!p);
   return (
     <section className="relative bg-[#F4F4F2] text-ink">
-      <div className="mx-auto max-w-editorial px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:pb-20">
-        <div className="flex items-center justify-between border-b border-ink/15 pb-3 text-[12px] uppercase tracking-wordmark text-muted">
-          <span>Centrol Matrix · Studio</span>
-          <span className="hidden sm:inline">Websites / Apps / Ads / Automation</span>
-        </div>
-
-        <div className="mt-8 grid gap-10 lg:mt-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
-            <p className="text-[15px] font-medium text-ink-soft">We make</p>
-            <h1 className="mt-2 font-display text-[clamp(52px,9vw,128px)] leading-[0.92] tracking-[-0.02em]">
-              {LINES.map((l, i) => (
-                <Link key={l.w} href={l.href} className="group flex items-baseline gap-3 border-b border-ink/10 py-1 last:border-0 sm:gap-5">
-                  <span className="font-sans text-[12px] font-medium tracking-normal text-muted sm:text-[13px]">0{i + 1}</span>
-                  <span className="transition-colors group-hover:text-accent">{l.w}</span>
-                  <span aria-hidden="true" className="ml-auto self-center font-sans text-[18px] text-ink/30 transition group-hover:translate-x-1 group-hover:text-accent sm:text-[24px]">→</span>
-                </Link>
-              ))}
-            </h1>
-            <p className="mt-8 max-w-lg text-[17px] leading-relaxed text-ink-soft">
-              A three-person studio. We built and run <a href="#products" className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">Siteory, Delhi PGs and GiftFeels</a>, and we make the ads, shoots and sites for brands that want the same care.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+      <div className="mx-auto grid max-w-editorial gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-12 lg:gap-12 lg:pb-24">
+        <div className="flex flex-col justify-center lg:col-span-7">
+          <p className="text-[15px] font-medium text-ink-soft">Centrol Matrix, a three-person studio</p>
+          <h1 className="mt-4 font-display text-[clamp(48px,7.2vw,112px)] leading-[0.95] tracking-[-0.02em]">
+            Ads, shoots and stores <span className="italic text-accent">that sell your product.</span>
+          </h1>
+          <p className="mt-7 max-w-xl text-[18px] leading-relaxed text-ink-soft">
+            We turn your product photos into UGC ads and on-model shots, build the storefront they point to, and automate the busywork behind it. Fixed prices, delivered in days.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {agency.calUrl ? (
+              <a href={agency.calUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-ink px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-accent">Book a 15-minute call</a>
+            ) : (
               <Link href="/contact" className="rounded-full bg-ink px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-accent">Start a project</Link>
-              <Link href="/pricing" className="rounded-full border border-ink/20 px-7 py-3.5 text-[15px] font-semibold transition hover:border-ink">Fixed-price packages</Link>
-            </div>
+            )}
+            <Link href="/pricing" className="rounded-full bg-white px-7 py-3.5 text-[15px] font-semibold transition hover:bg-ink hover:text-white">See fixed prices</Link>
           </div>
+          <Link href="/fashion" data-track="fashion_link" className="mt-5 inline-flex w-fit items-center gap-2 text-[15px] font-semibold text-accent underline decoration-2 underline-offset-4">
+            Clothing brand? Get 3 on-model looks free →
+          </Link>
 
-          {/* Real-work collage */}
-          <div className="relative grid grid-cols-12 grid-rows-[auto_auto] gap-3 lg:col-span-5">
-            <figure className="col-span-7 row-span-2 overflow-hidden rounded-2xl bg-ink">
-              <div className="relative aspect-[9/16]">
-                <AutoVideo src="/media/real/park-mic-ugc.mp4" poster="/media/real/park-mic-ugc.webp" label="AI UGC ad" className="absolute inset-0 h-full w-full object-cover" />
-              </div>
-              <figcaption className="flex justify-between px-3 py-2 text-[11px] uppercase tracking-wider text-white/70"><span>UGC ad</span><span>0:10</span></figcaption>
-            </figure>
-            <figure className="col-span-5 overflow-hidden rounded-2xl border border-ink/10 bg-white">
-              <img src="/products/dupgs/screen-2.webp" alt="Delhi PGs app" className="aspect-[9/16] w-full object-cover object-top" />
-              <figcaption className="px-3 py-2 text-[11px] uppercase tracking-wider text-muted">Delhi PGs · App</figcaption>
-            </figure>
-            <figure className="col-span-5 overflow-hidden rounded-2xl bg-ink">
-              <div className="relative aspect-square">
-                <AutoVideo src="/media/real/handbag-showcase.mp4" poster="/media/real/handbag-showcase-480.webp" label="Product film" className="absolute inset-0 h-full w-full object-cover" />
-              </div>
-              <figcaption className="px-3 py-2 text-[11px] uppercase tracking-wider text-white/70">Product shoot</figcaption>
-            </figure>
-            <figure className="col-span-12 overflow-hidden rounded-2xl border border-ink/10 bg-white">
-              <img src="/products/siteory/desktop.webp" alt="Siteory website" className="aspect-[16/7] w-full object-cover object-top" />
-              <figcaption className="flex justify-between px-3 py-2 text-[11px] uppercase tracking-wider text-muted"><span>Siteory · Website</span><span>siteory.co</span></figcaption>
-            </figure>
-          </div>
+          <nav aria-label="What we make" className="mt-10 flex flex-wrap gap-x-5 gap-y-2 text-[15px] text-ink-soft">
+            {DISCIPLINES.map((d) => <Link key={d.w} href={d.href} className="transition-colors hover:text-accent">{d.w}</Link>)}
+          </nav>
         </div>
+
+        <div className="relative lg:col-span-5">
+          {pair ? (
+            <>
+              <BeforeAfter pair={pair} priority className="aspect-[4/5] w-full rounded-[1.75rem]" />
+              <p className="mt-3 text-[13px] text-muted">Drag to compare. A flat lay we turned into an on-model shot. AI-generated sample, made by us.</p>
+              <figure className="absolute -bottom-6 -left-6 hidden w-[34%] overflow-hidden rounded-2xl border-4 border-[#F4F4F2] bg-ink sm:block lg:-left-10">
+                <div className="relative aspect-[9/16]"><AutoVideo src="/media/real/park-mic-ugc-480.mp4" poster="/media/real/park-mic-ugc-480.webp" label="AI UGC ad sample" className="absolute inset-0 h-full w-full object-cover" /></div>
+              </figure>
+            </>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
+              <figure className="overflow-hidden rounded-2xl bg-ink"><div className="relative aspect-[9/16]"><AutoVideo src="/media/real/park-mic-ugc-480.mp4" poster="/media/real/park-mic-ugc-480.webp" label="AI UGC ad" className="absolute inset-0 h-full w-full object-cover" /></div></figure>
+              <figure className="mt-10 overflow-hidden rounded-2xl bg-ink"><div className="relative aspect-[9/16]"><AutoVideo src="/media/real/graphic-tee-ad-480.mp4" poster="/media/real/graphic-tee-ad-480.webp" label="Fashion ad" className="absolute inset-0 h-full w-full object-cover" /></div></figure>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-editorial px-5 pb-12 sm:px-8">
+        <Link href="/apps" className="flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl bg-white px-6 py-4 transition hover:bg-white/70">
+          <span className="text-[14px] font-medium text-ink">We also build and run</span>
+          {proof.map((p) => (
+            <span key={p.id} className="inline-flex items-center gap-2 text-[14px] text-ink-soft">
+              {p.icon && <img src={p.icon} alt="" className="h-6 w-6 rounded-md" />}{p.name}
+            </span>
+          ))}
+          <span className="ml-auto text-[14px] font-semibold text-accent">See the products →</span>
+        </Link>
       </div>
     </section>
   );

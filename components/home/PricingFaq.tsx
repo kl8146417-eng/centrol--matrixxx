@@ -31,7 +31,7 @@ export function PricingTeaser() {
 }
 
 export function FaqTeaser() {
-  const qs = faq.filter((f) => ['How fast is delivery?', 'How do I pay?', 'Who owns the work?', 'Do I need a call before ordering?'].includes(f.q));
+  const qs = faq.filter((f) => ['Will people be able to tell it is AI?', 'How fast is delivery?', 'How do I pay?', 'Who owns the work?'].includes(f.q));
   return (
     <section className="mx-auto grid max-w-editorial gap-12 px-5 pb-24 sm:px-8 lg:grid-cols-3">
       <div data-reveal>
