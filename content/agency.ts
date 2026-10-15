@@ -2,14 +2,24 @@
 import servicesJson from './services.json';
 import { displayPrice, isAddon, isPercent } from '@/lib/pricing.mjs';
 
+const WA = (process.env.NEXT_PUBLIC_WHATSAPP || '639515680964').replace(/\D/g, '');
+function formatPhone(d: string) {
+  if (d.startsWith('91') && d.length === 12) return `+91 ${d.slice(2, 7)} ${d.slice(7)}`;
+  if (d.startsWith('63') && d.length === 12) return `+63 ${d.slice(2, 5)} ${d.slice(5, 8)} ${d.slice(8)}`;
+  return `+${d}`;
+}
+
 export const agency = {
   agencyName: 'Centrol Matrix',
   founder: 'Spartan Rich',
   location: 'India',
   email: 'contact@centrolmatrix.com',
-  whatsapp: '639515680964',
-  whatsappDisplay: '+63 951 568 0964',
-  phone: '+63 951 568 0964',
+  // Set NEXT_PUBLIC_WHATSAPP (digits only, with country code) to switch numbers sitewide.
+  whatsapp: WA,
+  whatsappDisplay: formatPhone(WA),
+  phone: formatPhone(WA),
+  // Booking link (Cal.com / Calendly). Booking CTAs render only when this is set.
+  calUrl: process.env.NEXT_PUBLIC_CAL_URL || '',
   orderPrefix: 'CMX',
   // Live demos. ORVA/Hanger Club currently run on temporary tunnels; replace with permanent URLs.
   demo: { name: 'ORVA', url: process.env.NEXT_PUBLIC_ORVA_URL || 'https://orva-centrol-matrix.netlify.app' },

@@ -10,6 +10,7 @@ import { CartDrawer } from '@/components/CartDrawer';
 import { MotionRoot } from '@/components/icons/MotionRoot';
 import { Reveal } from '@/components/motion/Reveal';
 import { site } from '@/content/site';
+import { agency } from '@/content/agency';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -29,7 +30,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://centrolmatrix.com'),
   title: {
-    default: `${site.name} — websites, content engines, AI automation`,
+    default: `${site.name}: websites, apps, UGC ads & product shoots`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: site.name,
-    title: `${site.name} — websites, content engines, AI automation`,
+    title: `${site.name}: websites, apps, UGC ads & product shoots`,
     description: site.description,
     url: 'https://centrolmatrix.com',
     images: [{ url: 'https://centrolmatrix.com/og/default.jpg', width: 1200, height: 630 }],
@@ -71,7 +72,7 @@ const orgJsonLd = [
     email: site.email,
     sameAs: [site.linkedin],
     description: site.description,
-    contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: site.email, telephone: '+63-951-568-0964', availableLanguage: ['English'] }],
+    contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: site.email, telephone: agency.phone, availableLanguage: ['English'] }],
   },
   {
     '@context': 'https://schema.org',

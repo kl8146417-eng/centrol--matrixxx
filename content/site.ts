@@ -12,26 +12,18 @@ export const site = {
   logoPlaceholder:
     'https://media.licdn.com/dms/image/v2/D560BAQFr3NJZL9tmzg/company-logo_100_100/B56Z5la2yiIoAI-/0/1779818000058/centrol_matrix_logo?e=1782345600&v=beta&t=oWgfPbOQbVXdK_Jrsx_E6UQnAEUfEdfExih-4XqBH3g',
   description:
-    'Centrol Matrix is a studio that builds websites, content engines, and AI automations for businesses that want to grow without hiring a department to do it.',
+    'Centrol Matrix is a small studio that builds websites and apps, makes AI UGC ads, product shoots and social content, and automates the busywork behind them.',
 } as const;
 
 export const nav = [
   { label: 'Work', href: '/work' },
-  { label: 'Websites', href: '/websites' },
   { label: 'Services', href: '/services' },
+  { label: 'For fashion brands', href: '/fashion' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Apps', href: '/apps' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
 ] as const;
-
-// Hero — written fresh, in the confident/provocative editorial voice.
-export const hero = {
-  line1: 'Your website should',
-  line2: 'do more than sit there.',
-  accent: 'So make it work.',
-} as const;
 
 // Work / products we've shipped. Framed as portfolio ONLY — never as "old brands".
 // - `url`     : the live destination the card/marquee links to.
@@ -64,7 +56,7 @@ export const work: WorkItem[] = [
     embedUrl: 'https://hoteldemosite.vishalchauhan.in/',
     image: '/work/hotel-demo.png',
     framable: true,
-    blurb: 'A booking-ready hotel website prototype — rooms, rates, and a clean reservation flow.',
+    blurb: 'A booking-ready hotel website prototype: rooms, rates and a clean reservation flow.',
   },
   {
     name: 'Dental website',
@@ -124,7 +116,7 @@ export const work: WorkItem[] = [
     domain: 'recl.app',
     url: 'https://recl.app',
     image: '/work/recl.png',
-    blurb: 'Save what matters, then actually recall it — summaries, search, and daily nudges.',
+    blurb: 'Save what matters, then actually recall it: summaries, search and daily nudges.',
   },
   {
     name: 'Waste Pickers Welfare Foundation',
@@ -142,18 +134,13 @@ export const work: WorkItem[] = [
   },
 ];
 
-// The two scroll-choreographed embeds at the top of the home page.
-export const homeEmbeds = work.filter((w) => w.embedUrl);
-// The three featured cards under the embeds on the home page.
-export const homeFeatured = work.filter((w) => w.home);
-
 // Services — the reference image explicitly says NOT to use AI-generated descriptions.
 // These are short, human, plain-spoken. Client can refine.
 export const services = [
   {
     n: '01',
     title: 'AI Automation Consulting',
-    body: 'We find the repetitive work eating your week and hand it to software that never sleeps.',
+    body: 'We find the repetitive work eating your week and hand it to software that runs on its own.',
   },
   {
     n: '02',
@@ -200,7 +187,7 @@ export const services = [
 // Studio services from the notes — what we make hands-on.
 export const studioServices = [
   { title: 'Website making', body: 'Custom-built sites designed to convert and easy to keep updated.' },
-  { title: 'UGC video', body: 'We manage a roster of creators — hired, briefed, and paid — to produce native-feeling video.' },
+  { title: 'UGC video', body: 'AI UGC for volume and hook tests, and real creators we brief and pay when you want a hero ad.' },
   { title: 'Product & quick-commerce photography', body: 'Catalog-ready product shots, fast.' },
   { title: 'Clipping', body: 'Long-form cut into the short clips each platform actually rewards.' },
   { title: 'Social media handling', body: 'We run the calendar, the posting, and the replies.' },

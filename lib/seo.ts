@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
-export const SITE = 'https://centrolmatrix.com';
+// Canonical production origin. Previews keep pointing canonicals here on purpose.
+export const SITE = (process.env.NEXT_PUBLIC_CANONICAL_URL || 'https://centrolmatrix.com').replace(/\/$/, '');
 export const abs = (p: string) => (p.startsWith('http') ? p : `${SITE}${p}`);
 
 /** Unique title/description, absolute canonical, OG + Twitter for a page. */

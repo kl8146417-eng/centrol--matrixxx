@@ -2,6 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { computeQuote, MAX_QTY, type Quote } from '@/lib/pricing.mjs';
 import { agency, services, serviceById, type Currency } from '@/content/agency';
+import { track } from '@/lib/track';
 
 export interface CartItem { id: string; qty: number }
 interface Cart {
@@ -34,12 +35,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => { if (ready) localStorage.setItem('cmx.cart', JSON.stringify(items)); }, [items, ready]);
   const setCurrency = useCallback((c: Currency) => { setCur(c); localStorage.setItem('cmx.currency', JSON.stringify(c)); }, []);
-  const add = useCallback((id: string, qty = 1) => setItems((p) => {
+  const add = useCallback((id: string, qty = 1) => {
+    const svc = serviceById(id);
+    if (svc && !svc.enquiry) track('add_to_cart', { item_id: id, value: svc.price_usd, currency: 'USD' });
+    setItems((p) => {
     const s = serviceById(id); if (!s || s.enquiry) return p;
     const ex = p.find((i) => i.id === id);
     if (ex) return s.category === 'addon' ? p : p.map((i) => (i.id === id ? { ...i, qty: Math.min(MAX_QTY, i.qty + qty) } : i));
     return [...p, { id, qty }];
-  }), []);
+    });
+  }, []);
   const setQty = useCallback((id: string, qty: number) => setItems((p) => p.map((i) => (i.id === id ? { ...i, qty: Math.max(1, Math.min(MAX_QTY, qty)) } : i))), []);
   const remove = useCallback((id: string) => setItems((p) => p.filter((i) => i.id !== id)), []);
   const has = useCallback((id: string) => items.some((i) => i.id === id), [items]);

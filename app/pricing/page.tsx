@@ -10,7 +10,7 @@ export default function PricingPage() {
   return (
     <>
       <BreadcrumbLd items={[{"name": "Pricing & packages", "path": "/pricing"}]} />
-      <PageHeader eyebrow="Pricing" title="Fixed prices," accent="no surprises." intro="Order a package directly, or enquire about scoped work. All prices in USD; switch currency for an estimate." />
+      <PageHeader eyebrow="Pricing" title="Fixed prices," accent="no surprises." intro="Creative and storefront packages first, each with a fixed price and delivery time. Order online, or enquire about scoped work. Prices in USD; switch currency for an estimate." />
       <Catalogue />
     </>
   );

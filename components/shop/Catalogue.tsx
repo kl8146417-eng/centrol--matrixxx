@@ -31,7 +31,8 @@ function ServiceCard({ s }: { s: Service }) {
             <p className="font-display text-3xl text-ink">
               {s.pricing ? 'from ' : ''}{money(displayPrice(s))}{s.billing === 'monthly' ? <span className="text-base text-muted">/mo</span> : null}
             </p>
-            <p className="text-[13px] text-muted">{s.price_note || (s.turnaround_days ? `${s.turnaround_days} day turnaround` : '')}</p>
+            {s.turnaround_days ? <p className="text-[13px] font-medium text-ink-soft">{s.billing === 'monthly' ? 'Delivered through the month' : `Delivered in ${s.turnaround_days} day${s.turnaround_days === 1 ? '' : 's'}`}</p> : null}
+            {s.price_note && <p className="text-[13px] text-muted">{s.price_note}</p>}
             <button type="button" onClick={() => { if (!inCart) add(s.id); setDrawer(true); }} className="mt-4 w-full rounded-full bg-accent px-5 py-3 text-[15px] font-semibold text-white hover:bg-accent-dark">
               {inCart ? 'In cart · view' : 'Add to cart'}
             </button>
@@ -45,9 +46,12 @@ function ServiceCard({ s }: { s: Service }) {
 export function Catalogue() {
   return (
     <div className="mx-auto max-w-editorial px-5 pb-24 sm:px-8">
-      <div className="sticky top-16 z-10 -mx-5 mb-10 flex flex-wrap items-center gap-2 bg-bg/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8">
-        {categories.map((c) => <a key={c.id} href={`#${c.id}`} className="rounded-full border border-ink/10 px-3 py-1 text-[13px] hover:border-ink/40">{c.name}</a>)}
-        <span className="ml-auto"><CurrencySwitch /></span>
+      {/* One scrollable row on mobile (never wraps or pins); sticky only on large screens. */}
+      <div className="z-10 -mx-5 mb-10 flex items-center gap-3 bg-bg/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 lg:sticky lg:top-20">
+        <nav aria-label="Package categories" className="flex min-w-0 flex-1 gap-2 overflow-x-auto [scrollbar-width:none] lg:flex-wrap lg:overflow-visible">
+          {categories.map((c) => <a key={c.id} href={`#${c.id}`} className="shrink-0 whitespace-nowrap rounded-full border border-ink/10 px-3 py-1 text-[13px] hover:border-ink/40">{c.name}</a>)}
+        </nav>
+        <span className="shrink-0"><CurrencySwitch /></span>
       </div>
       {categories.map((c) => (
         <section key={c.id} id={c.id} className="scroll-mt-32 border-t border-ink/10 py-14">

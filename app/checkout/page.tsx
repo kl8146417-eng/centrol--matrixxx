@@ -6,6 +6,7 @@ import { useCart } from '@/lib/cart';
 import { AddonPicker, CartLines, Totals } from '@/components/CartDrawer';
 import { otherCountries, priorityCountries } from '@/content/countries';
 import { agency } from '@/content/agency';
+import { track } from '@/lib/track';
 
 type Pay = { stripe: boolean; razorpay: boolean; invoice: boolean };
 interface Cfg { payments: Pay; maxUploadMb: number; maxFiles: number; allowed: string[] }
@@ -49,6 +50,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     try { const d = JSON.parse(localStorage.getItem(DRAFT) || '{}'); if (d.brief) setBrief({ ...BRIEF, ...d.brief }); if (d.contact) setContact({ ...CONTACT, ...d.contact }); } catch { /* */ }
+    track('checkout_start');
     fetch('/api/config').then((r) => r.json()).then((c: Cfg) => { setCfg(c); setMethod(c.payments.stripe ? 'stripe' : c.payments.razorpay ? 'razorpay' : 'invoice'); }).catch(() => {});
   }, []);
   useEffect(() => { localStorage.setItem(DRAFT, JSON.stringify({ brief, contact })); }, [brief, contact]);

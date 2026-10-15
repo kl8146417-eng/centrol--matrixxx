@@ -15,7 +15,7 @@ export default function AboutPage() {
         eyebrow="About"
         title="A small studio"
         accent="that ships."
-        intro="Centrol Matrix is a studio for businesses that want a website, a content engine, and the automations that run behind them — built by people who care how it looks and works."
+        intro="Centrol Matrix is a small studio that makes websites, apps, ads and content, and automates the busywork behind them. We care how it looks and whether it sells."
       />
 
       <section className="mx-auto max-w-editorial px-5 pb-8 sm:px-8">
@@ -31,8 +31,8 @@ export default function AboutPage() {
               gone.
             </p>
             <p>
-              The automation work runs quietly in the background — scraping leads, drafting content,
-              answering calls, posting everywhere — so the people we work with can spend their time
+              The automation work runs quietly in the background. It scrapes leads, drafts content,
+              answers calls and posts everywhere, so the people we work with can spend their time
               on the parts only people can do.
             </p>
           </div>
@@ -41,8 +41,8 @@ export default function AboutPage() {
             <div className="border-t border-ink/10 pt-5">
               <p className="text-[12px] uppercase tracking-wordmark text-accent">How we work</p>
               <p className="mt-3 text-[15px] leading-relaxed text-muted">
-                One room. Strategy, design, engineering, media, content, and AI — no agencies of
-                agencies, no diluted execution.
+                The same three people plan, design, build, shoot and ship. Nothing gets passed to a
+                subcontractor you never meet.
               </p>
             </div>
             <div className="border-t border-ink/10 pt-5">

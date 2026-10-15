@@ -47,6 +47,8 @@ export function ProductCard({ p, flip, extra }: { p: Product; flip?: boolean; ex
             <img src={p.desktop} alt={`${p.name} homepage`} loading="lazy" className="w-[88%] rounded-t-2xl border border-ink/10 shadow-2xl" data-parallax="-6" />
             {p.screens[0] && <Phone src={p.screens[0]} alt={`${p.name} on mobile`} className="absolute bottom-[-40px] right-6 w-[30%] max-w-[180px]" />}
           </>
+        ) : p.flatScreens ? (
+          p.screens.map((s, i) => <img key={s} src={s} alt={`${p.name} store graphic ${i + 1}`} loading="lazy" className={`w-[30%] max-w-[210px] rounded-2xl shadow-2xl ${i === 1 ? 'mb-10' : '-mb-6'}`} />)
         ) : (
           p.screens.map((s, i) => <Phone key={s} src={s} alt={`${p.name} screen ${i + 1}`} className={`w-[30%] max-w-[210px] ${i === 1 ? 'mb-10' : '-mb-10'}`} />)
         )}

@@ -29,7 +29,7 @@ export default async function BlogIndex({
         eyebrow="Blog"
         title="Notes from"
         accent="the studio."
-        intro="What we're learning about building things that work — published by us and by the automations that run our content engine."
+        intro="What we're learning about building things that work, published by us and by the automations that run our content engine."
       />
 
       <section className="mx-auto max-w-editorial px-5 pb-24 sm:px-8 sm:pb-32">

@@ -3,24 +3,6 @@
   "updated": "2026-10-09",
   "categories": [
     {
-      "id": "automation",
-      "name": "AI Automation",
-      "tagline": "Hand the repetitive work to software that never sleeps.",
-      "group": "Growth & Automation"
-    },
-    {
-      "id": "growth",
-      "name": "Growth & Strategy",
-      "tagline": "SEO, positioning and one plan that ties site, content and ads to outcomes.",
-      "group": "Growth & Automation"
-    },
-    {
-      "id": "content",
-      "name": "Content Systems",
-      "tagline": "A repeatable engine so the feed never goes quiet.",
-      "group": "Creative"
-    },
-    {
       "id": "ai_ugc",
       "name": "AI UGC Ads",
       "tagline": "Creative volume for Meta & TikTok. Many hooks, many angles, fast.",
@@ -39,9 +21,9 @@
       "group": "Creative"
     },
     {
-      "id": "beyond",
-      "name": "Real Estate Video",
-      "tagline": "AI visualisation from floor plans and pacing-and-grade edits of property footage.",
+      "id": "content",
+      "name": "Social, Clipping & Carousels",
+      "tagline": "Short-form edits, clipping and carousel engines so the feed never goes quiet.",
       "group": "Creative"
     },
     {
@@ -63,6 +45,24 @@
       "group": "Retainers & Bundles"
     },
     {
+      "id": "beyond",
+      "name": "Real Estate Video",
+      "tagline": "AI visualisation from floor plans and pacing-and-grade edits of property footage.",
+      "group": "Creative"
+    },
+    {
+      "id": "automation",
+      "name": "AI Automation",
+      "tagline": "Hand the repetitive work to software that runs on its own.",
+      "group": "Growth & Automation"
+    },
+    {
+      "id": "growth",
+      "name": "Growth & Strategy",
+      "tagline": "SEO, positioning and one plan that ties site, content and ads to outcomes.",
+      "group": "Growth & Automation"
+    },
+    {
       "id": "addon",
       "name": "Add-ons",
       "tagline": "Attach to any package at checkout.",
@@ -74,7 +74,7 @@
       "id": "cm-ai-automation",
       "name": "AI Automation Consulting",
       "category": "automation",
-      "description": "We find the repetitive work eating your week and hand it to software that never sleeps.",
+      "description": "We find the repetitive work eating your week and hand it to software that runs on its own.",
       "deliverables": [
         "Process audit call",
         "Automation opportunity map",
@@ -236,9 +236,9 @@
     },
     {
       "id": "ugc-single",
-      "name": "AI UGC Ad — Single",
+      "name": "AI UGC Ad · Single",
       "category": "ai_ugc",
-      "description": "One scroll-stopping vertical UGC-style video ad from your product photos — hook, demo, CTA — ready for Meta/TikTok.",
+      "description": "One scroll-stopping vertical UGC-style video ad from your product photos: hook, demo, CTA: ready for Meta/TikTok.",
       "deliverables": [
         "1× 15–30s vertical (9:16) MP4",
         "1× square (1:1) crop",
@@ -253,9 +253,9 @@
     },
     {
       "id": "ugc-5pack",
-      "name": "AI UGC Ad — 5-Pack",
+      "name": "AI UGC Ad · 5-Pack",
       "category": "ai_ugc",
-      "description": "Five distinct hook/angle variants for creative testing — the minimum viable test set for Meta.",
+      "description": "Five distinct hook/angle variants for creative testing: the minimum viable test set for Meta.",
       "deliverables": [
         "5× unique UGC-style videos (different hooks/angles)",
         "9:16 + 1:1 exports each",
@@ -269,7 +269,7 @@
     },
     {
       "id": "ugc-monthly",
-      "name": "UGC Factory — Monthly",
+      "name": "UGC Factory · Monthly",
       "category": "ai_ugc",
       "description": "Ongoing AI UGC pipeline: 12+ new ad variants every month so creative fatigue never throttles spend.",
       "deliverables": [
@@ -288,7 +288,7 @@
     },
     {
       "id": "mockups-10",
-      "name": "Lookbook AI — Set of 10",
+      "name": "Lookbook AI · Set of 10",
       "category": "product_mockups",
       "description": "Ten on-brand product images: clean packshots, ghost mannequin, and lifestyle scenes from your existing photos.",
       "deliverables": [
@@ -305,9 +305,9 @@
     },
     {
       "id": "mockups-25",
-      "name": "Lookbook AI — Set of 25",
+      "name": "Lookbook AI · Set of 25",
       "category": "product_mockups",
-      "description": "Catalog refresh pack for brands stuck on 1–2 photos per SKU — batch lifestyle and on-model imagery.",
+      "description": "Catalog refresh pack for brands stuck on 1–2 photos per SKU: batch lifestyle and on-model imagery.",
       "deliverables": [
         "25 AI product / lifestyle images",
         "Brand style guide locked after first 5 approved",
@@ -322,7 +322,7 @@
     },
     {
       "id": "creatives-pack",
-      "name": "Creative Burst — Ad Pack",
+      "name": "Creative Burst · Ad Pack",
       "category": "ad_creatives",
       "description": "Mixed static + concept pack for Meta/TikTok testing: memes, native stills, benefit grids, and UGC still frames.",
       "deliverables": [
@@ -339,7 +339,7 @@
     },
     {
       "id": "growth-retainer",
-      "name": "Growth Pod — Monthly Retainer",
+      "name": "Growth Pod · Monthly Retainer",
       "category": "retainer",
       "description": "Like an agency: continuous creatives + UGC + light site CRO tweaks for clothing brands that already spend on ads.",
       "deliverables": [
@@ -353,7 +353,7 @@
       "price_usd": 2997,
       "price_note": "Per month · 3-month minimum recommended",
       "turnaround_days": 30,
-      "popular": true,
+      "popular": false,
       "billing": "monthly"
     },
     {
@@ -393,7 +393,7 @@
       "id": "addon-copywriting",
       "name": "Conversion Copywriting",
       "category": "addon",
-      "description": "Homepage + PDP + key landing copy rewritten for clothing DTC — benefits, objections, size confidence.",
+      "description": "Homepage + PDP + key landing copy rewritten for clothing DTC: benefits, objections, size confidence.",
       "deliverables": [
         "Homepage narrative rewrite",
         "Up to 5 PDP descriptions",
@@ -409,14 +409,14 @@
       "id": "addon-rush",
       "name": "Rush Delivery",
       "category": "addon",
-      "description": "Priority queue — cut standard turnaround roughly in half for eligible packages.",
+      "description": "Priority queue: cut standard turnaround roughly in half for eligible packages.",
       "deliverables": [
         "Priority scheduling",
         "Dedicated update channel until delivery",
         "Same deliverables as parent package"
       ],
       "price_usd": 297,
-      "price_note": "Flat $297 or 30% of the package — whichever is higher",
+      "price_note": "Flat $297 or 30% of the package, whichever is higher",
       "turnaround_days": 0,
       "popular": false,
       "pricing": {
@@ -433,8 +433,8 @@
       "description": "Everything a brand needs to launch or relaunch: a Storefront Starter storefront, a 25-image Lookbook set to fill it and five UGC ads to drive traffic to it.",
       "deliverables": [
         "Storefront Starter",
-        "Lookbook AI — Set of 25",
-        "AI UGC Ad — 5-Pack",
+        "Lookbook AI · Set of 25",
+        "AI UGC Ad · 5-Pack",
         "One shared brief & kickoff"
       ],
       "includes": [
@@ -445,11 +445,11 @@
       "price_usd": 3497,
       "price_note": "Save $494 vs. buying separately",
       "turnaround_days": 14,
-      "popular": true
+      "popular": false
     },
     {
       "id": "creative-engine",
-      "name": "Creative Engine — 90 days",
+      "name": "Creative Engine · 90 days",
       "category": "bundle",
       "description": "A prepaid 90-day creative sprint: three months of UGC Factory plus a Creative Burst ad pack to kick off testing.",
       "deliverables": [
@@ -530,6 +530,62 @@
       "price_note": "Per reel · footage supplied",
       "turnaround_days": 3,
       "popular": false
+    },
+    {
+      "id": "cm-clipping",
+      "name": "Clipping & Short-form Editing",
+      "category": "content",
+      "description": "We cut podcasts, lives and long videos into captioned Reels, Shorts and TikToks, ready to post on a schedule.",
+      "deliverables": [
+        "Clips cut from your long-form footage",
+        "Burned-in captions in your brand style",
+        "Hooks and titles per clip",
+        "Posting calendar"
+      ],
+      "price_usd": 0,
+      "enquiry": true
+    },
+    {
+      "id": "cm-social",
+      "name": "Social Media Handling",
+      "category": "content",
+      "description": "We plan, make and post for your Instagram, YouTube Shorts and LinkedIn every week, and report what worked.",
+      "deliverables": [
+        "Monthly content plan",
+        "Posts, carousels and Reels made for you",
+        "Scheduling and posting",
+        "Monthly performance note"
+      ],
+      "price_usd": 0,
+      "enquiry": true
+    },
+    {
+      "id": "cm-carousels",
+      "name": "Auto-carousel Engine",
+      "category": "content",
+      "description": "An automation that turns your product photos and posts into carousels and Shorts and publishes them to every channel you run.",
+      "deliverables": [
+        "Carousel and Shorts templates in your brand",
+        "Automated generation from your catalogue",
+        "Multi-channel posting",
+        "Handover and docs"
+      ],
+      "price_usd": 0,
+      "enquiry": true
+    },
+    {
+      "id": "cm-apps",
+      "name": "Mobile & Web Apps",
+      "category": "website",
+      "description": "iOS, Android and web apps designed, built, shipped to the stores and kept running. Recl, GiftFeels and Delhi PGs are ours.",
+      "deliverables": [
+        "Product scoping and design",
+        "iOS and Android builds",
+        "Store listing and launch",
+        "Ongoing maintenance option"
+      ],
+      "price_usd": 0,
+      "enquiry": true
     }
   ]
 }

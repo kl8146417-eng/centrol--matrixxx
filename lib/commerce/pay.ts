@@ -52,9 +52,18 @@ export function stripeWebhookValid(raw: string, header: string | null) {
   return Math.abs(Date.now() / 1000 - Number(parts.t)) < 600 && v1.some((v) => safeEq(v, sig));
 }
 const rzpAuth = () => 'Basic ' + Buffer.from(`${env.RAZORPAY_KEY_ID}:${env.RAZORPAY_KEY_SECRET}`).toString('base64');
+// Razorpay charges in the account currency. Totals are stored in USD, so convert with the
+// site's rate table (override with RAZORPAY_USD_RATE) before taking minor units.
+function razorpayAmount(totalUsd: number) {
+  const currency = (env.RAZORPAY_CURRENCY || 'USD').toUpperCase();
+  const table = agency.currencies as Record<string, { rate: number }>;
+  const rate = Number(env.RAZORPAY_USD_RATE) || table[currency]?.rate || 1;
+  return { currency, amount: Math.round(totalUsd * rate * 100) };
+}
 async function razorpayCreate(o: Order, req: Request) {
+  const { amount, currency } = razorpayAmount(o.totals.total_usd);
   const body = {
-    amount: Math.round(o.totals.total_usd * 100), currency: env.RAZORPAY_CURRENCY || 'USD', accept_partial: false, reference_id: o.id,
+    amount, currency, accept_partial: false, reference_id: o.id,
     description: `${agency.agencyName} order ${o.id}`,
     customer: { name: o.contact.name, email: o.contact.email, ...(o.contact.whatsapp ? { contact: o.contact.whatsapp.replace(/[^\d+]/g, '') } : {}) },
     notify: { email: true, sms: false }, reminder_enable: true, notes: { orderId: o.id },

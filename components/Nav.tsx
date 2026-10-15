@@ -7,6 +7,7 @@ import { nav, site } from '@/content/site';
 import { Logo } from '@/components/Logo';
 import { CartButton } from '@/components/CartDrawer';
 import { AnimIcon } from '@/components/icons/AnimIcon';
+import { waLink } from '@/content/agency';
 
 // Pages whose first screen is light (no dark page header).
 const LIGHT_TOP = ['/checkout', '/order', '/terms', '/privacy', '/refunds', '/delivery', '/admin', '/blog/', '/work/orva'];
@@ -72,7 +73,7 @@ export function Nav() {
           ))}
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             <Link href="/contact" className="rounded-full bg-accent px-5 py-3 text-center text-[15px] font-semibold text-white">Start a project</Link>
-            <a href="https://wa.me/639515680964" target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/15 px-5 py-3 text-center text-[15px] font-semibold">WhatsApp us</a>
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/15 px-5 py-3 text-center text-[15px] font-semibold">WhatsApp us</a>
           </div>
         </nav>
       )}

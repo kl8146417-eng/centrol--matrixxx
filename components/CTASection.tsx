@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { AnimIcon } from '@/components/icons/AnimIcon';
+import { agency, waLink } from '@/content/agency';
 
 // Shared closing CTA used across pages: dark glass panel, WhatsApp + email.
 export function CTASection() {
@@ -14,8 +15,8 @@ export function CTASection() {
           <p className="text-[12px] uppercase tracking-wordmark text-[#7DA2FF]">Start a project</p>
           <h2 className="mt-4 max-w-4xl font-display text-[clamp(44px,6vw,96px)] leading-[1.02]">Tell us what you&apos;re building. <span className="italic text-[#7DA2FF]">We&apos;ll take it from there.</span></h2>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href="https://wa.me/639515680964" target="_blank" rel="noopener noreferrer" data-icon-host className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-[16px] font-semibold text-white transition hover:bg-accent-dark hover:scale-[1.02]">
-              <AnimIcon name="whatsapp" size={20} inView /> WhatsApp +63 951 568 0964
+            <a href={waLink('Hi Centrol Matrix, I would like to talk about a project.')} target="_blank" rel="noopener noreferrer" data-icon-host className="inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-[16px] font-semibold text-white transition hover:bg-accent-dark hover:scale-[1.02]">
+              <AnimIcon name="whatsapp" size={20} inView /> WhatsApp {agency.whatsappDisplay}
             </a>
             <a href="mailto:contact@centrolmatrix.com" data-icon-host className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-7 py-4 text-[16px] font-semibold text-white backdrop-blur-md transition hover:bg-white hover:text-ink">
               <AnimIcon name="mail" size={20} /> contact@centrolmatrix.com

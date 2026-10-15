@@ -4,8 +4,9 @@ import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { ContactForm } from '@/components/ContactForm';
 import { site } from '@/content/site';
+import { agency } from '@/content/agency';
 
-export const metadata: Metadata = pageMeta({ path: '/contact', title: 'Contact', description: 'Start a project with Centrol Matrix. Email contact@centrolmatrix.com or WhatsApp +63 951 568 0964.' });
+export const metadata: Metadata = pageMeta({ path: '/contact', title: 'Contact', description: 'Start a project with Centrol Matrix. Email contact@centrolmatrix.com or WhatsApp ' + agency.whatsappDisplay + '.' });
 
 export default function ContactPage() {
   return (

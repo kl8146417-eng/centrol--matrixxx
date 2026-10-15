@@ -1,6 +1,6 @@
-# Project instructions — agwnyc website
+# Project instructions: Centrol Matrix website
 
-This is a boutique web-design agency site (brand: **SA Solutions**). The whole point of this
+This is the Centrol Matrix studio site (tokens: `DESIGN.md`; current plan: `docs/REDESIGN_PLAN.md`). The whole point of this
 project is that the site must **NOT look AI-generated**. No generic AI feel, AI colors, AI
 fonts, or canned AI animations.
 
@@ -53,7 +53,7 @@ Every change to markup, CSS, or copy must respect these. They override defaults.
   intentional, never default.
 - **Color:** No clichéd AI palettes — no purple/indigo→blue gradients, no beige+brass
   "premium" cliché, no generic teal SaaS gradient. Use a committed palette with one confident
-  accent (this site uses near-black ink on white with a single hot-pink accent).
+  accent (this site uses near-black ink on white with a single blue accent, #1D4ED8).
 - **Animation:** No gratuitous fade-up-on-scroll on everything, no generic "float" loops, no
   default ease everywhere. Motion must be justified, purposeful, and tied to the editorial tone.
 - **Layout:** No three-equal-feature-cards, no cookie-cutter centered hero + 3 columns + CTA

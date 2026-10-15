@@ -6,8 +6,16 @@ export function Phone({ src, alt, className = '' }: { src: string; alt: string; 
     </div>
   );
 }
-export function StoreBadge({ label, href }: { label: string; href: string; dark?: boolean }) {
+export function StoreBadge({ label, href, preRegister, dark }: { label: string; href: string; preRegister?: boolean; dark?: boolean }) {
   const apple = label === 'App Store';
+  // Not live yet: an honest text pill instead of the official "Get it on" artwork.
+  if (preRegister) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center rounded-full border px-4 py-2.5 text-[13px] font-semibold transition hover:opacity-80 ${dark ? 'border-ink/15 text-ink' : 'border-white/25 text-white'}`}>
+        Pre-register on {label} ↗
+      </a>
+    );
+  }
   // Official Apple / Google badge artwork.
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" aria-label={apple ? 'Download on the App Store' : 'Get it on Google Play'} className="inline-block transition hover:opacity-85">

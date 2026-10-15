@@ -8,7 +8,7 @@ import { VideoGallery } from '@/components/shop/VideoGallery';
 import realWork from '@/content/real-work.json';
 const videoCount = realWork.items.length;
 
-export const metadata: Metadata = pageMeta({ path: '/work', title: 'Work: UGC ads, product films & fashion video', description: '25 published pieces: AI UGC ads, product films, fashion and jewellery video, social clips and real estate reels, plus the ORVA storefront.', image: '/og/work.jpg' });
+export const metadata: Metadata = pageMeta({ path: '/work', title: 'Work: UGC ads, product films & fashion video', description: 'Published pieces: AI UGC ads, product films, fashion and jewellery video, social clips and real estate reels, plus the ORVA storefront.', image: '/og/work.jpg' });
 
 export default function WorkPage() {
   return (

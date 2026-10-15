@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { nav, site, work } from '@/content/site';
 import { Logo } from '@/components/Logo';
+import { agency, waLink } from '@/content/agency';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -22,8 +23,8 @@ export function Footer() {
             >
               {site.email}
             </a>
-            <a href="https://wa.me/639515680964" target="_blank" rel="noopener noreferrer" className="mt-2 block text-[15px] text-white/80 hover:opacity-60">
-              WhatsApp +63 951 568 0964
+            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="mt-2 block text-[15px] text-white/80 hover:opacity-60">
+              WhatsApp {agency.whatsappDisplay}
             </a>
           </div>
 

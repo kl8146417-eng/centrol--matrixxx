@@ -44,7 +44,7 @@ html.lenis body {
 
 /* Selection / text-highlight color. */
 ::selection {
-  background: #213da0;
+  background: #1D4ED8;
   color: #ffffff;
 }
 
@@ -65,28 +65,6 @@ html.lenis body {
 /* Editorial hairline rule. */
 .hairline {
   border-top: 1px solid rgba(14, 14, 14, 0.12);
-}
-
-/* --- Hero scroll backdrop ---
-   As the dark portal circle expands to fill the viewport, flip the hero text
-   to light so it stays readable over the dark fill. Smooth, not abrupt. */
-.hero-section h1,
-.hero-section .hero-lede,
-.hero-section .hero-portal-caption {
-  transition: color 0.4s ease;
-}
-html[data-hero-dark] .hero-section h1,
-html[data-hero-dark] .hero-section h1 span {
-  color: #ffffff !important;
-}
-html[data-hero-dark] .hero-section h1 [data-hero-accent] {
-  color: #ff5ea8 !important;
-}
-html[data-hero-dark] .hero-section .hero-lede {
-  color: rgba(255, 255, 255, 0.72) !important;
-}
-html[data-hero-dark] .hero-section .hero-portal-caption {
-  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* Rendered blog post content (sanitized HTML). Editorial typography, one accent. */
@@ -114,12 +92,12 @@ html[data-hero-dark] .hero-section .hero-portal-caption {
   font-size: 24px;
 }
 .prose-cm a {
-  color: #79a4df;
+  color: #1D4ED8;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .prose-cm a:hover {
-  color: #213da0;
+  color: rgba(29,78,216,0.25);
 }
 .prose-cm strong {
   color: #0e0e0e;

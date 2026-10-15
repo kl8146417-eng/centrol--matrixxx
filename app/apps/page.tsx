@@ -9,7 +9,7 @@ import { products } from '@/content/products';
 import { ProductCard } from '@/components/home/Products';
 import { agency } from '@/content/agency';
 
-export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Apps & products', description: 'Products built by Centrol Matrix: Siteory, Delhi PGs, GiftFeels, WishCuts, Hanger Club and the ORVA storefront demo.', image: '/og/apps.jpg' });
+export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Apps & products', description: 'Products built and run by Centrol Matrix: Recl, Siteory, GiftFeels, WishCuts, Delhi PGs, Hanger Club and the ORVA storefront demo.', image: '/og/apps.jpg' });
 
 export default function AppsPage() {
   return (
@@ -24,7 +24,7 @@ export default function AppsPage() {
 
       <section className="mx-auto max-w-editorial space-y-6 px-5 py-20 sm:px-8">
         {products.map((p, i) => (
-          <ProductCard key={p.id} p={p} flip={i % 2 === 1} extra={p.id === 'giftfeels' ? (
+          <ProductCard key={p.id} p={p} flip={i % 2 === 1} extra={p.id === 'giftfeels-web' ? (
             <a href="https://trustmrr.com/startup/giftfeels" target="_blank" rel="noopener noreferrer" className="mt-6 block w-fit" aria-label="GiftFeels verified revenue on TrustMRR">
               <span className="mb-2 block text-[12px] uppercase tracking-wordmark text-ink-soft">Verified revenue on TrustMRR</span>
               {/* Official TrustMRR embed badge, rendered live by TrustMRR */}
