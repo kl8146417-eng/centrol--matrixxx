@@ -1,3 +1,5 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { CTASection } from '@/components/CTASection';
@@ -7,15 +9,12 @@ import { products } from '@/content/products';
 import { ProductCard } from '@/components/home/Products';
 import { agency } from '@/content/agency';
 
-export const metadata: Metadata = {
-  title: 'Apps',
-  description: 'Apps we built and published, plus live demos you can click through.',
-  alternates: { canonical: '/apps' },
-};
+export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Apps & products', description: 'Products built by Centrol Matrix: Siteory, Delhi PGs, GiftFeels, Hanger Club and the ORVA storefront demo.', image: '/og/apps.jpg' });
 
 export default function AppsPage() {
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Apps & products", "path": "/apps"}]} />
       <PageHeader
         eyebrow="Apps"
         title="Products we"

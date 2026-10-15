@@ -12,21 +12,21 @@ const v = (id: string) => ({ src: `/media/real/${id}.mp4`, poster: `/media/real/
 type Tile = { title: string; body: string; href: string; price: string; cls: string; media: React.ReactNode; dark?: boolean; icon: IconName };
 const tiles: Tile[] = [
   { icon: 'monitor', title: 'Websites & storefronts', body: 'CRO-minded sites and Shopify or custom storefronts, designed, built and kept fast.', href: '/pricing#website', price: from(['website']), cls: 'lg:col-span-2 lg:row-span-2',
-    media: <img src="/work/hotel-demo.png" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" /> },
+    media: <div className="absolute inset-0 bg-[#1A1A1A]"><img src="/products/siteory/desktop.webp" alt="" loading="lazy" className="absolute left-1/2 top-16 w-[80%] max-w-[640px] -translate-x-1/2 rounded-xl border border-white/10 shadow-2xl transition-transform duration-700 group-hover:-translate-y-1" /></div> },
   { icon: 'phone', title: 'Mobile apps', body: 'iOS and Android apps we design, ship to the stores and run.', href: '/apps', price: 'Scoped on a call', cls: 'lg:row-span-2',
-    media: <img src="/products/dupgs/screen-2.webp" alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" /> },
+    media: <div className="absolute inset-0 bg-accent"><img src="/products/dupgs/screen-1.webp" alt="" loading="lazy" className="absolute left-1/2 top-16 w-[48%] max-w-[190px] -translate-x-1/2 rounded-[1.4rem] border-[5px] border-[#111] shadow-2xl transition-transform duration-700 group-hover:-translate-y-1" /></div> },
   { icon: 'mic', title: 'AI UGC ads', body: 'Creator-style talking heads and walk-and-talks for Reels, TikTok and Shorts.', href: '/pricing#ai_ugc', price: from(['ai_ugc']), cls: 'lg:row-span-2',
-    media: <AutoVideo {...v('park-mic-ugc')} className="absolute inset-0 h-full w-full object-cover" /> },
+    media: <AutoVideo {...v('park-mic-ugc')} className="absolute inset-0 h-full w-full object-cover object-[50%_30%]" /> },
   { icon: 'box', title: 'Product ads & mockups', body: 'Product films, unboxings, ghost-mannequin and lifestyle imagery from photos you already have.', href: '/pricing#product_mockups', price: from(['product_mockups', 'ad_creatives']), cls: 'lg:col-span-2',
-    media: <AutoVideo {...v('watch-patek')} className="absolute inset-0 h-full w-full object-cover" /> },
+    media: <AutoVideo {...v('watch-patek')} className="absolute inset-0 h-full w-full object-cover object-[50%_30%]" /> },
   { icon: 'chat', title: 'Social posts & content', body: 'Street interviews, talking heads and carousels that keep a posting calendar full.', href: '/pricing#content', price: from(['content']), cls: '',
-    media: <AutoVideo {...v('street-interview')} className="absolute inset-0 h-full w-full object-cover" /> },
+    media: <AutoVideo {...v('street-interview')} className="absolute inset-0 h-full w-full object-cover object-[50%_30%]" /> },
   { icon: 'palette', title: 'Fashion & T-shirt shoots', body: 'Try-ons, street style and tee drops that show fit and movement, no studio day needed.', href: '/work#fashion', price: from(['product_mockups']), cls: 'lg:row-span-2',
-    media: <AutoVideo {...v('graphic-tee-ad')} className="absolute inset-0 h-full w-full object-cover" /> },
+    media: <AutoVideo {...v('graphic-tee-ad')} className="absolute inset-0 h-full w-full object-cover object-[50%_30%]" /> },
   { icon: 'workflow', title: 'AI automation, SEO & lead gen', body: 'Process audits, workflow builds, AI ops, lead lists, SEO and strategy, scoped to your stack.', href: '/pricing#automation', price: 'Scoped on a call', cls: 'lg:col-span-2', dark: true,
     media: <><div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(125,162,255,0.45),transparent_55%)]" /><img src="/3d/setting.webp" alt="" loading="lazy" className="absolute -right-4 -top-6 w-44 rotate-12 opacity-95 transition-transform duration-700 group-hover:rotate-45" /></> },
   { icon: 'home', title: 'Real estate video', body: 'AI visualisation from floor plans and pacing-and-grade edits of property footage.', href: '/pricing#beyond', price: from(['beyond']), cls: '',
-    media: <AutoVideo {...v('re-aerial-dusk')} className="absolute inset-0 h-full w-full object-cover" /> },
+    media: <AutoVideo {...v('re-aerial-dusk')} className="absolute inset-0 h-full w-full object-cover object-[50%_30%]" /> },
 ];
 
 export function ServicesBento() {

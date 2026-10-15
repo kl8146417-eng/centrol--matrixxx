@@ -21,7 +21,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt ?? undefined,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: `https://centrolmatrix.com/blog/${post.slug}` },
     openGraph: {
       type: 'article',
       title: post.title,

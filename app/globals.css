@@ -186,3 +186,7 @@ html[data-hero-dark] .hero-section .hero-portal-caption {
 @media (prefers-reduced-motion: reduce) {
   [class*='animate-[cm-'] { animation: none !important; }
 }
+
+/* Grid/flex children must be allowed to shrink below their media's intrinsic width (prevents image/video blowout on mobile). */
+.grid > * { min-width: 0; }
+img, video { max-width: 100%; }

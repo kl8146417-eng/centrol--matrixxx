@@ -1,84 +1,67 @@
-'use client';
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import data from '@/content/real-work.json';
+import { AutoVideo } from './AutoVideo';
 
-const CAPS = ['Websites', 'Mobile apps', 'AI UGC ads', 'Product ads & mockups', 'Social posts', 'Fashion & T-shirt shoots', 'Real estate video', 'AI automation'];
-const vertical = data.items.filter((i) => i.h > i.w);
-const cols = [0, 1, 2].map((c) => vertical.filter((_, k) => k % 3 === c).slice(0, 5));
-
-function Column({ items, dir, play }: { items: typeof vertical; dir: 'up' | 'down'; play: boolean }) {
-  const loop = [...items, ...items];
-  return (
-    <div className="relative h-full overflow-hidden">
-      <div className={`flex flex-col gap-4 ${dir === 'up' ? 'animate-[cm-up_60s_linear_infinite]' : 'animate-[cm-down_60s_linear_infinite]'}`}>
-        {loop.map((it, k) => (
-          <div key={`${it.id}-${k}`} className="relative aspect-[9/16] w-full overflow-hidden rounded-2xl bg-white/5">
-            {play && k === 1 ? (
-              <video src={it.video} poster={it.thumb} muted loop autoPlay playsInline preload="metadata" className="h-full w-full object-cover" />
-            ) : (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={it.thumb} alt="" loading={k < 3 ? 'eager' : 'lazy'} className="h-full w-full object-cover" />
-            )}
-            <span className="absolute bottom-2 left-2 rounded-full bg-black/55 px-2 py-0.5 text-[10px] uppercase tracking-wider text-white/80 backdrop-blur">{it.tag}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+// Editorial, asymmetric hero: real work up front, specific copy, no gradients.
+const LINES = [
+  { w: 'Websites', href: '/websites' },
+  { w: 'Apps', href: '/apps' },
+  { w: 'UGC ads', href: '/work#ugc' },
+  { w: 'Product shoots', href: '/work#product' },
+];
 
 export function HomeHero() {
-  const root = useRef<HTMLElement>(null);
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const ctx = gsap.context(() => {
-      gsap.from('[data-hero-line]', { yPercent: 110, duration: 1.2, ease: 'power4.out', stagger: 0.09, delay: 0.1 });
-      gsap.from('[data-hero-fade]', { y: 24, autoAlpha: 0, duration: 1, ease: 'power3.out', stagger: 0.08, delay: 0.5 });
-      gsap.from('[data-hero-cols]', { autoAlpha: 0, scale: 0.96, duration: 1.4, ease: 'power3.out', delay: 0.2 });
-    }, root);
-    return () => ctx.revert();
-  }, []);
   return (
-    <section ref={root} className="relative overflow-hidden bg-ink-section text-white">
-      <div aria-hidden="true" className="pointer-events-none absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-accent/30 blur-[140px]" />
-      <div className="relative mx-auto grid max-w-editorial gap-12 px-5 pb-16 pt-32 sm:px-8 lg:min-h-[100svh] lg:grid-cols-12 lg:items-center lg:pb-0 lg:pt-16">
-        <div className="lg:col-span-7">
-          <p data-hero-fade className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-[12px] uppercase tracking-wordmark text-white/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Full-service studio
-          </p>
-          <h1 className="mt-7 font-display text-[clamp(46px,6vw,92px)] leading-[0.98] tracking-tight">
-            <span className="block overflow-hidden pb-1"><span data-hero-line className="block">Everything your</span></span>
-            <span className="block overflow-hidden pb-1"><span data-hero-line className="block">brand needs online,</span></span>
-            <span className="block overflow-hidden pb-2"><span data-hero-line className="block italic text-[#7DA2FF]">built in one room.</span></span>
-          </h1>
-          <p data-hero-fade className="mt-7 max-w-xl text-[17px] leading-relaxed text-white/70">
-            We design and ship websites and apps, produce AI UGC ads, product films, mockups and social content, and automate the busywork behind them. One team, one brief, one bill.
-          </p>
-          <ul data-hero-fade className="mt-7 flex max-w-2xl flex-wrap gap-2">
-            {CAPS.map((c) => <li key={c} className="rounded-full border border-white/12 bg-white/[0.04] px-3 py-1 text-[13px] text-white/80">{c}</li>)}
-          </ul>
-          <div data-hero-fade className="mt-9 flex flex-wrap items-center gap-3">
-            <Link href="/contact" className="rounded-full bg-accent px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-accent-dark hover:scale-[1.02]">Start a project</Link>
-            <Link href="/pricing" className="rounded-full border border-white/20 px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white hover:text-ink">See pricing</Link>
-            <Link href="/work" className="px-2 py-3.5 text-[15px] text-white/70 underline-offset-4 hover:text-white hover:underline">Watch the work →</Link>
-          </div>
-          <a href="#products" data-hero-fade className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-1.5 pl-1.5 pr-4 text-[13px] text-white/70 backdrop-blur-md transition hover:border-white/25">
-            <span className="flex -space-x-2">
-              {['/products/siteory/icon.png', '/products/dupgs/icon.webp', '/products/giftfeels/icon.webp'].map((src) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={src} src={src} alt="" className="h-7 w-7 rounded-full bg-white object-cover ring-2 ring-ink-section" />
-              ))}
-            </span>
-            Makers of Siteory, Delhi PGs and GiftFeels
-          </a>
+    <section className="relative bg-[#F4F4F2] text-ink">
+      <div className="mx-auto max-w-editorial px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:pb-20">
+        <div className="flex items-center justify-between border-b border-ink/15 pb-3 text-[12px] uppercase tracking-wordmark text-muted">
+          <span>Centrol Matrix · Studio</span>
+          <span className="hidden sm:inline">Websites / Apps / Ads / Automation</span>
         </div>
-        <div data-hero-cols aria-hidden="true" className="relative h-[420px] lg:col-span-5 lg:h-[100svh]">
-          <div className="absolute inset-0 grid grid-cols-3 gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]">
-            <Column items={cols[0]} dir="up" play />
-            <div className="translate-y-[-8%]"><Column items={cols[1]} dir="down" play /></div>
-            <Column items={cols[2]} dir="up" play />
+
+        <div className="mt-8 grid gap-10 lg:mt-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-7">
+            <p className="text-[15px] font-medium text-ink-soft">We make</p>
+            <h1 className="mt-2 font-display text-[clamp(52px,9vw,128px)] leading-[0.92] tracking-[-0.02em]">
+              {LINES.map((l, i) => (
+                <Link key={l.w} href={l.href} className="group flex items-baseline gap-3 border-b border-ink/10 py-1 last:border-0 sm:gap-5">
+                  <span className="font-sans text-[12px] font-medium tracking-normal text-muted sm:text-[13px]">0{i + 1}</span>
+                  <span className="transition-colors group-hover:text-accent">{l.w}</span>
+                  <span aria-hidden="true" className="ml-auto self-center font-sans text-[18px] text-ink/30 transition group-hover:translate-x-1 group-hover:text-accent sm:text-[24px]">→</span>
+                </Link>
+              ))}
+            </h1>
+            <p className="mt-8 max-w-lg text-[17px] leading-relaxed text-ink-soft">
+              A three-person studio. We built and run <a href="#products" className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-4">Siteory, Delhi PGs and GiftFeels</a>, and we make the ads, shoots and sites for brands that want the same care.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link href="/contact" className="rounded-full bg-ink px-7 py-3.5 text-[15px] font-semibold text-white transition hover:bg-accent">Start a project</Link>
+              <Link href="/pricing" className="rounded-full border border-ink/20 px-7 py-3.5 text-[15px] font-semibold transition hover:border-ink">Fixed-price packages</Link>
+            </div>
+          </div>
+
+          {/* Real-work collage */}
+          <div className="relative grid grid-cols-12 grid-rows-[auto_auto] gap-3 lg:col-span-5">
+            <figure className="col-span-7 row-span-2 overflow-hidden rounded-2xl bg-ink">
+              <div className="relative aspect-[9/16]">
+                <AutoVideo src="/media/real/park-mic-ugc.mp4" poster="/media/real/park-mic-ugc.webp" label="AI UGC ad" className="absolute inset-0 h-full w-full object-cover" />
+              </div>
+              <figcaption className="flex justify-between px-3 py-2 text-[11px] uppercase tracking-wider text-white/70"><span>UGC ad</span><span>0:10</span></figcaption>
+            </figure>
+            <figure className="col-span-5 overflow-hidden rounded-2xl border border-ink/10 bg-white">
+              <img src="/products/dupgs/screen-2.webp" alt="Delhi PGs app" className="aspect-[9/16] w-full object-cover object-top" />
+              <figcaption className="px-3 py-2 text-[11px] uppercase tracking-wider text-muted">Delhi PGs · App</figcaption>
+            </figure>
+            <figure className="col-span-5 overflow-hidden rounded-2xl bg-ink">
+              <div className="relative aspect-square">
+                <AutoVideo src="/media/real/handbag-showcase.mp4" poster="/media/real/handbag-showcase-480.webp" label="Product film" className="absolute inset-0 h-full w-full object-cover" />
+              </div>
+              <figcaption className="px-3 py-2 text-[11px] uppercase tracking-wider text-white/70">Product shoot</figcaption>
+            </figure>
+            <figure className="col-span-12 overflow-hidden rounded-2xl border border-ink/10 bg-white">
+              <img src="/products/siteory/desktop.webp" alt="Siteory website" className="aspect-[16/7] w-full object-cover object-top" />
+              <figcaption className="flex justify-between px-3 py-2 text-[11px] uppercase tracking-wider text-muted"><span>Siteory · Website</span><span>siteory.co</span></figcaption>
+            </figure>
           </div>
         </div>
       </div>

@@ -1,17 +1,16 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { CTASection } from '@/components/CTASection';
 import { TeamSection } from '@/components/Team';
 
-export const metadata: Metadata = {
-  title: 'About',
-  description: 'Centrol Matrix is a studio for websites, content, and AI automation.',
-  alternates: { canonical: '/about' },
-};
+export const metadata: Metadata = pageMeta({ path: '/about', title: 'About the studio', description: 'Centrol Matrix is a three-person studio (Asutosh, Vishal and Karan) building websites, apps, AI UGC ads, product shoots and automations.' });
 
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbLd items={[{"name": "About the studio", "path": "/about"}]} />
       <PageHeader
         eyebrow="About"
         title="A small studio"

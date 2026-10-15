@@ -1,3 +1,5 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { ServicesGrid } from '@/components/ServicesGrid';
@@ -6,16 +8,12 @@ import { CTASection } from '@/components/CTASection';
 import Link from 'next/link';
 import { studioServices } from '@/content/site';
 
-export const metadata: Metadata = {
-  title: 'Services',
-  description:
-    'Websites, content systems, marketing, lead generation, and AI automation — built and run by one studio.',
-  alternates: { canonical: '/services' },
-};
+export const metadata: Metadata = pageMeta({ path: '/services', title: 'Services', description: 'Websites, mobile apps, AI UGC ads, product ads and mockups, social content, fashion shoots, real estate video and AI automation from one studio.' });
 
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Services", "path": "/services"}]} />
       <PageHeader
         eyebrow="Services"
         title="One studio,"

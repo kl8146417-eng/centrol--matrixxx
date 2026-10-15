@@ -15,7 +15,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const path = usePathname() || '/';
-  const darkTop = !LIGHT_TOP.some((p) => path.startsWith(p));
+  const darkTop = path !== '/' && !LIGHT_TOP.some((p) => path.startsWith(p));
   const onDark = darkTop && !scrolled && !open;
 
   useEffect(() => {

@@ -1,12 +1,15 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import Link from 'next/link';
 import { DOCS, UPDATED, type Kind } from '@/content/legal';
 
-export const legalMeta = (k: Kind) => ({ title: DOCS[k].title, description: DOCS[k].desc, alternates: { canonical: `/${k}` } });
+export const legalMeta = (k: Kind) => pageMeta({ path: `/${k}`, title: DOCS[k].title, description: DOCS[k].desc });
 
 export function LegalDoc({ kind }: { kind: Kind }) {
   const doc = DOCS[kind];
   return (
     <article className="mx-auto max-w-3xl px-5 pb-24 pt-32 sm:px-8 sm:pt-40">
+      <BreadcrumbLd items={[{ name: doc.title, path: `/${kind}` }]} />
       <p className="text-[12px] uppercase tracking-wordmark text-accent">Legal</p>
       <h1 className="mt-4 font-display text-display-md text-ink">{doc.title}</h1>
       <p className="mt-3 text-[14px] text-muted">Last updated {UPDATED}</p>

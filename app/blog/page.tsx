@@ -1,3 +1,5 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/PageHeader';
@@ -5,11 +7,7 @@ import { safeListPublished, dbConfigured } from '@/lib/blog/safe';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Notes on building websites, content engines, and AI automation.',
-  alternates: { canonical: '/blog' },
-};
+export const metadata: Metadata = pageMeta({ path: '/blog', title: 'Blog', description: 'Notes from Centrol Matrix on websites, content engines, AI UGC ads and automation.' });
 
 function formatDate(d: Date | null) {
   if (!d) return '';
@@ -26,6 +24,7 @@ export default async function BlogIndex({
 
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Blog", "path": "/blog"}]} />
       <PageHeader
         eyebrow="Blog"
         title="Notes from"

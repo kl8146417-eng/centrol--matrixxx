@@ -1,18 +1,17 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/PageHeader';
 import { CTASection } from '@/components/CTASection';
 import { WebsiteGallery } from '@/components/WebsiteGallery';
 import { work } from '@/content/site';
 
-export const metadata: Metadata = {
-  title: 'Websites',
-  description: 'Websites and products we designed, built, and shipped. Preview each one live.',
-  alternates: { canonical: '/websites' },
-};
+export const metadata: Metadata = pageMeta({ path: '/websites', title: 'Websites we have built', description: 'Live websites and storefronts designed and built by Centrol Matrix, with previews you can click through.' });
 
 export default function WebsitesPage() {
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Websites we have built", "path": "/websites"}]} />
       <PageHeader
         eyebrow="Websites"
         title="Sites we built"

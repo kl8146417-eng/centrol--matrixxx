@@ -6,11 +6,12 @@ export function Phone({ src, alt, className = '' }: { src: string; alt: string; 
     </div>
   );
 }
-export function StoreBadge({ label, href, dark = true }: { label: string; href: string; dark?: boolean }) {
+export function StoreBadge({ label, href }: { label: string; href: string; dark?: boolean }) {
+  const apple = label === 'App Store';
+  // Official Apple / Google badge artwork.
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-[13px] font-semibold transition hover:opacity-85 ${dark ? 'bg-ink text-white' : 'bg-white text-ink'}`}>
-      <span aria-hidden="true">{label === 'App Store' ? '' : '▶'}</span>
-      <span className="leading-tight"><span className="block text-[10px] font-normal opacity-70">{label === 'App Store' ? 'Download on the' : 'Get it on'}</span>{label}</span>
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={apple ? 'Download on the App Store' : 'Get it on Google Play'} className="inline-block transition hover:opacity-85">
+      <img src={apple ? '/badges/app-store.svg' : '/badges/google-play.png'} alt={apple ? 'Download on the App Store' : 'Get it on Google Play'} className={apple ? 'h-[44px] w-auto' : 'h-[64px] w-auto -my-[10px] -mx-[8px]'} />
     </a>
   );
 }

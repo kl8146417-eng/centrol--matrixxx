@@ -12,8 +12,8 @@ export const agency = {
   phone: '+63 951 568 0964',
   orderPrefix: 'CMX',
   // Live demos. ORVA/Hanger Club currently run on temporary tunnels; replace with permanent URLs.
-  demo: { name: 'ORVA', url: process.env.NEXT_PUBLIC_ORVA_URL ?? '' },
-  wardrobe: { name: 'Hanger Club', url: process.env.NEXT_PUBLIC_WARDROBE_URL ?? '' },
+  demo: { name: 'ORVA', url: process.env.NEXT_PUBLIC_ORVA_URL || 'https://orva-centrol-matrix.netlify.app' },
+  wardrobe: { name: 'Hanger Club', url: process.env.NEXT_PUBLIC_WARDROBE_URL || 'https://hanger-club-centrol-matrix.netlify.app' },
   currencies: {
     USD: { symbol: '$', rate: 1, label: 'US Dollar' },
     GBP: { symbol: '£', rate: 0.75, label: 'British Pound' },

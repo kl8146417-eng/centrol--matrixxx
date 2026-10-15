@@ -1,3 +1,5 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/PageHeader';
@@ -6,15 +8,12 @@ import { VideoGallery } from '@/components/shop/VideoGallery';
 import realWork from '@/content/real-work.json';
 const videoCount = realWork.items.length;
 
-export const metadata: Metadata = {
-  title: 'Work',
-  description: 'AI UGC ads, product films, fashion and jewellery video, social content and the ORVA storefront case study.',
-  alternates: { canonical: '/work' },
-};
+export const metadata: Metadata = pageMeta({ path: '/work', title: 'Work: UGC ads, product films & fashion video', description: '25 published pieces: AI UGC ads, product films, fashion and jewellery video, social clips and real estate reels, plus the ORVA storefront.', image: '/og/work.jpg' });
 
 export default function WorkPage() {
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Work", "path": "/work"}]} />
       <PageHeader eyebrow="Work" title="Content that" accent="earns its keep." intro={`${videoCount} published videos from our creative pipeline, the ORVA storefront build, and the websites we've shipped.`} />
       <section className="mx-auto grid max-w-editorial gap-5 px-5 pb-16 sm:px-8 md:grid-cols-2">
         <Link href="/work/orva" className="group overflow-hidden rounded-2xl border border-ink/10">

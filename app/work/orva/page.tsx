@@ -1,3 +1,5 @@
+import { pageMeta } from '@/lib/seo';
+import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import shots from '@/public/work/orva/shots.json';
@@ -5,11 +7,7 @@ import { agency } from '@/content/agency';
 import { CTASection } from '@/components/CTASection';
 import { OrvaCta } from '@/components/shop/OrvaCta';
 
-export const metadata: Metadata = {
-  title: 'ORVA case study',
-  description: 'How we built ORVA, an interactive hanging-rail clothing storefront with AI product photography: quick view, product pages, cart, mobile-first.',
-  alternates: { canonical: '/work/orva' },
-};
+export const metadata: Metadata = pageMeta({ path: '/work/orva', title: 'ORVA storefront case study', description: 'How Centrol Matrix built ORVA, an interactive hanging-rail clothing storefront with AI product photography.' });
 type Shot = { src: string; sm: string; w: number; h: number; title: string; mobile: boolean };
 const BUILT = [
   ['The hanging rail', 'Garments hang on a real rail and turn on hover, drag or swipe. A 3D-feeling product carousel built from photo turntables, not a WebGL heavyweight.'],
@@ -25,6 +23,7 @@ export default function OrvaPage() {
   const desk = all.filter((s) => !s.mobile); const mob = all.filter((s) => s.mobile);
   return (
     <>
+      <BreadcrumbLd items={[{"name": "Work", "path": "/work"}, {"name": "ORVA", "path": "/work/orva"}]} />
       <header className="mx-auto max-w-editorial px-5 pb-12 pt-32 sm:px-8 sm:pt-40">
         <p className="text-[12px] uppercase tracking-wordmark text-accent"><Link href="/work" className="underline">Work</Link> / Case study</p>
         <h1 className="mt-5 max-w-4xl font-display text-display-xl text-ink">ORVA: a storefront you can <span className="italic text-accent">browse like a rail.</span></h1>
