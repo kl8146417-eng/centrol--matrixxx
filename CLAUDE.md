@@ -2,9 +2,55 @@
 
 Build instructions for any AI coding agent (Claude, Copilot, etc.) working in this repo.
 
-> **Current direction (Oct 2026):** `DESIGN.md` (v4 tokens) and `docs/REDESIGN_PLAN.md` (v5:
-> generalist home + `/fashion` cold-email page + `/for/[slug]` sample pages) supersede the home
-> spec in §6 below. Research lives in `docs/research/`.
+## 0. Current direction (v6, Nov 2026): read this first
+
+v6 (`docs/briefs/2026-11-13-site-rebuild-BRIEF.md`, handoff in `docs/2026-11-13-us-ecom-relaunch-HANDOFF.md`)
+supersedes the home spec in §6 and the v5 fashion-first plan (`docs/REDESIGN_PLAN.md`). Visual tokens are
+still `DESIGN.md` (v4: blue accent, Playfair + Inter).
+
+**Positioning.** US e-commerce first. The pitch is product photos (with AngleForge), Amazon and Shopify
+listing images, UGC-style video ads, Shopify store builds and fixes, and lead/customer follow-up, for brands
+selling on Shopify and Amazon. Apps come second. Our own products (Siteory, AngleForge, Recl, GiftFeels,
+WishCuts) are "tools we built and use", not the main pitch.
+
+**Outreach landing page: `/audit`.** Cold email and the AI cold-caller send prospects here, with
+`?first=&site=&brand=`. Siteory runs the checks; Asutosh reviews and emails the report within 2 business days.
+Copy lives in `content/audit.ts`. Keep the "Got a call from our AI assistant?" line.
+
+**People and contact.**
+- **Asutosh is the public face and the contact.** Never list Karan, or anyone else, as the contact.
+- The main phone is **+1 (218) 438-4731** (`agency.phone`, override with `NEXT_PUBLIC_PHONE`), answered 24/7 by an
+  AI receptionist that books a callback with Asutosh. Wherever the number appears, show the note via `<PhoneLine />`:
+  "Answered 24/7 by our AI assistant. Asutosh calls you back."
+- WhatsApp is secondary: `/contact` and the footer only.
+- No booking link yet: booking CTAs render only when `NEXT_PUBLIC_CAL_URL` is set.
+- No analytics. If you add any, add a consent banner and update the privacy page.
+
+**Claim limits (hard).**
+- No revenue, conversion, sales, ROAS or ranking promises. No fake stats, testimonials or client logos.
+- Siteory *reports*; it doesn't fix (fixing is our paid work). Never quote Siteory scores. Never say "penetration testing".
+- Never pitch Facebook, Instagram or TikTok ads to CBD or ingestible-supplement brands.
+- Label AI samples as samples.
+- Payments are invoice / payment link only (Stripe and Razorpay are off).
+- AngleForge claims must match angleforge.studio.
+
+**Structure.**
+- Nav: Services · Work · Pricing · About · Contact, plus the "Free site audit" CTA.
+- `/fashion` stays live for email links but sits in the footer ("For clothing brands").
+- "Real estate" links out to **https://homes.centrolmatrix.com** (built elsewhere; don't build it here).
+- Content sources:
+  - `content/offer.ts`: the five offers;
+  - `content/services.json`: packages and prices. Retire packages with `hidden: true`, never delete;
+  - `content/angleforge.ts`: before/after pairs;
+  - `content/blog-unpublished.ts`: hidden posts, kept in sync with the redirects in `next.config.mjs`.
+
+**Rules that stay.**
+- Don't break inbound links (`/fashion`, `/for/*`, `/blog/*`, `/pricing`, `/contact`, `/work`, `/apps`): add 301s with
+  `statusCode: 301` in `next.config.mjs` (`permanent: true` sends 308).
+- Unpublish blog posts, never delete them.
+- Production deploys from `main` (Netlify git-linked; PRs get deploy previews). Work on a branch, open a PR, merge normally.
+- Every page must pass the responsive bar at 360 to 1440: no sideways scroll, 44px tap targets, 16px+ inputs, no autoplay
+  video on phones (`AutoVideo` handles it).
 
 Read this **before** writing code. It overrides framework defaults. Companion docs:
 `PLAN.md` (the why), `VIDEO_ANALYSIS.md` (the hero reference), `.github/copilot-instructions.md`
@@ -278,7 +324,10 @@ CM_TOKEN_PEPPER=...                    # extra secret mixed into token hashing
 RESEND_API_KEY=...                     # contact form email (optional until contact built)
 CONTACT_TO_EMAIL=contact@centrolmatrix.com
 NEXT_PUBLIC_SITE_URL=https://centrolmatrix.com
-NEXT_PUBLIC_GA_ID=                     # client provides
+NEXT_PUBLIC_GA_ID=                     # client provides (none yet; needs a consent banner if added)
+NEXT_PUBLIC_PHONE=12184384731          # main phone (AI receptionist); this is the code default
+NEXT_PUBLIC_WHATSAPP=                  # secondary contact; code default is the +63 number
+NEXT_PUBLIC_CAL_URL=                   # booking link; booking buttons hidden while empty
 ```
 `.env` already contains an OpenRouter key used only by `analyze_video.py` — **never expose it
 client-side and never commit secrets**. Add `.env*` to `.gitignore`.

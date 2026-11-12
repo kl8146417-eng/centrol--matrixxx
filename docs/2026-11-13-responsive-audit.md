@@ -57,6 +57,27 @@ Widths: 360, 390, 768, 1024, 1440. Pages: `/`, `/services`, `/pricing`, `/work`,
 - "Ads, shoots and stores that sell your product."
 - Fashion-first nav. No phone number. No audit offer.
 
-## After (v6)
+## After (v6, local production build + deploy preview 3)
 
-See the "After" section appended below once the v6 captures are taken.
+Widths: 360, 390, 414, 768, 1024, 1280, 1440.
+Pages: `/`, `/audit`, `/services`, `/pricing`, `/work`, `/contact`, `/fashion`, `/apps`, `/blog`, `/about`, `/faq`, `/for/demo`, `/privacy`, plus `/admin`, which is only checked for not being broken.
+
+| Check | Before (v5 live) | After (v6) |
+|---|---|---|
+| Horizontal overflow | 0 | 0 on every page and width |
+| Tap targets under 44px (per page, at 390) | 18 to 56 | 0 on every public page |
+| Form fields under 16px | currency select (13px) | none |
+| Video autoplaying above the fold on phones | none | none. Phones never autoplay: poster plus play button, 480p loaded on tap |
+| Mobile menu | small dropdown, no CTA in the bar | full-height sheet: 60px rows, focus moves in, Escape closes, page scroll locked. "Free audit" stays visible in the bar |
+| Anchors under the fixed nav | not handled | one `scroll-padding-top: 96px`, no stacked offsets |
+| Home length at 390 | ~15,700px | ~13,500px |
+
+Fixed along the way:
+- Display headings no longer break "e-" / "commerce".
+- The hero caption no longer sits under the UGC sample card.
+- The `/audit` contact row no longer overflows at 768px.
+- `/fashion`'s comparison table becomes stacked cards on phones.
+- The `/pricing` currency select sits on its own row on phones.
+
+Admin (`/admin`) loads and works, with one small sign-in field (not polished, as agreed in the brief).
+Committed comparison sheets: `docs/screens/compare/*.jpg` (live v5 vs v6 at 390 and 1440).
