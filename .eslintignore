@@ -1,0 +1,2 @@
+# Type declarations for lib/pricing.mjs: the JS parser can't read them; tsc checks them.
+lib/pricing.d.mts

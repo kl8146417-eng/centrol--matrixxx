@@ -1,8 +1,9 @@
-import { and, desc, eq, isNull, like, or, sql } from 'drizzle-orm';
+import { and, desc, eq, isNull, like, notInArray, or, sql } from 'drizzle-orm';
 import { getDb } from '@/lib/db';
 import { posts, type Post } from '@/lib/db/schema';
 import { markdownToSafeHtml, sanitizeHtml, readingTime, slugify } from '@/lib/blog/markdown';
 import type { CreatePostInput, UpdatePostInput } from '@/lib/validation';
+import { UNPUBLISHED_SLUGS } from '@/content/blog-unpublished';
 
 /** Make a slug unique by appending -2, -3, ... if needed. */
 async function uniqueSlug(base: string, ignoreId?: string): Promise<string> {
@@ -99,7 +100,8 @@ export async function softDeletePost(id: string): Promise<boolean> {
   return Boolean(row);
 }
 
-const publishedFilter = and(eq(posts.status, 'published'), isNull(posts.deletedAt));
+// Off-topic posts are hidden from every public read without touching their rows (content/blog-unpublished.ts).
+const publishedFilter = and(eq(posts.status, 'published'), isNull(posts.deletedAt), notInArray(posts.slug, UNPUBLISHED_SLUGS));
 
 export async function listPublished(opts: { page?: number; perPage?: number; q?: string } = {}) {
   const db = getDb();
