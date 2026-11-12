@@ -12,8 +12,8 @@ function Card({ it, onOpen }: { it: Item; onOpen: () => void }) {
       <button type="button" onClick={onOpen} aria-label={`Play: ${it.title}`} className="relative block w-full overflow-hidden rounded-2xl bg-ink" style={{ aspectRatio: `${it.w} / ${it.h}` }}>
         <video
           className="h-full w-full object-cover"
-          src={it.video} poster={it.thumb || it.poster} muted loop playsInline preload="none"
-          onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+          poster={it.thumb || it.poster} muted loop playsInline preload="none"
+          onMouseEnter={(e) => { const v = e.currentTarget; if (!v.src) v.src = it.video.replace(/\.mp4$/, '-480.mp4'); v.play().catch(() => {}); }}
           onMouseLeave={(e) => { e.currentTarget.pause(); }}
         />
         <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[12px] text-white">▶ {fmt(it.duration)}</span>
@@ -52,9 +52,9 @@ export function VideoGallery() {
       {open && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4" role="dialog" aria-modal="true" aria-label={open.title} onClick={() => setOpen(null)}>
           <div className="relative max-h-full" onClick={(e) => e.stopPropagation()}>
-            <video src={open.video} poster={open.poster} controls autoPlay playsInline className="max-h-[85vh] max-w-full rounded-xl" />
+            <video src={typeof window !== 'undefined' && window.innerWidth < 768 ? open.video.replace(/\.mp4$/, '-480.mp4') : open.video} poster={open.poster} controls autoPlay playsInline className="max-h-[85vh] max-w-full rounded-xl" />
             <p className="mt-3 max-w-xl text-[14px] text-white/80">{open.caption || open.title}</p>
-            <button type="button" onClick={() => setOpen(null)} className="absolute -top-10 right-0 text-3xl text-white" aria-label="Close">×</button>
+            <button type="button" onClick={() => setOpen(null)} className="absolute -top-12 right-0 h-11 w-11 text-3xl text-white" aria-label="Close">×</button>
           </div>
         </div>
       )}

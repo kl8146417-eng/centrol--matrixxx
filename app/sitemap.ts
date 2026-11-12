@@ -7,12 +7,12 @@ export const dynamic = 'force-dynamic';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Same origin as canonicals, so search engines never see two hosts.
   const base = SITE;
-  const staticRoutes = ['', '/fashion', '/websites', '/services', '/apps', '/about', '/blog', '/contact', '/work', '/work/orva', '/pricing', '/faq', '/terms', '/privacy', '/refunds', '/delivery'].map(
+  const staticRoutes = ['', '/audit', '/fashion', '/websites', '/services', '/apps', '/about', '/blog', '/contact', '/work', '/work/orva', '/pricing', '/faq', '/terms', '/privacy', '/refunds', '/delivery'].map(
     (path) => ({
       url: `${base}${path}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: path === '' ? 1 : 0.7,
+      priority: path === '' ? 1 : path === '/audit' ? 0.9 : 0.7,
     })
   );
 

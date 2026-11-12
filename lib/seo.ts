@@ -5,7 +5,7 @@ export const SITE = (process.env.NEXT_PUBLIC_CANONICAL_URL || 'https://centrolma
 export const abs = (p: string) => (p.startsWith('http') ? p : `${SITE}${p}`);
 
 /** Unique title/description, absolute canonical, OG + Twitter for a page. */
-export function pageMeta({ path, title, description, image = '/og/default.jpg', noindex }: { path: string; title: string; description: string; image?: string; noindex?: boolean }): Metadata {
+export function pageMeta({ path, title, description, image = '/og/home.jpg', noindex }: { path: string; title: string; description: string; image?: string; noindex?: boolean }): Metadata {
   const url = abs(path);
   const images = [{ url: abs(image), width: 1200, height: 630, alt: title }];
   return {

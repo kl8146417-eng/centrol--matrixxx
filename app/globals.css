@@ -13,6 +13,8 @@
 html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* The nav is fixed (about 80px tall): keep #anchors from landing under it. */
+  scroll-padding-top: 96px;
 }
 
 body {

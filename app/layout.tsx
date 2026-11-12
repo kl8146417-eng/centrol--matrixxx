@@ -30,7 +30,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://centrolmatrix.com'),
   title: {
-    default: `${site.name}: websites, apps, UGC ads & product shoots`,
+    default: `${site.name}: product photos, UGC ads & Shopify fixes for e-commerce brands`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -46,10 +46,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: site.name,
-    title: `${site.name}: websites, apps, UGC ads & product shoots`,
+    title: `${site.name}: product photos, UGC ads & Shopify fixes for e-commerce brands`,
     description: site.description,
     url: 'https://centrolmatrix.com',
-    images: [{ url: 'https://centrolmatrix.com/og/default.jpg', width: 1200, height: 630 }],
+    images: [{ url: 'https://centrolmatrix.com/og/home.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -72,7 +72,11 @@ const orgJsonLd = [
     email: site.email,
     sameAs: [site.linkedin],
     description: site.description,
-    contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: site.email, telephone: agency.phone, availableLanguage: ['English'] }],
+    telephone: agency.phoneE164,
+    contactPoint: [
+      { '@type': 'ContactPoint', contactType: 'customer service', email: site.email, telephone: agency.phoneE164, areaServed: 'US', availableLanguage: ['English'], description: agency.phoneNote },
+    ],
+    knowsAbout: ['Product photography', 'Amazon listing images', 'UGC video ads', 'Shopify store development', 'Website audits'],
   },
   {
     '@context': 'https://schema.org',
@@ -86,7 +90,7 @@ const orgJsonLd = [
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Main navigation',
-    itemListElement: [['Work', '/work'], ['Services', '/services'], ['Pricing', '/pricing'], ['Apps', '/apps'], ['Websites', '/websites'], ['About', '/about'], ['Contact', '/contact']].map(([name, path], i) => ({
+    itemListElement: [['Services', '/services'], ['Work', '/work'], ['Free store audit', '/audit'], ['Pricing', '/pricing'], ['About', '/about'], ['Contact', '/contact']].map(([name, path], i) => ({
       '@type': 'SiteNavigationElement', position: i + 1, name, url: `https://centrolmatrix.com${path}`,
     })),
   },

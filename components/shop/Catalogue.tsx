@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart';
-import { categories, displayPrice, services, waLink, type Service } from '@/content/agency';
+import { categories, displayPrice, services, type Service } from '@/content/agency';
 import { CurrencySwitch } from '@/components/CartDrawer';
 
 export function ServiceCard({ s }: { s: Service }) {
@@ -22,8 +22,7 @@ export function ServiceCard({ s }: { s: Service }) {
           <>
             <p className="text-[14px] text-muted">{s.price_note || 'Scoped on a call'}</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              <Link href={`/contact?service=${s.id}`} className="rounded-full bg-ink px-5 py-2.5 text-[14px] font-semibold text-white hover:opacity-85">Enquire</Link>
-              <a href={waLink(`Hi Centrol Matrix, I'm interested in ${s.name}.`)} target="_blank" rel="noopener noreferrer" className="rounded-full border border-ink/15 px-5 py-2.5 text-[14px] font-semibold">WhatsApp</a>
+              <Link href={`/contact?service=${s.id}`} className="inline-flex min-h-[48px] items-center rounded-full bg-ink px-6 text-[15px] font-semibold text-white hover:opacity-85">Ask for a quote</Link>
             </div>
           </>
         ) : (
@@ -33,7 +32,7 @@ export function ServiceCard({ s }: { s: Service }) {
             </p>
             {s.turnaround_days ? <p className="text-[13px] font-medium text-ink-soft">{s.billing === 'monthly' ? 'Delivered through the month' : `Delivered in ${s.turnaround_days} day${s.turnaround_days === 1 ? '' : 's'}`}</p> : null}
             {s.price_note && <p className="text-[13px] text-muted">{s.price_note}</p>}
-            <button type="button" onClick={() => { if (!inCart) add(s.id); setDrawer(true); }} className="mt-4 w-full rounded-full bg-accent px-5 py-3 text-[15px] font-semibold text-white hover:bg-accent-dark">
+            <button type="button" onClick={() => { if (!inCart) add(s.id); setDrawer(true); }} className="mt-4 min-h-[48px] w-full rounded-full bg-accent px-5 text-[15px] font-semibold text-white hover:bg-accent-dark">
               {inCart ? 'In cart · view' : 'Add to cart'}
             </button>
           </>
@@ -47,11 +46,11 @@ export function Catalogue() {
   return (
     <div className="mx-auto max-w-editorial px-5 pb-24 sm:px-8">
       {/* One scrollable row on mobile (never wraps or pins); sticky only on large screens. */}
-      <div className="z-10 -mx-5 mb-10 flex items-center gap-3 bg-bg/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:px-8 lg:sticky lg:top-20">
-        <nav aria-label="Package categories" className="flex min-w-0 flex-1 gap-2 overflow-x-auto [scrollbar-width:none] lg:flex-wrap lg:overflow-visible">
-          {categories.map((c) => <a key={c.id} href={`#${c.id}`} className="shrink-0 whitespace-nowrap rounded-full border border-ink/10 px-3 py-1 text-[13px] hover:border-ink/40">{c.name}</a>)}
+      <div className="z-10 -mx-5 mb-10 flex flex-col gap-3 bg-bg/95 px-5 py-3 backdrop-blur-sm sm:-mx-8 sm:flex-row sm:items-center sm:px-8 lg:sticky lg:top-20">
+        <span className="flex items-center gap-3 sm:order-2 sm:shrink-0"><span className="text-[14px] text-muted sm:hidden">Show prices in</span><CurrencySwitch /></span>
+        <nav aria-label="Package categories" className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 [scrollbar-width:none] lg:flex-wrap lg:overflow-visible">
+          {categories.map((c) => <a key={c.id} href={`#${c.id}`} className="inline-flex min-h-[44px] shrink-0 items-center whitespace-nowrap rounded-full border border-ink/10 px-4 text-[14px] hover:border-ink/40">{c.name}</a>)}
         </nav>
-        <span className="shrink-0"><CurrencySwitch /></span>
       </div>
       {categories.map((c) => (
         <section key={c.id} id={c.id} className="scroll-mt-32 border-t border-ink/10 py-14">

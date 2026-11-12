@@ -40,6 +40,16 @@ export const products: Product[] = [
     screens: ['/products/siteory/mobile.webp'], desktop: '/products/siteory/desktop.webp',
   },
   {
+    id: 'angleforge', name: 'AngleForge', kind: 'SaaS · AI product photos', tone: 'dark', url: 'https://angleforge.studio/', visit: 'https://angleforge.studio/',
+    tagline: 'One product photo. Every shot you need.',
+    short: 'Turns one product photo into studio, angle, lifestyle and close-up shots.',
+    blurb: 'Upload one photo of your product and AngleForge makes the rest of the set: a clean studio hero, 45° angles, lifestyle scenes and macro close-ups, plus listing copy. Our product-photo packages are made with it.',
+    stat: 'Three free images to try it, then credit packs (angleforge.studio)',
+    thumb: '/media/angleforge/headphones-lifestyle.webp',
+    screens: ['/media/angleforge/headphones-studio.webp', '/media/angleforge/headphones-lifestyle.webp'],
+    flatScreens: true,
+  },
+  {
     id: 'dupgs', name: 'Delhi PGs', kind: 'Android app + marketplace', tone: 'blue', url: 'https://dupgs.com', visit: 'https://play.google.com/store/apps/details?id=com.delhipgs.app',
     icon: '/products/dupgs/icon.webp',
     blurb: 'Find PG accommodation near Delhi University and across Delhi: verified listings with rent, room types, amenities and photos, filters by budget and gender, favourites and alerts.',
@@ -49,16 +59,14 @@ export const products: Product[] = [
     stores: [{ label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.delhipgs.app' }],
   },
   {
-    id: 'giftfeels', name: 'GiftFeels', kind: 'iOS app · Android pre-register', tone: 'light', url: 'https://app.giftfeels.com/', visit: 'https://app.giftfeels.com/',
+    // The App Store id that used to be here (6803380723) now opens a different app ("Little Us"),
+    // so the store badges are off until the owner confirms the right listing.
+    id: 'giftfeels', name: 'GiftFeels', kind: 'App for couples', tone: 'light', url: 'https://app.giftfeels.com/', visit: 'https://app.giftfeels.com/',
     icon: '/products/giftfeels/icon.webp',
     tagline: 'Made for two people. Nobody else gets in.',
     short: 'A private app for two: daily questions, small signs, shared memories.',
     blurb: 'One quiet space for you and one person you love. Send a small sign you are thinking of them, answer a question together each day, and keep the photos and dates that matter to just you two. No feed, no streaks.',
     screens: ['/products/giftfeels/today-home.webp', '/products/giftfeels/ember-flame.webp', '/products/giftfeels/memory-box.webp'],
-    stores: [
-      { label: 'App Store', href: 'https://apps.apple.com/us/app/giftfeels-couples-friends/id6803380723' },
-      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.giftfeels.app', preRegister: true },
-    ],
   },
   {
     id: 'giftfeels-web', name: 'GiftFeels Gifts', kind: 'Web product · Digital gift links', tone: 'dark', url: 'https://giftfeels.com/', visit: 'https://giftfeels.com/',

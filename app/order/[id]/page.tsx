@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
-import { agency, waLink } from '@/content/agency';
+import { agency } from '@/content/agency';
 import { fmtMoney } from '@/lib/cart';
 
 interface Order {
@@ -68,7 +68,7 @@ export default function OrderPage() {
         </div>
       )}
       <div className="mt-10 flex flex-wrap gap-3 text-[15px]">
-        <a href={waLink(`Hi, about my order ${order.id}`)} target="_blank" rel="noopener noreferrer" className="rounded-full bg-ink px-6 py-3 font-semibold text-white">WhatsApp {agency.whatsappDisplay}</a>
+        <a href={`mailto:${agency.email}?subject=${encodeURIComponent(`Order ${order.id}`)}`} className="inline-flex min-h-[48px] items-center rounded-full bg-ink px-6 font-semibold text-white">Email us about this order</a>
         <a href={`mailto:${agency.email}?subject=${encodeURIComponent(`Order ${order.id}`)}`} className="rounded-full border border-ink/15 px-6 py-3 font-semibold">Email us</a>
         <Link href="/" className="px-2 py-3 underline">Back home</Link>
       </div>

@@ -8,7 +8,7 @@ import { addons, agency, serviceById, type Currency } from '@/content/agency';
 export function CartButton() {
   const { count, setDrawer } = useCart();
   return (
-    <button type="button" onClick={() => setDrawer(true)} aria-label={`Cart, ${count} items`} data-icon-host className="relative flex h-10 w-10 items-center justify-center rounded-full border border-current/20 text-current transition-opacity hover:opacity-70">
+    <button type="button" onClick={() => setDrawer(true)} aria-label={`Cart, ${count} items`} data-icon-host className="relative flex h-11 w-11 items-center justify-center rounded-full border border-current/20 text-current transition-opacity hover:opacity-70">
       <AnimIcon name="cart" size={18} />
       {count > 0 && <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[11px] font-semibold text-white">{count}</span>}
     </button>
@@ -18,7 +18,7 @@ export function CartButton() {
 export function CurrencySwitch() {
   const { currency, setCurrency } = useCart();
   return (
-    <select aria-label="Currency" value={currency} onChange={(e) => setCurrency(e.target.value as Currency)} className="rounded-full border border-ink/15 bg-bg px-3 py-1.5 text-[13px]">
+    <select aria-label="Currency" value={currency} onChange={(e) => setCurrency(e.target.value as Currency)} className="min-h-[44px] rounded-full border border-ink/15 bg-bg px-3 text-[16px]">
       {Object.keys(agency.currencies).map((c) => <option key={c}>{c}</option>)}
     </select>
   );
