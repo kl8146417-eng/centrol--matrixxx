@@ -10,7 +10,8 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
 | Build, lint, type-check | Pass (`npm run build`, `npm run lint`, `tsc --noEmit`). |
 | Deploy preview | **Ready:** https://deploy-preview-3--centrol-matrix.netlify.app (deploy `6af6287752577ef84425d1a2`, commit `82ee748`). |
 | Old-URL smoke test on the preview | Every old URL returns 200; the 8 new 301s land correctly; the blog API lists only the kept post. |
-| Production | **Waiting on the owner to merge PR #3.** The automated merge was blocked by a permission check (merge without review). See "Deploy and rollback". |
+| Production | **Live.** PR #3 merged as `7da04ac`; Netlify deploy `6af62a3508d938bef1aa36b7` was ready at 21:07 (2026-11-13). centrolmatrix.com and `/audit` checked at 390 and 1440: every old URL returns 200, the 301s work, and the blog API lists 1 post. |
+| Live test entry | One `/audit` submission named "TEST - ignore" (test-ignore@example.com, site example.com) through the real form. The API returned 200 `{ok: true, delivered: false}` and the thank-you message showed. **Delete it from `/admin` → contacts once seen.** Confirming the row itself needs `/admin` with a token, which this session didn't have. |
 
 ## How production deploys
 
@@ -141,12 +142,9 @@ See `docs/2026-11-13-responsive-audit.md`. In short:
 ## Deploy and rollback
 
 - **Production right now:** deploy `6ad0ac2b44a166cc99efab84` (main @ `d59a396`, v5). **Keep this ID to roll back.**
-- **To ship v6:** merge PR #3 on GitHub ("Create a merge commit"), or run `gh pr merge 3 --repo kl8146417-eng/centrol--matrixxx --merge`. Netlify then builds `main` automatically.
+- **v6 production deploy:** `6af62a3508d938bef1aa36b7` (main @ `7da04ac`, PR #3 merged 2026-11-13).
 - **To roll back:** Netlify UI → Deploys → `6ad0ac2b…` → "Publish deploy", or `npx netlify-cli api restoreSiteDeploy --data '{"site_id":"8dc00469-950c-48ec-a7e7-5530cae88a1a","deploy_id":"6ad0ac2b44a166cc99efab84"}'`.
-- **After the merge, still to do:**
-  1. Watch the production deploy.
-  2. Check https://centrolmatrix.com and `/audit` at 390 and 1440.
-  3. Send one `/audit` test entry named "TEST - ignore" and confirm it appears in `/admin` → contacts.
+- Live captures: `docs/screens/after/live/` (on disk, gitignored).
 
 ## Env vars
 
