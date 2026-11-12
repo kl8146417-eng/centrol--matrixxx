@@ -20,7 +20,7 @@ export function LegalDoc({ kind }: { kind: Kind }) {
         </section>
       ))}
       <nav className="mt-16 flex flex-wrap gap-5 border-t border-ink/10 pt-6 text-[14px]" aria-label="Other policies">
-        {(['terms', 'privacy', 'refunds', 'delivery'] as Kind[]).map((k) => <Link key={k} href={`/${k}`} className="underline">{DOCS[k].title}</Link>)}
+        {(['terms', 'privacy', 'refunds', 'delivery'] as Kind[]).map((k) => <Link key={k} href={`/${k}`} className="inline-flex min-h-[44px] items-center underline">{DOCS[k].title}</Link>)}
       </nav>
     </article>
   );
