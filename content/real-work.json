@@ -14,7 +14,7 @@
     },
     {
       "id": "fashion",
-      "eyebrow": "Fashion clothes",
+      "eyebrow": "Fashion",
       "title": "Show the fit, the drape and the movement.",
       "blurb": "Street style, try-ons and styling edits that answer “how does it look on?” before the customer asks."
     },
@@ -38,9 +38,9 @@
     },
     {
       "id": "realestate",
-      "eyebrow": "Beyond fashion · Real estate",
-      "title": "Same pipeline, different vertical.",
-      "blurb": "AI visualisation from floor plans, plus pacing-and-grade edits of property footage, for agents and developers.",
+      "eyebrow": "Real estate",
+      "title": "Floor plans and footage, turned into listing films.",
+      "blurb": "AI visualisation from floor plans and paced, graded edits of property footage. Our real-estate work now lives at homes.centrolmatrix.com.",
       "group": "beyond"
     }
   ],
@@ -64,7 +64,7 @@
     {
       "id": "bikini-talking-head",
       "section": "ugc",
-      "title": "Creator-style UGC (Seedance)",
+      "title": "Creator-style talking-head UGC",
       "caption": "Vertical 45 s talking-head UGC: a woman in a bikini top talks to camera outdoors by a house and palms.",
       "tag": "AI UGC",
       "video": "/media/real/bikini-talking-head.mp4",
@@ -108,22 +108,6 @@
       "lead": true,
       "strip": 2,
       "bytes": 2114210
-    },
-    {
-      "id": "handbag-showcase",
-      "section": "product",
-      "title": "Handbag showcase UGC",
-      "caption": "Vertical UGC: a woman on a sofa shows a pink monogram-style handbag, then a green chain bag on a marble table.",
-      "tag": "Product ad",
-      "video": "/media/real/handbag-showcase.mp4",
-      "poster": "/media/real/handbag-showcase.webp",
-      "thumb": "/media/real/handbag-showcase-480.webp",
-      "w": 720,
-      "h": 1280,
-      "duration": 16.0,
-      "lead": false,
-      "strip": 9,
-      "bytes": 3304517
     },
     {
       "id": "sneaker-walk",
@@ -241,7 +225,7 @@
       "id": "going-out-edit",
       "section": "replication",
       "title": "Ad remake: going-out outfit edit",
-      "caption": "Vertical outfit-grid ad: “Going-out edit: outfits 1-2-3-4”, a model in four looks with item flat-lays. Our remake of reference [26].",
+      "caption": "Vertical outfit-grid ad: \"Going-out edit: outfits 1-2-3-4\", a model in four looks with item flat-lays. Our remake of a popular ad format.",
       "tag": "Ad remake",
       "video": "/media/real/going-out-edit.mp4",
       "poster": "/media/real/going-out-edit.webp",

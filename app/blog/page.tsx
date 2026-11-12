@@ -7,7 +7,7 @@ import { safeListPublished, dbConfigured } from '@/lib/blog/safe';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = pageMeta({ path: '/blog', title: 'Blog', description: 'Notes from Centrol Matrix on websites, content engines, AI UGC ads and automation.' });
+export const metadata: Metadata = pageMeta({ path: '/blog', title: 'Blog', description: 'Notes from Centrol Matrix on product photos, UGC ads, Shopify stores and store audits for e-commerce brands.' });
 
 function formatDate(d: Date | null) {
   if (!d) return '';
@@ -29,7 +29,7 @@ export default async function BlogIndex({
         eyebrow="Blog"
         title="Notes from"
         accent="the studio."
-        intro="What we're learning about building things that work, published by us and by the automations that run our content engine."
+        intro="Notes on product photos, UGC ads and running an online store, from the team behind Centrol Matrix."
       />
 
       <section className="mx-auto max-w-editorial px-5 pb-24 sm:px-8 sm:pb-32">

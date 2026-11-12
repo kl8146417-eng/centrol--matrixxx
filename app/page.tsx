@@ -2,30 +2,33 @@ import type { Metadata } from 'next';
 import { pageMeta } from '@/lib/seo';
 import { HomeHero } from '@/components/home/HomeHero';
 import { WorkRail } from '@/components/home/WorkRail';
-import { ServicesBento } from '@/components/home/ServicesBento';
-import { ProductsGrid } from '@/components/home/ProductsGrid';
-import { Process } from '@/components/home/Process';
-import { PricingTeaser, FaqTeaser } from '@/components/home/PricingFaq';
-import { CTASection } from '@/components/CTASection';
-import { TeamTeaser } from '@/components/Team';
+import { ServicesList, AngleForgeShowcase, AuditTeaser, HowItWorks, PricingTeaser, FaqTeaser, ContactBlock } from '@/components/home/Sections';
+import { MeetAsutosh } from '@/components/Team';
 
 export const metadata: Metadata = {
-  ...pageMeta({ path: '/', title: 'Websites, apps, UGC ads & product shoots', description: 'Centrol Matrix builds websites and apps, produces AI UGC ads, product films, mockups and social content, and automates the work behind them. Makers of Recl, Siteory and GiftFeels.' }),
-  title: { absolute: 'Centrol Matrix: websites, apps, UGC ads & product shoots' },
+  ...pageMeta({
+    path: '/',
+    title: 'Product photos, UGC ads & Shopify fixes for e-commerce brands',
+    description: 'Product photos and Amazon listing images from the shots you already have, UGC-style video ads, and Shopify store builds and fixes for e-commerce brands. Start with a free store audit.',
+    image: '/og/home.jpg',
+  }),
+  title: { absolute: 'Centrol Matrix: product photos, UGC ads & Shopify fixes for e-commerce brands' },
 };
 
+// v6 home (US e-commerce first). Section order follows docs/briefs/2026-11-13-site-rebuild-BRIEF.md §5.
 export default function HomePage() {
   return (
     <>
       <HomeHero />
-      <WorkRail />
-      <ServicesBento />
-      <ProductsGrid />
-      <Process />
-      <TeamTeaser />
+      <WorkRail only={['ugc', 'product', 'fashion', 'jewellery', 'replication']} />
+      <ServicesList />
+      <AngleForgeShowcase />
+      <AuditTeaser />
+      <HowItWorks />
       <PricingTeaser />
+      <MeetAsutosh />
       <FaqTeaser />
-      <CTASection />
+      <ContactBlock />
     </>
   );
 }

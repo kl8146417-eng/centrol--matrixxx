@@ -9,21 +9,26 @@ import { products } from '@/content/products';
 import { ProductCard } from '@/components/home/Products';
 import { agency } from '@/content/agency';
 
-export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Apps & products', description: 'Products built and run by Centrol Matrix: Recl, Siteory, GiftFeels, WishCuts, Delhi PGs, Hanger Club and the ORVA storefront demo.', image: '/og/apps.jpg' });
+export const metadata: Metadata = pageMeta({ path: '/apps', title: 'Tools and apps we built', description: 'Tools and apps built and run by Centrol Matrix: Siteory (website audits), AngleForge (AI product photos), Recl, GiftFeels and WishCuts, plus the ORVA storefront demo.', image: '/og/apps.jpg' });
+
+// The tools we use for client work first, then the apps we run.
+const ORDER = ['siteory', 'angleforge', 'recl', 'giftfeels', 'wishcuts', 'giftfeels-web', 'orva', 'hanger-club', 'dupgs'];
+const rank = (id: string) => (ORDER.includes(id) ? ORDER.indexOf(id) : ORDER.length);
+const ordered = [...products].sort((a, b) => rank(a.id) - rank(b.id));
 
 export default function AppsPage() {
   return (
     <>
-      <BreadcrumbLd items={[{"name": "Apps & products", "path": "/apps"}]} />
+      <BreadcrumbLd items={[{ name: 'Tools we built', path: '/apps' }]} />
       <PageHeader
-        eyebrow="Apps"
-        title="Products we"
-        accent="built and run."
-        intro="Every app and product here was designed, built and shipped by Centrol Matrix."
+        eyebrow="Tools we built"
+        title="Tools we built"
+        accent="and use."
+        intro="Siteory runs our free store audits and AngleForge makes our product photos. The rest are apps we designed, built and still run."
       />
 
       <section className="mx-auto max-w-editorial space-y-6 px-5 py-20 sm:px-8">
-        {products.map((p, i) => (
+        {ordered.map((p, i) => (
           <ProductCard key={p.id} p={p} flip={i % 2 === 1} extra={p.id === 'giftfeels-web' ? (
             <a href="https://trustmrr.com/startup/giftfeels" target="_blank" rel="noopener noreferrer" className="mt-6 block w-fit" aria-label="GiftFeels verified revenue on TrustMRR">
               <span className="mb-2 block text-[12px] uppercase tracking-wordmark text-ink-soft">Verified revenue on TrustMRR</span>

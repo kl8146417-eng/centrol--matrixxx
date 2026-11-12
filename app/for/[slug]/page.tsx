@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { prospectBySlug } from '@/content/prospects';
-import { serviceById, agency, waLink } from '@/content/agency';
+import { serviceById, agency } from '@/content/agency';
 import { BeforeAfter } from '@/components/BeforeAfter';
 import { AutoVideo } from '@/components/home/AutoVideo';
 import { OrderButton } from '@/components/fashion/OrderButton';
@@ -19,7 +19,7 @@ export default function ProspectPage({ params }: { params: { slug: string } }) {
   if (!p) notFound();
   const expired = p.expires ? new Date(p.expires).getTime() < Date.now() : false;
   const pkg = p.suggest ? serviceById(p.suggest) : undefined;
-  const wa = waLink(`Hi, this is ${p.first ? `${p.first} from ` : ''}${p.brand}. I saw the samples.`);
+  const mail = `mailto:${agency.email}?subject=${encodeURIComponent(`Samples for ${p.brand}`)}`;
 
   return (
     <section className="bg-[#F4F4F2] pb-24 pt-28 text-ink sm:pt-32">
@@ -34,7 +34,7 @@ export default function ProspectPage({ params }: { params: { slug: string } }) {
         {p.note && <p className="mt-3 max-w-2xl text-[15px] text-muted">{p.note}</p>}
 
         {expired ? (
-          <p className="mt-12 rounded-3xl bg-white p-8 text-[17px]">These samples have expired. Reply to our email or WhatsApp us and we&apos;ll send them again.</p>
+          <p className="mt-12 rounded-3xl bg-white p-8 text-[17px]">These samples have expired. Reply to our email or call {agency.phone} and we&apos;ll send them again.</p>
         ) : (
           <>
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -54,11 +54,13 @@ export default function ProspectPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="flex flex-wrap items-center gap-3 lg:justify-end">
             {pkg && <OrderButton id={pkg.id} label={`Order ${pkg.name}`} className="rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-ink transition hover:bg-[#7DA2FF]" />}
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-6 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white/20">WhatsApp {agency.whatsappDisplay}</a>
+            <a href={mail} className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-[15px] font-semibold text-white transition hover:bg-white/20">Email Asutosh</a>
+            <a href={agency.phoneHref} className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-[15px] font-semibold text-white transition hover:bg-white/20">Call {agency.phone}</a>
             {agency.calUrl && <a href={agency.calUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-6 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white/20">Book a call</a>}
           </div>
         </div>
-        <p className="mt-8 text-[14px] text-muted">Not ready? <Link href="/fashion" className="font-semibold text-accent">See more of our fashion work</Link> or <Link href="/pricing" className="font-semibold text-accent">every package</Link>.</p>
+        <p className="mt-2 text-[13px] text-muted">Calls to that number are answered by our AI assistant, and Asutosh calls you back.</p>
+        <p className="mt-6 text-[14px] text-muted">Not ready? <Link href="/fashion" className="font-semibold text-accent">See more of our fashion work</Link> or <Link href="/pricing" className="font-semibold text-accent">every package</Link>.</p>
       </div>
     </section>
   );

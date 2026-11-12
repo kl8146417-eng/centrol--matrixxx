@@ -8,13 +8,13 @@ import { VideoGallery } from '@/components/shop/VideoGallery';
 import realWork from '@/content/real-work.json';
 const videoCount = realWork.items.length;
 
-export const metadata: Metadata = pageMeta({ path: '/work', title: 'Work: UGC ads, product films & fashion video', description: 'Published pieces: AI UGC ads, product films, fashion and jewellery video, social clips and real estate reels, plus the ORVA storefront.', image: '/og/work.jpg' });
+export const metadata: Metadata = pageMeta({ path: '/work', title: 'Work: UGC ad and product video samples', description: 'AI-generated samples from our own pipeline: UGC-style video ads, product films, fashion and jewellery video, plus the ORVA storefront and the websites we have built.', image: '/og/work.jpg' });
 
 export default function WorkPage() {
   return (
     <>
       <BreadcrumbLd items={[{"name": "Work", "path": "/work"}]} />
-      <PageHeader eyebrow="Work" title="Content that" accent="earns its keep." intro={`${videoCount} published videos from our creative pipeline, the ORVA storefront build, and the websites we've shipped.`} />
+      <PageHeader eyebrow="Work" title="Samples from" accent="our pipeline." intro={`${videoCount} AI-generated videos we made with our own tools (not client work), the ORVA storefront we built for our demo label, and websites we've shipped.`} />
       <section className="mx-auto grid max-w-editorial gap-5 px-5 pb-16 sm:px-8 md:grid-cols-2">
         <Link href="/work/orva" className="group overflow-hidden rounded-2xl border border-ink/10">
           {/* eslint-disable-next-line @next/next/no-img-element */}

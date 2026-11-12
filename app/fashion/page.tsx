@@ -5,7 +5,8 @@ import { pageMeta } from '@/lib/seo';
 import { BreadcrumbLd } from '@/components/Breadcrumbs';
 import { personalize, possessive } from '@/lib/personalize';
 import { lookbook } from '@/content/lookbook';
-import { services, agency, waLink } from '@/content/agency';
+import { services, agency } from '@/content/agency';
+import { PhoneLine } from '@/components/PhoneLine';
 import { faq } from '@/content/faq';
 import { products } from '@/content/products';
 import { LookbookTabs } from '@/components/fashion/LookbookTabs';
@@ -19,6 +20,7 @@ export const metadata: Metadata = pageMeta({
   path: '/fashion',
   title: 'On-model photos & UGC ads for clothing brands',
   description: 'Send the flat lays you already have. We make on-model shots, lookbooks and UGC-style ads from them, checked against the real garment. Your first 3 looks are free.',
+  image: '/og/fashion.jpg',
 });
 
 const PACKAGES = ['mockups-10', 'mockups-25', 'ugc-single', 'ugc-5pack', 'ad-remake', 'rail-starter'];
@@ -34,7 +36,7 @@ const FAQ_QS = [
 const STEPS = [
   { h: 'Send us your links', p: 'Your store or Instagram, and up to three products. Flat lays, hanger shots or phone photos are fine. You don’t ship anything.' },
   { h: 'Get 3 looks free', p: 'Within two working days you get a private page with three on-model images made from your real garments, to judge on your own screen.' },
-  { h: 'Order the set', p: 'Pick a fixed-price package online: 10 or 25 looks, UGC-style ads, or both. Pay online by card, or by invoice.' },
+  { h: 'Order the set', p: 'Pick a fixed-price package online: 10 or 25 looks, UGC-style ads, or both. We send an invoice with a payment link.' },
   { h: 'Launch the drop', p: 'Images for your store, marketplaces and ads, cut to every size you need. Revisions included, and you own all of it.' },
 ];
 
@@ -44,8 +46,14 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
   const qs = FAQ_QS.map((q) => faq.find((f) => f.q === q)).filter((f): f is NonNullable<typeof f> => !!f);
   const orva = products.find((p) => p.id === 'orva');
   const per10 = services.find((s) => s.id === 'mockups-10');
+  const COMPARE = [
+    ['What you send', 'Samples to the studio', 'Product to each creator', 'Links and photos'],
+    ['First images', 'After the shoot day is booked', 'When creators post back', 'Free, in 2 working days'],
+    ['New colourway or style', 'Another shoot', 'Another creator fee', 'Added to the next set'],
+    ['Ad variations', 'Whatever was shot', 'One take per creator', 'Many hooks per product'],
+    ['Price', 'Day rate plus models', 'Per creator, per video', per10 ? `From $${per10.price_usd} per set` : 'Fixed per set'],
+  ];
   const lead = brand ? `${possessive(brand)} ${product || 'next drop'}, ` : 'Your flat lays, ';
-  const wa = waLink(brand ? `Hi, this is ${first ? `${first} from ` : ''}${brand}. I'd like the 3 free looks.` : 'Hi, I run a clothing brand and would like the 3 free looks.');
 
   return (
     <>
@@ -68,8 +76,8 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
               Send the product photos you already have. We make on-model shots, lookbooks and UGC-style ads from them, checked against the real garment for colour, print and fit. No studio day, no samples in the post.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a href="#free" data-track="sample_cta" data-track-label="hero" className="rounded-full bg-accent px-7 py-3.5 text-[16px] font-semibold text-white transition hover:bg-accent-dark">Get 3 looks free</a>
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-7 py-3.5 text-[16px] font-semibold text-ink transition hover:bg-ink hover:text-white">WhatsApp us</a>
+              <a href="#free" data-track="sample_cta" data-track-label="hero" className="inline-flex min-h-[52px] items-center rounded-full bg-accent px-7 text-[16px] font-semibold text-white transition hover:bg-accent-dark">Get 3 looks free</a>
+              <a href="#packages" className="inline-flex min-h-[52px] items-center rounded-full bg-white px-7 text-[16px] font-semibold text-ink transition hover:bg-ink hover:text-white">See the prices</a>
             </div>
             <p className="mt-5 text-[14px] text-muted">
               {per10 ? `After the free looks, sets start at $${per10.price_usd} for ${per10.name.match(/\d+/)?.[0] ?? 10} images. ` : ''}Prices are fixed and listed below.
@@ -94,8 +102,21 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
               Small fashion brands tell the same story: inventory arrives, then sits for two to six weeks until a shoot is booked, and every new look needs a fresh one. Meanwhile the listing goes up as a flat lay, and the ads reuse the same three photos.
             </p>
           </div>
-          <div className="overflow-x-auto lg:col-span-7" data-reveal>
-            <table className="w-full min-w-[560px] border-separate border-spacing-0 text-left text-[15px]">
+          <div className="lg:col-span-7" data-reveal>
+            {/* Phones: one card per option instead of a sideways-scrolling table. */}
+            <dl className="grid gap-3 md:hidden">
+              {COMPARE.map(([k, a, b, c]) => (
+                <div key={k} className="rounded-2xl bg-[#F4F4F2] p-5">
+                  <dt className="text-[14px] font-semibold text-ink">{k}</dt>
+                  <dd className="mt-2 grid gap-1 text-[15px] text-ink-soft">
+                    <span><span className="text-muted">Studio shoot:</span> {a}</span>
+                    <span><span className="text-muted">Creator UGC:</span> {b}</span>
+                    <span className="font-semibold text-ink"><span className="font-normal text-accent">Centrol Matrix:</span> {c}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <table className="hidden w-full border-separate border-spacing-0 text-left text-[15px] md:table border-separate border-spacing-0 text-left text-[15px]">
               <caption className="sr-only">How a studio shoot, creator UGC and Centrol Matrix compare</caption>
               <thead>
                 <tr className="text-[14px] text-muted">
@@ -106,13 +127,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
                 </tr>
               </thead>
               <tbody className="text-ink-soft">
-                {[
-                  ['What you send', 'Samples to the studio', 'Product to each creator', 'Links and photos'],
-                  ['First images', 'After the shoot day is booked', 'When creators post back', 'Free, in 2 working days'],
-                  ['New colourway or style', 'Another shoot', 'Another creator fee', 'Added to the next set'],
-                  ['Ad variations', 'Whatever was shot', 'One take per creator', 'Many hooks per product'],
-                  ['Price', 'Day rate plus models', 'Per creator, per video', per10 ? `From $${per10.price_usd} per set` : 'Fixed per set'],
-                ].map(([k, a, b, c], i, all) => (
+                {COMPARE.map(([k, a, b, c], i, all) => (
                   <tr key={k}>
                     <th scope="row" className="border-t border-ink/10 py-4 pr-4 font-medium text-ink">{k}</th>
                     <td className="border-t border-ink/10 py-4 pr-4">{a}</td>
@@ -171,16 +186,16 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
       </section>
 
       {/* What you can order today, at the same prices as /pricing. */}
-      <section className="bg-[#F4F4F2] py-24 sm:py-32">
+      <section id="packages" className="bg-[#F4F4F2] py-24 sm:py-32">
         <div className="mx-auto max-w-editorial px-5 sm:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
             <h2 className="max-w-2xl font-display text-display-md text-ink">Fixed prices. <span className="italic text-accent">Order when you&apos;re ready.</span></h2>
-            <Link href="/pricing" className="self-start text-[15px] font-semibold text-accent md:self-auto">Every package →</Link>
+            <Link href="/pricing" className="inline-flex min-h-[44px] items-center self-start text-[15px] font-semibold text-accent md:self-auto">Every package →</Link>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {pkgs.map((s) => <div key={s.id} className="flex bg-white [&>article]:w-full [&>article]:border-0">{<ServiceCard s={s} />}</div>)}
           </div>
-          <p className="mt-6 text-[14px] text-muted">Prices in USD. The currency switch on the pricing page shows an estimate in rupees, pounds or euros.</p>
+          <p className="mt-6 text-[14px] text-muted">Prices in USD, paid by invoice. The currency switch on the pricing page shows an estimate in rupees, pounds or euros.</p>
         </div>
       </section>
 
@@ -209,7 +224,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
         <div className="lg:col-span-2">
           {qs.map((f) => (
             <details key={f.q} className="group border-b border-ink/10 py-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl text-ink">
+              <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl text-ink">
                 {f.q}<span className="text-2xl text-accent transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-soft">{f.a}</p>
@@ -219,14 +234,14 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
       </section>
 
       {/* The ask. */}
-      <section id="free" className="scroll-mt-24 bg-[#E9E7E2] py-24 sm:py-32">
+      <section id="free" className="bg-[#E9E7E2] py-24 sm:py-32">
         <div className="mx-auto grid max-w-editorial gap-12 px-5 sm:px-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="font-display text-display-md text-ink">{brand ? <>Three looks for {brand}. <span className="italic text-accent">Free.</span></> : <>Three looks, on your products. <span className="italic text-accent">Free.</span></>}</h2>
             <p className="mt-5 max-w-md text-[17px] leading-relaxed text-ink-soft">Tell us where your products live. We&apos;ll email a private page with three on-model images within two working days. If you like them, order a set. If not, keep them.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="rounded-full bg-ink px-6 py-3 text-[15px] font-semibold text-white transition hover:bg-accent">WhatsApp {agency.whatsappDisplay}</a>
-              {agency.calUrl && <a href={agency.calUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-ink hover:text-white">Book a 15-minute call</a>}
+            <div className="mt-8 space-y-4">
+              <PhoneLine />
+              <a href={`mailto:${agency.email}`} className="inline-flex min-h-[44px] items-center text-[16px] text-accent underline-offset-4 hover:underline">{agency.email}</a>
             </div>
           </div>
           <div className="lg:col-span-7">

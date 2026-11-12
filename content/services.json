@@ -1,66 +1,72 @@
 {
   "currency": "USD",
-  "updated": "2026-10-09",
+  "updated": "2026-11-13",
   "categories": [
     {
-      "id": "ai_ugc",
-      "name": "AI UGC Ads",
-      "tagline": "Creative volume for Meta & TikTok. Many hooks, many angles, fast.",
-      "group": "Creative"
+      "id": "product_mockups",
+      "name": "Product photos",
+      "tagline": "Studio, lifestyle and listing images for Shopify and Amazon, made from the product photos you already have.",
+      "group": "Product photos"
     },
     {
-      "id": "product_mockups",
-      "name": "Lookbook AI",
-      "tagline": "Product, ghost-mannequin & lifestyle imagery from the photos you already have.",
-      "group": "Creative"
+      "id": "ai_ugc",
+      "name": "UGC video ads",
+      "tagline": "Creator-style video ads made from your product photos, cut for Meta, TikTok and Reels.",
+      "group": "Ads"
     },
     {
       "id": "ad_creatives",
-      "name": "Ad Creatives",
-      "tagline": "Statics and motion concepts packaged by funnel stage (TOF / MOF).",
-      "group": "Creative"
-    },
-    {
-      "id": "content",
-      "name": "Social, Clipping & Carousels",
-      "tagline": "Short-form edits, clipping and carousel engines so the feed never goes quiet.",
-      "group": "Creative"
+      "name": "Ad creatives",
+      "tagline": "Static ads, short motion cuts and remakes of ad formats that already work.",
+      "group": "Ads"
     },
     {
       "id": "website",
-      "name": "Websites & Storefronts",
-      "tagline": "CRO-minded websites and storefronts, plus apps we design, ship and run.",
-      "group": "Websites & Apps"
+      "name": "Shopify stores & fixes",
+      "tagline": "New Shopify storefronts, store setup, and the fixes a store audit turns up.",
+      "group": "Stores"
     },
     {
-      "id": "retainer",
-      "name": "Retainer",
-      "tagline": "An always-on creative pod for brands already spending on ads.",
-      "group": "Retainers & Bundles"
+      "id": "automation",
+      "name": "Lead & customer follow-up",
+      "tagline": "Replies, reminders and routing, so no enquiry or customer question sits unanswered.",
+      "group": "Automation"
     },
     {
       "id": "bundle",
       "name": "Bundles",
-      "tagline": "Pre-built combinations at a lower price.",
-      "group": "Retainers & Bundles"
+      "tagline": "Packages above, combined at a lower price.",
+      "group": "Bundles & monthly"
+    },
+    {
+      "id": "retainer",
+      "name": "Monthly creative",
+      "tagline": "A standing creative team for brands already running ads.",
+      "group": "Bundles & monthly"
+    },
+    {
+      "id": "apps",
+      "name": "Apps",
+      "tagline": "Mobile and web apps, designed, built, shipped and kept running.",
+      "group": "More"
+    },
+    {
+      "id": "content",
+      "name": "Social, clipping & carousels",
+      "tagline": "Short-form edits, clipping and carousels for your organic channels.",
+      "group": "More"
     },
     {
       "id": "beyond",
-      "name": "Real Estate Video",
-      "tagline": "AI visualisation from floor plans and pacing-and-grade edits of property footage.",
-      "group": "Creative"
-    },
-    {
-      "id": "automation",
-      "name": "AI Automation",
-      "tagline": "Hand the repetitive work to software that runs on its own.",
-      "group": "Growth & Automation"
+      "name": "Real estate video",
+      "tagline": "Floor-plan visualisations and property reel edits. More at homes.centrolmatrix.com.",
+      "group": "More"
     },
     {
       "id": "growth",
-      "name": "Growth & Strategy",
-      "tagline": "SEO, positioning and one plan that ties site, content and ads to outcomes.",
-      "group": "Growth & Automation"
+      "name": "Strategy",
+      "tagline": "",
+      "group": "More"
     },
     {
       "id": "addon",
@@ -82,7 +88,8 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "cm-workflow",
@@ -96,7 +103,8 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "cm-ai-ops",
@@ -110,35 +118,38 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "cm-leadgen",
-      "name": "Lead Generation Pipelines",
+      "name": "Lead & Customer Follow-up",
       "category": "automation",
-      "description": "Scrape, qualify, and route leads to the people who can actually close them.",
+      "description": "When someone fills in a form, calls, or asks about an order, they get a reply right away and land in your inbox or CRM with the details. We set up the forms, the follow-up emails and, if you want one, an AI phone assistant that takes messages.",
       "deliverables": [
-        "Lead scraping & enrichment",
-        "Qualification rules",
-        "Routing into your CRM or inbox"
+        "Form and inbox routing into your email or CRM",
+        "Follow-up email sequence written for your store",
+        "Optional AI phone assistant that takes messages and books callbacks",
+        "Handover call and written docs"
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day"
     },
     {
       "id": "cm-seo",
-      "name": "SEO & Organic Growth",
-      "category": "growth",
-      "description": "Technical fixes, real content, and the patience to rank and stay ranked.",
+      "name": "Store Fixes from Your Audit",
+      "category": "website",
+      "description": "We fix what your free audit finds: page titles and search descriptions, share images, image alt text, missing or slow pages, and the structured data search engines and AI assistants read.",
       "deliverables": [
-        "Technical SEO audit & fixes",
-        "Content plan + blog posts",
-        "Rank tracking"
+        "Fix list agreed from your audit report",
+        "Titles, descriptions and share images",
+        "Image alt text and structured data",
+        "Broken links, redirects and slow pages"
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted from your audit report · fixed price before we start"
     },
     {
       "id": "cm-strategy",
@@ -152,7 +163,8 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "cm-brand",
@@ -166,7 +178,8 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "cm-content-systems",
@@ -180,7 +193,8 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "cm-repurposing",
@@ -194,21 +208,22 @@
       ],
       "price_usd": 0,
       "enquiry": true,
-      "price_note": "Scoped on a call · fixed quote within a day"
+      "price_note": "Quoted after a short call · fixed quote within one business day",
+      "hidden": true
     },
     {
       "id": "rail-starter",
       "name": "Storefront Starter",
       "category": "website",
-      "description": "Premium Shopify-style clothing storefront with conversion-focused homepage, collection, and PDP templates. Inspired by the ORVA interactive clothing-rail demo.",
+      "description": "A Shopify storefront for a product brand: homepage, collection and product page templates, store policy pages, and a mobile and speed pass before launch.",
       "deliverables": [
-        "Custom theme or premium theme customization",
-        "Homepage with interactive hero / lookbook section",
-        "Collection + PDP templates (variants, size guide block)",
-        "Shipping, returns, FAQ, contact pages",
-        "Mobile-first polish + basic speed pass",
-        "Pixel / analytics install checklist",
-        "Loom handover (30–45 min)"
+        "Custom theme or premium theme customisation",
+        "Homepage with hero and featured-product sections",
+        "Collection and product page templates (variants, size or spec block)",
+        "Shipping, returns, FAQ and contact pages",
+        "Mobile polish and a basic speed pass",
+        "Pixel and analytics install checklist",
+        "Recorded handover (30 to 45 min)"
       ],
       "price_usd": 2997,
       "price_note": "One-time · fixed scope",
@@ -219,15 +234,15 @@
       "id": "rail-pro",
       "name": "Storefront Pro",
       "category": "website",
-      "description": "Full conversion-oriented redesign: custom sections, CRO patterns (trust, urgency, checkout FAQ), catalog polish, and launch QA.",
+      "description": "A full redesign of an existing Shopify store: custom sections, trust and FAQ blocks, catalogue clean-up and launch QA.",
       "deliverables": [
         "Everything in Storefront Starter",
-        "Custom section library (rail, editorial, UGC strip, bundles)",
-        "CRO blocks: reviews, size guide, sticky ATC, checkout FAQ",
-        "Up to 3 revision rounds on design system",
-        "App stack recommendations (reviews, returns, email)",
-        "SEO foundations (titles, alt, redirects if migrating)",
-        "Recorded training for client team"
+        "Custom section library (editorial, UGC strip, bundles)",
+        "Reviews, size or spec guide, sticky add-to-cart and FAQ blocks",
+        "Up to 3 revision rounds on the design system",
+        "App recommendations (reviews, returns, email)",
+        "SEO basics: titles, alt text, redirects if migrating",
+        "Recorded training for your team"
       ],
       "price_usd": 6997,
       "price_note": "One-time · fixed scope",
@@ -238,7 +253,7 @@
       "id": "ugc-single",
       "name": "AI UGC Ad · Single",
       "category": "ai_ugc",
-      "description": "One scroll-stopping vertical UGC-style video ad from your product photos: hook, demo, CTA: ready for Meta/TikTok.",
+      "description": "One vertical UGC-style video ad made from your product photos: hook, demo and call to action, cut for Meta and TikTok.",
       "deliverables": [
         "1× 15–30s vertical (9:16) MP4",
         "1× square (1:1) crop",
@@ -255,7 +270,7 @@
       "id": "ugc-5pack",
       "name": "AI UGC Ad · 5-Pack",
       "category": "ai_ugc",
-      "description": "Five distinct hook/angle variants for creative testing: the minimum viable test set for Meta.",
+      "description": "Five UGC-style videos, each with a different hook or angle, so you can test which one your audience responds to.",
       "deliverables": [
         "5× unique UGC-style videos (different hooks/angles)",
         "9:16 + 1:1 exports each",
@@ -271,7 +286,7 @@
       "id": "ugc-monthly",
       "name": "UGC Factory · Monthly",
       "category": "ai_ugc",
-      "description": "Ongoing AI UGC pipeline: 12+ new ad variants every month so creative fatigue never throttles spend.",
+      "description": "At least 12 new UGC-style videos every month, delivered weekly, with hooks researched from ads in your niche.",
       "deliverables": [
         "Minimum 12 finished UGC-style videos / month",
         "Weekly drop cadence (3+/week)",
@@ -288,14 +303,14 @@
     },
     {
       "id": "mockups-10",
-      "name": "Lookbook AI · Set of 10",
+      "name": "Product Photos · Set of 10",
       "category": "product_mockups",
-      "description": "Ten on-brand product images: clean packshots, ghost mannequin, and lifestyle scenes from your existing photos.",
+      "description": "Ten images made from the product photos you already have: clean studio shots, angles and lifestyle scenes, exported for Shopify and Amazon. Your real photo stays the main listing image.",
       "deliverables": [
-        "10 AI-enhanced product images",
-        "Mix of studio + lifestyle (client chooses ratio)",
-        "Shopify-ready exports",
-        "Consistent lighting/background rules",
+        "10 product images (studio, angle and lifestyle mix)",
+        "You choose the studio-to-lifestyle ratio",
+        "Exports sized for Shopify and Amazon",
+        "Consistent lighting and background rules",
         "1 revision round"
       ],
       "price_usd": 247,
@@ -305,14 +320,14 @@
     },
     {
       "id": "mockups-25",
-      "name": "Lookbook AI · Set of 25",
+      "name": "Product Photos · Set of 25",
       "category": "product_mockups",
-      "description": "Catalog refresh pack for brands stuck on 1–2 photos per SKU: batch lifestyle and on-model imagery.",
+      "description": "For catalogues stuck on one or two photos per product: 25 studio, lifestyle and in-use images, with a style locked after you approve the first five.",
       "deliverables": [
-        "25 AI product / lifestyle images",
-        "Brand style guide locked after first 5 approved",
-        "SKU naming convention",
-        "Meta + Shopify crop variants",
+        "25 product and lifestyle images",
+        "Style locked after the first 5 are approved",
+        "Files named by SKU",
+        "Crops for Shopify, Amazon and Meta ads",
         "2 revision rounds"
       ],
       "price_usd": 497,
@@ -324,7 +339,7 @@
       "id": "creatives-pack",
       "name": "Creative Burst · Ad Pack",
       "category": "ad_creatives",
-      "description": "Mixed static + concept pack for Meta/TikTok testing: memes, native stills, benefit grids, and UGC still frames.",
+      "description": "A mixed pack for testing on Meta or TikTok: static ads in several angles, short motion cuts, and copy for each.",
       "deliverables": [
         "20 static ad creatives (multiple angles)",
         "5 video concepts or short motion cuts",
@@ -341,13 +356,13 @@
       "id": "growth-retainer",
       "name": "Growth Pod · Monthly Retainer",
       "category": "retainer",
-      "description": "Like an agency: continuous creatives + UGC + light site CRO tweaks for clothing brands that already spend on ads.",
+      "description": "Monthly creative for brands already running ads: UGC videos, static ads, a small photo set and one store tweak every month.",
       "deliverables": [
-        "8 AI UGC videos / month",
+        "8 UGC-style videos / month",
         "12 static ad creatives / month",
-        "1 Lookbook mini-set (6 images) / month",
-        "1 homepage or PDP CRO tweak / month",
-        "Bi-weekly async performance review",
+        "1 product photo mini-set (6 images) / month",
+        "1 homepage or product-page tweak / month",
+        "Async review every two weeks",
         "Priority 48h turnaround on rush requests (fair use)"
       ],
       "price_usd": 2997,
@@ -391,13 +406,13 @@
     },
     {
       "id": "addon-copywriting",
-      "name": "Conversion Copywriting",
+      "name": "Store Copywriting",
       "category": "addon",
-      "description": "Homepage + PDP + key landing copy rewritten for clothing DTC: benefits, objections, size confidence.",
+      "description": "Homepage, product pages and key landing copy rewritten for your brand: benefits, common questions, and specs or sizing in plain language.",
       "deliverables": [
-        "Homepage narrative rewrite",
-        "Up to 5 PDP descriptions",
-        "FAQ objection set (8–12 Qs)",
+        "Homepage copy rewrite",
+        "Up to 5 product descriptions",
+        "FAQ set (8 to 12 questions)",
         "Ad primary text pack (10 variants)"
       ],
       "price_usd": 697,
@@ -430,12 +445,12 @@
       "id": "launch-bundle",
       "name": "Launch Bundle",
       "category": "bundle",
-      "description": "Everything a brand needs to launch or relaunch: a Storefront Starter storefront, a 25-image Lookbook set to fill it and five UGC ads to drive traffic to it.",
+      "description": "For a launch or relaunch: a Storefront Starter store, a 25-image product photo set to fill it, and five UGC ads to point at it.",
       "deliverables": [
         "Storefront Starter",
-        "Lookbook AI · Set of 25",
+        "Product Photos · Set of 25",
         "AI UGC Ad · 5-Pack",
-        "One shared brief & kickoff"
+        "One shared brief and kickoff"
       ],
       "includes": [
         "rail-starter",
@@ -576,8 +591,8 @@
     {
       "id": "cm-apps",
       "name": "Mobile & Web Apps",
-      "category": "website",
-      "description": "iOS, Android and web apps designed, built, shipped to the stores and kept running. Recl, GiftFeels and Delhi PGs are ours.",
+      "category": "apps",
+      "description": "iOS, Android and web apps designed, built, shipped to the stores and kept running. Recl and GiftFeels are ours.",
       "deliverables": [
         "Product scoping and design",
         "iOS and Android builds",
@@ -587,5 +602,6 @@
       "price_usd": 0,
       "enquiry": true
     }
-  ]
+  ],
+  "_internal": "Never pitch Facebook/Instagram/TikTok ads to CBD or ingestible-supplement brands: offer product photos, the store and follow-up instead. No outcome promises (sales, ROAS, rankings) in any description."
 }
