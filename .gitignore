@@ -53,3 +53,7 @@ favicon_io.zip
 # published portfolio videos (all < 10 MB) are committed for Netlify CDN
 !public/media/real/*.mp4
 !public/work/orva/*.mp4
+
+# Full-page Playwright captures (large). Committed comparisons live in docs/screens/compare/.
+docs/screens/before/
+docs/screens/after/
