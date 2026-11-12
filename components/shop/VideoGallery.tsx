@@ -39,7 +39,7 @@ export function VideoGallery() {
         const list = items.filter((i) => i.section === s.id);
         if (!list.length) return null;
         return (
-          <section key={s.id} id={s.id} className="scroll-mt-24 border-t border-ink/10 py-16">
+          <section key={s.id} id={s.id} className="border-t border-ink/10 py-16">
             <p className="text-[12px] uppercase tracking-wordmark text-accent">{s.eyebrow}</p>
             <h2 className="mt-3 max-w-3xl font-display text-display-md text-ink">{s.title}</h2>
             <p className="mt-3 max-w-xl text-[16px] text-muted">{s.blurb}</p>

@@ -4,7 +4,7 @@ import { Logo } from '@/components/Logo';
 import { agency, waLink } from '@/content/agency';
 import { PhoneLine } from '@/components/PhoneLine';
 
-const linkCls = 'inline-flex min-h-[44px] items-center text-[15px] text-white/80 transition-opacity hover:opacity-60';
+const linkCls = 'inline-flex min-h-[44px] min-w-[44px] items-center text-[15px] text-white/80 transition-opacity hover:opacity-60';
 
 function FooterLink({ href, label }: { href: string; label: string }) {
   const ext = href.startsWith('http');
@@ -21,7 +21,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
           <div>
             <Logo className="mb-7 h-8 w-auto text-white" title={`${site.name} logo`} />
-            <p className="font-display text-3xl leading-tight">Product photos, UGC ads and Shopify fixes for e-commerce brands.</p>
+            <p className="font-display text-3xl leading-tight">Product photos, UGC ads and Shopify fixes for <span className="whitespace-nowrap">e-commerce</span> brands.</p>
             <Link href="/audit" className="mt-6 inline-flex min-h-[48px] items-center rounded-full bg-white px-6 text-[15px] font-semibold text-ink transition hover:bg-[#7DA2FF]">Get a free site audit</Link>
           </div>
 
@@ -57,7 +57,7 @@ export function Footer() {
           <span>© {year} {site.name}. All rights reserved.</span>
           <span className="flex flex-wrap gap-x-5">
             {[['Terms', '/terms'], ['Privacy', '/privacy'], ['Refunds', '/refunds'], ['Delivery', '/delivery']].map(([l, h]) => (
-              <Link key={h} href={h} className="inline-flex min-h-[44px] items-center hover:text-white/80">{l}</Link>
+              <Link key={h} href={h} className="inline-flex min-h-[44px] min-w-[44px] items-center hover:text-white/80">{l}</Link>
             ))}
           </span>
         </div>

@@ -54,7 +54,7 @@ export default function AuditPage({ searchParams }: { searchParams: Record<strin
               <p className="text-[14px] leading-snug text-muted"><span className="font-semibold text-ink">{contactPerson.name}</span>, {contactPerson.role?.toLowerCase()}<br />reads every audit before it goes out.</p>
             </div>
           </div>
-          <div id="request" className="scroll-mt-28 lg:col-span-6">
+          <div id="request" className="lg:col-span-6">
             <AuditForm first={first} site={site} />
           </div>
         </div>
@@ -137,14 +137,14 @@ export default function AuditPage({ searchParams }: { searchParams: Record<strin
 
       {/* Other ways to reach us. */}
       <section className="bg-[#F4F4F2]">
-        <div className="mx-auto grid max-w-editorial gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-3">
+        <div className="mx-auto grid max-w-editorial gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <h2 className="font-display text-[clamp(30px,3vw,40px)] leading-tight text-ink">Rather talk first?</h2>
             <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">Call or email. Either way it reaches {contactPerson.name}.</p>
           </div>
           <PhoneLine size="lg" />
           <div>
-            <a href={`mailto:${agency.email}?subject=${encodeURIComponent(`Free audit${store ? `: ${store}` : ''}`)}`} className="inline-flex min-h-[44px] items-center text-[clamp(20px,2vw,24px)] text-accent underline-offset-4 hover:underline">{agency.email}</a>
+            <a href={`mailto:${agency.email}?subject=${encodeURIComponent(`Free audit${store ? `: ${store}` : ''}`)}`} className="inline-flex min-h-[44px] items-center text-[clamp(20px,2vw,24px)] text-accent underline-offset-4 [overflow-wrap:anywhere] hover:underline">{agency.email}</a>
             <p className="text-[13px] text-muted">Put your store link in the email and we’ll take it from there.</p>
           </div>
         </div>

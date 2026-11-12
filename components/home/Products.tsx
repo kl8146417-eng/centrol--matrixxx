@@ -33,9 +33,9 @@ export function ProductCard({ p, flip, extra }: { p: Product; flip?: boolean; ex
           )}
           {p.stores?.map((s) => <StoreBadge key={s.label} {...s} dark={!dark} />)}
           {p.url && ext && p.url !== p.visit && (
-            <a href={p.url} target="_blank" rel="noopener noreferrer" className={`rounded-full border px-5 py-2.5 text-[14px] font-semibold ${dark ? 'border-white/25 hover:bg-white hover:text-ink' : 'border-ink/15 hover:border-ink'}`}>{p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')} ↗</a>
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className={`inline-flex min-h-[44px] items-center rounded-full border px-5 text-[14px] font-semibold ${dark ? 'border-white/25 hover:bg-white hover:text-ink' : 'border-ink/15 hover:border-ink'}`}>{p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')} ↗</a>
           )}
-          {p.url && !ext && <Link href={p.url} className={`rounded-full border px-5 py-2.5 text-[14px] font-semibold ${dark ? 'border-white/25 hover:bg-white hover:text-ink' : 'border-ink/15'}`}>Case study →</Link>}
+          {p.url && !ext && <Link href={p.url} className={`inline-flex min-h-[44px] items-center rounded-full border px-5 text-[14px] font-semibold ${dark ? 'border-white/25 hover:bg-white hover:text-ink' : 'border-ink/15'}`}>Case study →</Link>}
         </div>
       </div>
       <div className={`relative flex min-h-[380px] items-end justify-center gap-4 overflow-hidden px-6 pt-12 sm:min-h-[520px] ${flip ? 'lg:order-1' : ''}`}>

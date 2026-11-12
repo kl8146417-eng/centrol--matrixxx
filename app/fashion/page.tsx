@@ -20,6 +20,7 @@ export const metadata: Metadata = pageMeta({
   path: '/fashion',
   title: 'On-model photos & UGC ads for clothing brands',
   description: 'Send the flat lays you already have. We make on-model shots, lookbooks and UGC-style ads from them, checked against the real garment. Your first 3 looks are free.',
+  image: '/og/fashion.jpg',
 });
 
 const PACKAGES = ['mockups-10', 'mockups-25', 'ugc-single', 'ugc-5pack', 'ad-remake', 'rail-starter'];
@@ -185,11 +186,11 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
       </section>
 
       {/* What you can order today, at the same prices as /pricing. */}
-      <section id="packages" className="scroll-mt-24 bg-[#F4F4F2] py-24 sm:py-32">
+      <section id="packages" className="bg-[#F4F4F2] py-24 sm:py-32">
         <div className="mx-auto max-w-editorial px-5 sm:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
             <h2 className="max-w-2xl font-display text-display-md text-ink">Fixed prices. <span className="italic text-accent">Order when you&apos;re ready.</span></h2>
-            <Link href="/pricing" className="self-start text-[15px] font-semibold text-accent md:self-auto">Every package →</Link>
+            <Link href="/pricing" className="inline-flex min-h-[44px] items-center self-start text-[15px] font-semibold text-accent md:self-auto">Every package →</Link>
           </div>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {pkgs.map((s) => <div key={s.id} className="flex bg-white [&>article]:w-full [&>article]:border-0">{<ServiceCard s={s} />}</div>)}
@@ -223,7 +224,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
         <div className="lg:col-span-2">
           {qs.map((f) => (
             <details key={f.q} className="group border-b border-ink/10 py-6">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl text-ink">
+              <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl text-ink">
                 {f.q}<span className="text-2xl text-accent transition-transform group-open:rotate-45">+</span>
               </summary>
               <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-ink-soft">{f.a}</p>
@@ -233,7 +234,7 @@ export default function FashionPage({ searchParams }: { searchParams: Record<str
       </section>
 
       {/* The ask. */}
-      <section id="free" className="scroll-mt-24 bg-[#E9E7E2] py-24 sm:py-32">
+      <section id="free" className="bg-[#E9E7E2] py-24 sm:py-32">
         <div className="mx-auto grid max-w-editorial gap-12 px-5 sm:px-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="font-display text-display-md text-ink">{brand ? <>Three looks for {brand}. <span className="italic text-accent">Free.</span></> : <>Three looks, on your products. <span className="italic text-accent">Free.</span></>}</h2>

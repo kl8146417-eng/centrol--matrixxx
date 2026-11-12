@@ -1,5 +1,5 @@
 // Shared page header in the v4 language: dark band, blue glow, big Playfair title.
-export function PageHeader({ eyebrow, title, accent, intro }: { eyebrow: string; title: string; accent?: string; intro?: string }) {
+export function PageHeader({ eyebrow, title, accent, intro }: { eyebrow: string; title: string; accent?: React.ReactNode; intro?: string }) {
   return (
     <header className="relative overflow-hidden bg-ink-section text-white">
       <div aria-hidden="true" className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] rounded-full bg-accent/35 blur-[130px]" />

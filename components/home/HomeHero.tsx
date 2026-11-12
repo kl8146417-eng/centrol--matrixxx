@@ -18,7 +18,7 @@ export function HomeHero() {
         <div className="flex flex-col justify-center lg:col-span-7">
           <p className="text-[15px] font-medium text-ink-soft">For brands selling on Shopify and Amazon</p>
           <h1 className="mt-4 font-display text-[clamp(40px,6.4vw,100px)] leading-[0.98] tracking-[-0.02em]">
-            Product photos, UGC ads and Shopify fixes <span className="italic text-accent">for e-commerce brands.</span>
+            Product photos, UGC ads and Shopify fixes <span className="italic text-accent">for <span className="whitespace-nowrap">e-commerce</span> brands.</span>
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-soft sm:text-[18px]">
             We turn the product shots you already have into lifestyle and listing images, make UGC-style video ads from them, and build or fix the Shopify store they point to. Fixed prices, delivered in days.
@@ -46,7 +46,7 @@ export function HomeHero() {
                 <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-2 pb-2 pt-6 text-[11px] font-medium text-white">UGC ad sample</span>
               </div>
             </div>
-            <figcaption className="mt-12 text-[13px] leading-relaxed text-muted lg:pl-[30%]">
+            <figcaption className="mt-3 pl-[38%] text-[13px] leading-relaxed text-muted sm:pl-[150px]">
               Samples made with our own tools (AngleForge and our UGC pipeline). AI-generated, not client work.
             </figcaption>
           </figure>

@@ -53,7 +53,7 @@ export function Catalogue() {
         </nav>
       </div>
       {categories.map((c) => (
-        <section key={c.id} id={c.id} className="scroll-mt-32 border-t border-ink/10 py-14">
+        <section key={c.id} id={c.id} className="border-t border-ink/10 py-14 lg:scroll-mt-16">
           <p className="text-[12px] uppercase tracking-wordmark text-accent">{c.group}</p>
           <h2 className="mt-3 font-display text-display-md text-ink">{c.name}</h2>
           {c.tagline && <p className="mt-3 max-w-xl text-[16px] text-muted">{c.tagline}</p>}

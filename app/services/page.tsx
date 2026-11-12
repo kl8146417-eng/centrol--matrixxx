@@ -41,7 +41,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="What we make for"
-        accent="e-commerce brands."
+        accent={<><span className="whitespace-nowrap">e-commerce</span> brands.</>}
         intro="Five things, each with a fixed scope and a listed price where we can give one. Not sure where to start? The free store audit shows what your store needs first."
       />
 
@@ -56,7 +56,7 @@ export default function ServicesPage() {
       {offers.map((o, i) => {
         const pkgs = offerPackages(o);
         return (
-          <section key={o.id} id={o.id} className={`scroll-mt-24 ${i % 2 ? 'bg-[#F4F4F2]' : 'bg-white'}`}>
+          <section key={o.id} id={o.id} className={`${i % 2 ? 'bg-[#F4F4F2]' : 'bg-white'}`}>
             <div className="mx-auto grid max-w-editorial gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-12 lg:gap-14">
               <div className="lg:col-span-5">
                 <div className="lg:sticky lg:top-28">
