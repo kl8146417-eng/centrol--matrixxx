@@ -11,8 +11,8 @@ import { offers } from '@/content/offer';
 
 export const metadata: Metadata = pageMeta({
   path: '/contact',
-  title: 'Contact Asutosh',
-  description: `Talk to Centrol Matrix about product photos, UGC ads or your Shopify store. Call ${agency.phone} (answered by our AI assistant; Asutosh calls back) or email ${agency.email}.`,
+  title: 'Contact us',
+  description: `Talk to Centrol Matrix about product photos, UGC ads or your Shopify store. Call ${agency.phone} (answered by our AI assistant; we call you back) or email ${agency.email}.`,
 });
 
 export default function ContactPage({ searchParams }: { searchParams: { service?: string } }) {
@@ -24,7 +24,7 @@ export default function ContactPage({ searchParams }: { searchParams: { service?
       <PageHeader
         eyebrow="Contact"
         title="Talk to"
-        accent="Asutosh."
+        accent="us."
         intro="A question, a quote, or a project that doesn’t fit a package. You’ll get a reply from a person, usually within one business day."
       />
 

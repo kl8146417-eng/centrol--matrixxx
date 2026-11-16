@@ -76,7 +76,7 @@ export function AuditTeaser() {
         <div className="lg:col-span-5" data-reveal>
           <p className="text-[12px] uppercase tracking-wordmark text-accent">Free store audit</p>
           <h2 className="mt-3 font-display text-display-md text-ink">Five things shoppers notice <span className="italic text-accent">before you do.</span></h2>
-          <p className="mt-5 max-w-md text-[17px] leading-relaxed text-ink-soft">Send your store link and we check your public pages for them. Siteory, the audit tool we built, runs the checks; Asutosh reads the results and emails you a plain-English report within {AUDIT_TURNAROUND}.</p>
+          <p className="mt-5 max-w-md text-[17px] leading-relaxed text-ink-soft">Send your store link and we check your public pages for them. Siteory, the audit tool we built, runs the checks; we read the results and email you a plain-English report within {AUDIT_TURNAROUND}.</p>
           <Link href="/audit" data-track="audit_cta" data-track-label="home-audit" data-icon-host className="mt-8 inline-flex min-h-[52px] items-center gap-2 rounded-full bg-accent px-7 text-[16px] font-semibold text-white transition hover:bg-accent-dark">
             Get a free site audit <AnimIcon name="arrow" size={18} />
           </Link>
@@ -193,7 +193,7 @@ export function ContactBlock() {
       <div className="mx-auto grid max-w-editorial gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p className="text-[12px] uppercase tracking-wordmark text-accent">Contact</p>
-          <h2 className="mt-3 font-display text-display-md text-ink">Talk to <span className="italic text-accent">Asutosh.</span></h2>
+          <h2 className="mt-3 font-display text-display-md text-ink">Talk to <span className="italic text-accent">us.</span></h2>
           <p className="mt-5 max-w-md text-[17px] leading-relaxed text-ink-soft">A question, a quote, or a project that doesn’t fit a package. You’ll get a reply from a person, usually within one business day.</p>
           <div className="mt-8 space-y-5">
             <PhoneLine size="lg" />

@@ -4,7 +4,7 @@ import { displayPrice, isAddon, isPercent } from '@/lib/pricing.mjs';
 
 // WhatsApp is a secondary contact only (contact page + footer). Owner kept the +63 number for now.
 const WA = (process.env.NEXT_PUBLIC_WHATSAPP || '639515680964').replace(/\D/g, '');
-// Main phone: the US line, answered 24/7 by an AI receptionist that books a callback with Asutosh.
+// Main phone: the US line, answered 24/7 by an AI receptionist that books a callback with the team.
 // Set NEXT_PUBLIC_PHONE (digits, with country code) to change it sitewide.
 const PHONE = (process.env.NEXT_PUBLIC_PHONE || '12184384731').replace(/\D/g, '');
 function formatPhone(d: string) {
@@ -16,14 +16,12 @@ function formatPhone(d: string) {
 
 export const agency = {
   agencyName: 'Centrol Matrix',
-  // The public face and contact for every enquiry. Never list anyone else as the contact.
-  contactName: 'Asutosh',
   email: 'contact@centrolmatrix.com',
   phone: formatPhone(PHONE),
   phoneE164: `+${PHONE}`,
   phoneHref: `tel:+${PHONE}`,
   // Must sit next to the number wherever it appears (honesty about the AI receptionist).
-  phoneNote: 'Answered 24/7 by our AI assistant. Asutosh calls you back.',
+  phoneNote: 'Answered 24/7 by our AI assistant. We call you back.',
   whatsapp: WA,
   whatsappDisplay: formatPhone(WA),
   // Booking link (Cal.com / Calendly). Booking CTAs render only when this is set.

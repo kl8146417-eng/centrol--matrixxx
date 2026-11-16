@@ -16,7 +16,7 @@ export function CTASection({ title, accent }: { title?: string; accent?: string 
             <h2 className="mt-4 max-w-3xl font-display text-[clamp(38px,5.4vw,84px)] leading-[1.03]">
               {title ?? 'See what’s wrong with your store.'} <span className="italic text-[#7DA2FF]">{accent ?? 'The audit is free.'}</span>
             </h2>
-            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/70">Send your store link. Asutosh emails a plain-English report within {AUDIT_TURNAROUND}: what to fix first, and what we’d charge to fix it if you want us to.</p>
+            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white/70">Send your store link. We email a plain-English report within {AUDIT_TURNAROUND}: what to fix first, and what we’d charge to fix it if you want us to.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/audit" data-icon-host data-track="audit_cta" data-track-label="cta-band" className="inline-flex min-h-[52px] items-center gap-2 rounded-full bg-white px-7 text-[16px] font-semibold text-ink transition hover:bg-[#7DA2FF]">
                 Get a free site audit <AnimIcon name="arrow" size={18} />
@@ -25,7 +25,7 @@ export function CTASection({ title, accent }: { title?: string; accent?: string 
             </div>
           </div>
           <div className="space-y-4 border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-            <p className="text-[12px] uppercase tracking-wordmark text-white/50">Or talk to Asutosh</p>
+            <p className="text-[12px] uppercase tracking-wordmark text-white/50">Or talk to us</p>
             <PhoneLine dark />
             <a href={`mailto:${agency.email}`} className="inline-flex min-h-[44px] items-center text-[16px] text-[#7DA2FF] underline-offset-4 hover:underline">{agency.email}</a>
           </div>

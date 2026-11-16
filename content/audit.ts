@@ -1,6 +1,6 @@
 // The free store audit: the offer behind our cold email and cold calls.
 // Claim limits (hard): Siteory *reports*, it does not fix. Never quote Siteory scores. No ranking or
-// sales promises. Asutosh reviews every report before it goes out. Turnaround: 2 business days.
+// sales promises. A person on our team reviews every report before it goes out. Turnaround: 2 business days.
 
 export const AUDIT_TURNAROUND = '2 business days';
 
@@ -15,7 +15,7 @@ export const auditChecks: { t: string; d: string }[] = [
 
 export const auditSteps: { t: string; d: string }[] = [
   { t: 'Send your store link', d: 'Your name, email and store URL. That’s all. No logins, no access, no call.' },
-  { t: 'We check your public pages', d: 'Siteory, the audit tool we built, scans the pages any shopper can see. Then Asutosh reads through every result.' },
+  { t: 'We check your public pages', d: 'Siteory, the audit tool we built, scans the pages any shopper can see. Then one of us reads through every result.' },
   { t: 'Your report, by email', d: `A short report in plain English within ${AUDIT_TURNAROUND}: what’s wrong, why it matters, and what to fix first. Fix it yourself, or ask us for a fixed quote.` },
 ];
 
@@ -30,10 +30,10 @@ export const auditFaq: { q: string; a: string }[] = [
   },
   {
     q: 'Who are you?',
-    a: 'Centrol Matrix is a three-person studio that makes product photos and video ads for e-commerce brands, and builds and fixes Shopify stores. Asutosh runs outreach and reads every audit before it goes out. Siteory, the tool that runs the checks, is one we built ourselves.',
+    a: 'Centrol Matrix is a three-person studio that makes product photos and video ads for e-commerce brands, and builds and fixes Shopify stores. A person on our team reads every audit before it goes out. Siteory, the tool that runs the checks, is one we built ourselves.',
   },
   {
     q: 'Why did an AI assistant call me?',
-    a: 'Our calls to store owners are made by an AI assistant on Asutosh’s behalf. It mentions one thing it noticed on your store and offers this audit. If you’d rather not get calls from us, say so on the call or email contact@centrolmatrix.com and we’ll take your number off our list.',
+    a: 'Our calls to store owners are made by an AI assistant on our behalf. It mentions one thing it noticed on your store and offers this audit. If you’d rather not get calls from us, say so on the call or email contact@centrolmatrix.com and we’ll take your number off our list.',
   },
 ];

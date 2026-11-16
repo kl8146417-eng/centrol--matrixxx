@@ -3,7 +3,6 @@ import { pageMeta } from '@/lib/seo';
 import { HomeHero } from '@/components/home/HomeHero';
 import { WorkRail } from '@/components/home/WorkRail';
 import { ServicesList, AngleForgeShowcase, AuditTeaser, HowItWorks, PricingTeaser, FaqTeaser, ContactBlock } from '@/components/home/Sections';
-import { MeetAsutosh } from '@/components/Team';
 
 export const metadata: Metadata = {
   ...pageMeta({
@@ -26,7 +25,6 @@ export default function HomePage() {
       <AuditTeaser />
       <HowItWorks />
       <PricingTeaser />
-      <MeetAsutosh />
       <FaqTeaser />
       <ContactBlock />
     </>

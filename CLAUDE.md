@@ -14,14 +14,15 @@ selling on Shopify and Amazon. Apps come second. Our own products (Siteory, Angl
 WishCuts) are "tools we built and use", not the main pitch.
 
 **Outreach landing page: `/audit`.** Cold email and the AI cold-caller send prospects here, with
-`?first=&site=&brand=`. Siteory runs the checks; Asutosh reviews and emails the report within 2 business days.
+`?first=&site=&brand=`. Siteory runs the checks; we review and email the report within 2 business days.
 Copy lives in `content/audit.ts`. Keep the "Got a call from our AI assistant?" line.
 
 **People and contact.**
-- **Asutosh is the public face and the contact.** Never list Karan, or anyone else, as the contact.
+- **No personal names anywhere on the site.** No team names, no named contact, no team photos, no blog author bylines.
+  Copy says "we" / "us" / "a person on our team"; the contact is Centrol Matrix.
 - The main phone is **+1 (218) 438-4731** (`agency.phone`, override with `NEXT_PUBLIC_PHONE`), answered 24/7 by an
-  AI receptionist that books a callback with Asutosh. Wherever the number appears, show the note via `<PhoneLine />`:
-  "Answered 24/7 by our AI assistant. Asutosh calls you back."
+  AI receptionist that books a callback with the team. Wherever the number appears, show the note via `<PhoneLine />`:
+  "Answered 24/7 by our AI assistant. We call you back."
 - WhatsApp is secondary: `/contact` and the footer only.
 - No booking link yet: booking CTAs render only when `NEXT_PUBLIC_CAL_URL` is set.
 - No analytics. If you add any, add a consent banner and update the privacy page.

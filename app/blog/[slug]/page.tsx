@@ -29,7 +29,6 @@ export async function generateMetadata({
       url: `${site.url}/blog/${post.slug}`,
       images: post.coverImageUrl ? [post.coverImageUrl] : undefined,
       publishedTime: post.publishedAt?.toISOString(),
-      authors: [post.author],
     },
   };
 }
@@ -46,7 +45,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
     image: post.coverImageUrl ? [post.coverImageUrl] : undefined,
     datePublished: post.publishedAt?.toISOString(),
     dateModified: post.updatedAt.toISOString(),
-    author: { '@type': 'Organization', name: post.author },
+    author: { '@type': 'Organization', name: site.name, url: site.url },
     publisher: { '@type': 'Organization', name: site.name, url: site.url },
     mainEntityOfPage: `${site.url}/blog/${post.slug}`,
   };
@@ -70,8 +69,6 @@ export default async function PostPage({ params }: { params: { slug: string } })
           <time dateTime={post.publishedAt?.toISOString()}>{formatDate(post.publishedAt)}</time>
           <span aria-hidden>·</span>
           <span>{post.readingTime} min read</span>
-          <span aria-hidden>·</span>
-          <span>{post.author}</span>
         </div>
         <h1 className="mt-4 font-display text-display-md text-ink">{post.title}</h1>
         {post.excerpt && (

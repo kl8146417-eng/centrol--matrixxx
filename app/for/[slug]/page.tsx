@@ -54,12 +54,12 @@ export default function ProspectPage({ params }: { params: { slug: string } }) {
           </div>
           <div className="flex flex-wrap items-center gap-3 lg:justify-end">
             {pkg && <OrderButton id={pkg.id} label={`Order ${pkg.name}`} className="rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-ink transition hover:bg-[#7DA2FF]" />}
-            <a href={mail} className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-[15px] font-semibold text-white transition hover:bg-white/20">Email Asutosh</a>
+            <a href={mail} className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-[15px] font-semibold text-white transition hover:bg-white/20">Email us</a>
             <a href={agency.phoneHref} className="inline-flex min-h-[48px] items-center rounded-full bg-white/10 px-6 text-[15px] font-semibold text-white transition hover:bg-white/20">Call {agency.phone}</a>
             {agency.calUrl && <a href={agency.calUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white/10 px-6 py-3.5 text-[15px] font-semibold text-white transition hover:bg-white/20">Book a call</a>}
           </div>
         </div>
-        <p className="mt-2 text-[13px] text-muted">Calls to that number are answered by our AI assistant, and Asutosh calls you back.</p>
+        <p className="mt-2 text-[13px] text-muted">Calls to that number are answered by our AI assistant, and we call you back.</p>
         <p className="mt-6 text-[14px] text-muted">Not ready? <Link href="/fashion" className="font-semibold text-accent">See more of our fashion work</Link> or <Link href="/pricing" className="font-semibold text-accent">every package</Link>.</p>
       </div>
     </section>

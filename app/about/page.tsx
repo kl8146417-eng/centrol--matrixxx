@@ -4,12 +4,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageHeader } from '@/components/PageHeader';
 import { CTASection } from '@/components/CTASection';
-import { TeamSection } from '@/components/Team';
 
 export const metadata: Metadata = pageMeta({
   path: '/about',
-  title: 'About Centrol Matrix and Asutosh',
-  description: 'Centrol Matrix is a three-person studio (Asutosh, Vishal and Karan) making product photos, UGC ads and Shopify stores for e-commerce brands. Asutosh is your contact.',
+  title: 'About us',
+  description: 'Centrol Matrix is a three-person studio making product photos, UGC ads and Shopify stores for e-commerce brands, with tools we built ourselves.',
 });
 
 export default function AboutPage() {
@@ -27,7 +26,7 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="space-y-6 text-[17px] leading-relaxed text-ink-soft">
             <p>
-              Centrol Matrix is Asutosh, Vishal and Karan. We work with brands that sell on Shopify and
+              Centrol Matrix is a three-person studio. We work with brands that sell on Shopify and
               Amazon: product and listing photos, UGC-style video ads, and the store those ads point to.
             </p>
             <p>
@@ -36,9 +35,9 @@ export default function AboutPage() {
               it takes to keep a store or an app working after launch.
             </p>
             <p>
-              Asutosh is the person you talk to: outreach, quotes and every client conversation. Our US
-              number is answered around the clock by an AI assistant that takes your message, and Asutosh
-              calls you back.
+              You talk to the people doing the work. Quotes, questions and updates come straight from us.
+              Our US number is answered around the clock by an AI assistant that takes your message, and
+              one of us calls you back.
             </p>
           </div>
 
@@ -59,7 +58,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <TeamSection />
       <CTASection />
     </>
   );

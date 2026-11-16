@@ -41,7 +41,7 @@ export function AuditForm({ first = '', site = '', dark = false }: { first?: str
     return (
       <div role="status" className="rounded-3xl bg-white p-7 sm:p-9">
         <p className="font-display text-[clamp(28px,3vw,36px)] leading-tight text-ink">Thanks{name ? `, ${name}` : ''}. <span className="italic text-accent">It’s on the list.</span></p>
-        <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">Asutosh will email your report within {AUDIT_TURNAROUND}. Nothing to pay, and nobody needs access to your store.</p>
+        <p className="mt-3 text-[16px] leading-relaxed text-ink-soft">We’ll email your report within {AUDIT_TURNAROUND}. Nothing to pay, and nobody needs access to your store.</p>
       </div>
     );
   }
