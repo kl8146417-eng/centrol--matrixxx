@@ -23,7 +23,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
 - **`/audit` (new)**: the free store audit page that the cold email and the AI caller point to.
   - Personalised by `?first=&site=&brand=`, e.g. `/audit?first=Kate&site=katemaller.com` shows "Hi Kate, here's how the free audit works for katemaller.com." Odd or unknown values fall back to generic copy.
   - Sections:
-    - the headline "Your free store audit, from Asutosh at Centrol Matrix" plus the "Got a call from our AI assistant?" line;
+    - the headline "Your free store audit, from Centrol Matrix" plus the "Got a call from our AI assistant?" line;
     - the form: first name, email, store URL, notes;
     - the five checks in plain words;
     - the three next steps;
@@ -31,7 +31,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
     - the FAQ;
     - phone and email.
   - The form posts to `/api/contact` with `type: "audit"` and lands in `contacts` with the message headed **FREE STORE AUDIT REQUEST** and `meta.type = audit`.
-  - On success it says "Asutosh will email your report within 2 business days".
+  - On success it says "We’ll email your report within 2 business days".
 - **Home (`/`)**, in the brief's order:
   1. hero ("Product photos, UGC ads and Shopify fixes for e-commerce brands", free audit CTA, phone);
   2. sample rail, labelled as AI samples, not client work;
@@ -40,7 +40,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
   5. free audit;
   6. how it works (3 steps);
   7. pricing teaser;
-  8. Meet Asutosh;
+  8. Meet the team (removed);
   9. FAQ;
   10. contact block with the form.
 - **`/services`**: one section per offer with every package, turnaround and price from `content/services.json`:
@@ -56,7 +56,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
   - WhatsApp buttons are replaced by "Ask for a quote".
   - Copy says invoice / payment link.
 - **`/work`**: framed as "Samples from our pipeline" (AI-generated, not client work). The 480p preview loads on hover; phones open the 480p file.
-- **`/about`**: Asutosh named as founder and contact, Vishal and Karan listed, plus how we work and our AI policy.
+- **`/about`**: the studio (no personal names), how we work and our AI policy.
 - **`/contact`**:
   - Form (16px, 52px fields), US phone with the AI note, email, and the free audit.
   - WhatsApp and LinkedIn as secondary links.
@@ -67,7 +67,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
   - "Pay online by card" is now "We send an invoice with a payment link".
   - The WhatsApp CTAs are now prices, phone and email.
   - The comparison table becomes stacked cards on phones. It has its own OG image.
-- **`/for/[slug]`**: WhatsApp is replaced by "Email Asutosh" and "Call +1 (218) 438-4731" with the AI note.
+- **`/for/[slug]`**: WhatsApp is replaced by "Email us" and "Call +1 (218) 438-4731" with the AI note.
 - **Nav**:
   - Services · Work · Pricing · About · Contact, plus the "Free site audit" button.
   - Mobile gets a full-height menu sheet. "Free audit" stays visible in the bar on phones.
@@ -82,7 +82,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
   - Phone calls: AI assistant, possible recording and transcription, opting out of calls.
   - A cookie line that is true (no ads or analytics cookies).
 - **Sitewide**:
-  - US phone **+1 (218) 438-4731** with "Answered 24/7 by our AI assistant. Asutosh calls you back." in the header menu, footer, contact, `/audit` and JSON-LD (`telephone`, `contactPoint` areaServed US).
+  - US phone **+1 (218) 438-4731** with "Answered 24/7 by our AI assistant. We call you back." in the header menu, footer, contact, `/audit` and JSON-LD (`telephone`, `contactPoint` areaServed US).
   - WhatsApp only on `/contact` and in the footer.
   - New titles and descriptions naming Shopify, Amazon, product photos, UGC ads and the free audit.
   - New 1200×630 OG images: `public/og/{home,audit,services,pricing,fashion}.jpg`.
@@ -95,7 +95,7 @@ Brief: `docs/briefs/2026-11-13-site-rebuild-BRIEF.md`
 - AngleForge "ten marketplace-ready shots in under a minute": replaced with what angleforge.studio itself says (one photo in; studio, angle, lifestyle and close-up shots out).
 - GiftFeels App Store link `id6803380723`: it now opens **"Little Us: Couple Games & Quiz App"**, so the store badges are removed.
 - "Creator-style UGC (Seedance)": renamed. The "pink monogram-style handbag" sample is removed from every gallery; the media file stays in `/public`.
-- "+63", "Spartan Rich", "India" in `agency.ts`, `legal.ts` and the structured data: replaced.
+- "+63", "[operator name]", "India" in `agency.ts`, `legal.ts` and the structured data: replaced.
   - The FAQ and privacy page still say, truthfully, that the team works from India.
   - Governing law stays India.
 
@@ -156,10 +156,10 @@ Nothing was changed on Netlify. The phone defaults to +1 (218) 438-4731 in code 
 
 1. **Legal operator name and a business/postal address** for the footer and terms. "Who we are" is neutral until then.
 2. **WhatsApp:** kept as a secondary contact (+63 951 568 0964) per the owner's answer. Change it with `NEXT_PUBLIC_WHATSAPP` if a new number is wanted.
-3. **Booking link** (Cal.com or Calendly) for "Book a call with Asutosh". None yet; set `NEXT_PUBLIC_CAL_URL` and the buttons appear.
+3. **Booking link** (Cal.com or Calendly) for "Book a call". None yet; set `NEXT_PUBLIC_CAL_URL` and the buttons appear.
 4. **Analytics:** none, by the owner's choice. If GA4 or Pixel is added later, add a consent banner and update the privacy "Cookies and tracking" section.
-5. **Photos** of Asutosh, Vishal and Karan: put them in `public/team/` and set `photo` in `content/team.ts`. Initials show until then.
-6. **Roles for Vishal and Karan**, so they can be added in `content/team.ts`.
+5. ~~Team photos~~: dropped. The site shows no personal names or photos.
+6. ~~Team roles~~: dropped along with the team section.
 7. **GiftFeels App Store listing:** is "Little Us" (id6803380723) the renamed GiftFeels app? If yes, re-add the badge in `content/products.ts`.
 8. **Resend:** set `RESEND_API_KEY` (and optionally `CONTACT_TO_EMAIL`) on Netlify so audit requests are emailed as well as saved.
 9. **Blog drafts:** run `scripts/blog-unpublish.mjs` with a `blog:write` token if the six posts should also be `draft` in the DB.

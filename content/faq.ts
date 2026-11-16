@@ -7,9 +7,9 @@ export interface QA { q: string; a: string; group: Group }
 // No outcome promises (sales, ROAS, rankings). Payments are invoice-only today: Stripe/Razorpay are off.
 export const faq: QA[] = [
   ...auditFaq.map((f) => ({ ...f, group: 'Free audit' as const })),
-  { group: 'Free audit', q: 'What happens after the audit?', a: `Asutosh emails your report within ${AUDIT_TURNAROUND}. If you want help with what it finds, reply and we send a fixed quote for the fixes. There’s no follow-up sequence and no pressure if you don’t.` },
+  { group: 'Free audit', q: 'What happens after the audit?', a: `We email your report within ${AUDIT_TURNAROUND}. If you want help with what it finds, reply and we send a fixed quote for the fixes. There’s no follow-up sequence and no pressure if you don’t.` },
 
-  { group: 'Ordering', q: 'Do I need a call before ordering?', a: `No. Every package has a fixed scope and price, so you can order online, fill in a short brief and upload your product photos. If you’d rather talk first, call ${agency.phone} (our AI assistant takes a message and Asutosh calls you back) or email ${agency.email}.` },
+  { group: 'Ordering', q: 'Do I need a call before ordering?', a: `No. Every package has a fixed scope and price, so you can order online, fill in a short brief and upload your product photos. If you’d rather talk first, call ${agency.phone} (our AI assistant takes a message and we call you back) or email ${agency.email}.` },
   { group: 'Ordering', q: 'What do you need from me?', a: 'Your brand name, links to the products, three to five photos per product (clean phone photos are fine) and any references you like. The brief at checkout walks you through it, and you can send more files later.' },
 
   { group: 'Production', q: 'How fast is delivery?', a: 'Turnaround is listed on every package and starts once your brief and photos are in: a single UGC video in 3 days, a 10-image photo set in 5 days, a Storefront Starter store in about 14 days. Rush delivery cuts that roughly in half.' },
@@ -26,7 +26,7 @@ export const faq: QA[] = [
   { group: 'Payments', q: 'Can I cancel a monthly plan?', a: 'UGC Factory is month to month: cancel any time before your next billing date. For the monthly creative retainer we suggest three months so there’s time to test, but there’s no lock-in contract.' },
   { group: 'Payments', q: 'What is your refund policy?', a: 'If we haven’t started production, you get a full refund. After that, we revise until the work matches the brief, and unused parts of a package can be refunded pro rata. See the refund policy for details.' },
 
-  { group: 'Studio', q: 'Where are you based? What about time zones?', a: 'We’re a three-person team working from India with brands in the US and elsewhere. Asutosh books calls in your working hours, and project updates come by email. Our US number is answered around the clock by an AI assistant that takes a message.' },
+  { group: 'Studio', q: 'Where are you based? What about time zones?', a: 'We’re a three-person team working from India with brands in the US and elsewhere. We book calls in your working hours, and project updates come by email. Our US number is answered around the clock by an AI assistant that takes a message.' },
   { group: 'Studio', q: 'Who owns the work?', a: 'You do. Once the order is paid in full, you get full commercial rights to every deliverable: images, videos, copy and code.' },
   { group: 'Studio', q: 'Is ORVA a real client?', a: 'No. ORVA is our in-house concept label, built end to end to show what we do: the storefront, the product photo pipeline and the creative. It is a live demo you can click through, not a paid client project.' },
 ];

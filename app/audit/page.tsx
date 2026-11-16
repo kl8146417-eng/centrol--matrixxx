@@ -6,11 +6,9 @@ import { personalize } from '@/lib/personalize';
 import { auditChecks, auditSteps, auditFaq, AUDIT_TURNAROUND } from '@/content/audit';
 import { angleforgePairs, ANGLEFORGE_LABELS, ANGLEFORGE_NOTE, ANGLEFORGE_URL } from '@/content/angleforge';
 import { agency } from '@/content/agency';
-import { contactPerson } from '@/content/team';
 import { AuditForm } from '@/components/audit/AuditForm';
 import { LookbookTabs } from '@/components/fashion/LookbookTabs';
 import { PhoneLine } from '@/components/PhoneLine';
-import { Avatar } from '@/components/Team';
 
 export const metadata: Metadata = pageMeta({
   path: '/audit',
@@ -41,18 +39,15 @@ export default function AuditPage({ searchParams }: { searchParams: Record<strin
               </p>
             )}
             <h1 className="font-display text-[clamp(40px,5.8vw,88px)] leading-[0.98] tracking-[-0.02em]">
-              Your free store audit, <span className="italic text-accent">from {contactPerson.name} at Centrol Matrix.</span>
+              Your free store audit, <span className="italic text-accent">from Centrol Matrix.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-soft sm:text-[18px]">
-              We check the public pages of your store for the small things that cost you clicks and shares, then {contactPerson.name} emails you a short report within {AUDIT_TURNAROUND}: what’s wrong, why it matters, and what to fix first.
+              We check the public pages of your store for the small things that cost you clicks and shares, then we email you a short report within {AUDIT_TURNAROUND}: what’s wrong, why it matters, and what to fix first.
             </p>
             <p className="mt-5 max-w-xl border-l-2 border-accent pl-4 text-[15px] leading-relaxed text-ink-soft">
               Got a call from our AI assistant? This is where the report comes from.
             </p>
-            <div className="mt-8 flex items-center gap-4">
-              <Avatar m={contactPerson} size="sm" />
-              <p className="text-[14px] leading-snug text-muted"><span className="font-semibold text-ink">{contactPerson.name}</span>, {contactPerson.role?.toLowerCase()}<br />reads every audit before it goes out.</p>
-            </div>
+            <p className="mt-8 text-[14px] leading-snug text-muted">A person on our team reads every audit before it goes out.</p>
           </div>
           <div id="request" className="lg:col-span-6">
             <AuditForm first={first} site={site} />
@@ -66,7 +61,7 @@ export default function AuditPage({ searchParams }: { searchParams: Record<strin
           <div className="lg:col-span-5" data-reveal>
             <p className="text-[12px] uppercase tracking-wordmark text-accent">What we check</p>
             <h2 className="mt-3 font-display text-display-md text-ink">Five things shoppers notice <span className="italic text-accent">before you do.</span></h2>
-            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-ink-soft">Siteory, the audit tool we built, runs the checks. It reports what it finds; it doesn’t change anything on your store. {contactPerson.name} turns the results into a short list, in order of what to fix first.</p>
+            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-ink-soft">Siteory, the audit tool we built, runs the checks. It reports what it finds; it doesn’t change anything on your store. We turn the results into a short list, in order of what to fix first.</p>
           </div>
           <ol className="lg:col-span-7">
             {auditChecks.map((c, i) => (
@@ -140,7 +135,7 @@ export default function AuditPage({ searchParams }: { searchParams: Record<strin
         <div className="mx-auto grid max-w-editorial gap-10 px-5 py-16 sm:px-8 sm:py-20 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <h2 className="font-display text-[clamp(30px,3vw,40px)] leading-tight text-ink">Rather talk first?</h2>
-            <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">Call or email. Either way it reaches {contactPerson.name}.</p>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">Call or email. Either way, a person on our team gets back to you.</p>
           </div>
           <PhoneLine size="lg" />
           <div>

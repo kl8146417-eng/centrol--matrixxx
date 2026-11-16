@@ -40,7 +40,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className="text-[12px] uppercase tracking-wordmark text-white/40">Talk to Asutosh</p>
+            <p className="text-[12px] uppercase tracking-wordmark text-white/40">Talk to us</p>
             <div className="mt-3 space-y-3">
               <PhoneLine dark size="sm" />
               <a href={`mailto:${site.email}`} className="inline-flex min-h-[44px] items-center text-[15px] text-[#7DA2FF] underline-offset-4 hover:underline">{site.email}</a>

@@ -2,7 +2,7 @@ import { agency } from '@/content/agency';
 
 /**
  * The US phone number with its honesty note. Wherever the number is shown, the note goes with it:
- * the line is answered by an AI assistant, and Asutosh calls back personally.
+ * the line is answered by an AI assistant, and a person on our team calls back.
  */
 export function PhoneLine({ dark = false, size = 'md', className = '' }: { dark?: boolean; size?: 'sm' | 'md' | 'lg'; className?: string }) {
   const num = size === 'lg' ? 'text-[clamp(26px,3vw,36px)] font-display' : size === 'sm' ? 'text-[15px] font-medium' : 'text-[18px] font-semibold';

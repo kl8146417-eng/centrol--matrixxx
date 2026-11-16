@@ -1,19 +1,19 @@
 # BRIEF: Rebuild centrolmatrix.com for US e-commerce sellers (fix, restructure, make it fully responsive, deploy)
 
 Written 2026-11-13 by the Claude session that runs Centrol Matrix's outreach. You are the dedicated site session for this repo.
-The owner (Asutosh) wants this done end to end: fix, restructure, make it responsive everywhere, and deploy to production.
+The owner wants this done end to end: fix, restructure, make it responsive everywhere, and deploy to production.
 Keep the context you learn in this repo. At the end, update `CLAUDE.md` with the new direction so future sessions start from it.
 
 ---
 
 ## 1. Why this matters now
 
-Centrol Matrix (3-person studio: Asutosh, Vishal, Karan; **Asutosh is the public face and contact, never Karan**) has started outbound to **US Shopify / Amazon / e-commerce sellers**:
+Centrol Matrix (3-person studio; **no personal names on the site**) has started outbound to **US Shopify / Amazon / e-commerce sellers**:
 - Cold email (plain text, offering a free website audit).
-- An **AI cold-call agent** (Fish Audio, persona "Clara, an AI assistant calling for Asutosh at Centrol Matrix"). It calls from **+1 (218) 438-4731**, points out one real issue on the prospect's store, and offers a **free site audit report emailed by Asutosh**, plus an optional callback.
-- Inbound calls to +1 (218) 438-4731 are answered by an **AI receptionist** for Centrol Matrix that takes a message and books a callback with Asutosh (being set up now by the other session).
+- An **AI cold-call agent** (Fish Audio, persona "Clara, an AI assistant calling for Centrol Matrix"). It calls from **+1 (218) 438-4731**, points out one real issue on the prospect's store, and offers a **free site audit report emailed by the owner**, plus an optional callback.
+- Inbound calls to +1 (218) 438-4731 are answered by an **AI receptionist** for Centrol Matrix that takes a message and books a callback with the team (being set up now by the other session).
 
-Every prospect who hears the call googles centrolmatrix.com. **Today the site does not back up the pitch.** It reads as a fashion studio for Indian clothing brands, and shows a Philippines WhatsApp number, "operated by Spartan Rich in India", course-seller blog posts and a "pay by card" claim that is false. Nothing on it mentions a free audit. The owner also says the current structure is very bad. Fix all of that.
+Every prospect who hears the call googles centrolmatrix.com. **Today the site does not back up the pitch.** It reads as a fashion studio for Indian clothing brands, and shows a Philippines WhatsApp number, "operated by [operator name] in India", course-seller blog posts and a "pay by card" claim that is false. Nothing on it mentions a free audit. The owner also says the current structure is very bad. Fix all of that.
 
 The three brands:
 - **Centrol Matrix** (this site): AI UGC videos, ad creatives, product photos, Shopify sites, apps, lead follow-up automation.
@@ -31,7 +31,7 @@ New sister site being built in parallel by another session: **homes.centrolmatri
    - Don't say "penetration testing".
    - Never quote Siteory scores.
    - Never pitch Facebook/Instagram/TikTok ads to CBD or ingestible-supplement brands.
-2. **Honesty about AI.** Where the phone number appears, say it's answered by an AI assistant and that Asutosh calls back personally. Label AI-generated samples as samples.
+2. **Honesty about AI.** Where the phone number appears, say it's answered by an AI assistant and that a person on our team calls back. Label AI-generated samples as samples.
 3. **Don't break inbound links.** `/fashion`, `/for/[slug]`, `/blog/*`, `/pricing`, `/contact`, `/work`, `/apps` are linked from emails, the blog and Google. If you move or rename anything, add 301 redirects (`next.config.mjs` `redirects()` or `netlify.toml`).
 4. **Data.**
    - Don't delete database rows or media.
@@ -47,8 +47,8 @@ New sister site being built in parallel by another session: **homes.centrolmatri
 
 ## 3. Verified facts about the current setup (2026-11-13)
 
-- **Live build:** the repo's v5. Branch `v5-redesign` is 10 commits ahead of `origin/main`. Remote is `github.com/kl8146417-eng/centrol--matrixxx`; the `gh` CLI is logged in as `asutoosh` with push rights.
-- **Hosting:** Netlify (`Server: Netlify`). The Netlify CLI is **logged in on this PC** (user "asutosh pattanayak") but not installed globally, so use `npx netlify-cli ...`.
+- **Live build:** the repo's v5. Branch `v5-redesign` is 10 commits ahead of `origin/main`. Remote is `github.com/kl8146417-eng/centrol--matrixxx`; the `gh` CLI is logged in with push rights.
+- **Hosting:** Netlify (`Server: Netlify`). The Netlify CLI is **logged in on this PC** (the owner's account) but not installed globally, so use `npx netlify-cli ...`.
   - **First find out how production deploys:** `npx netlify-cli status`, `npx netlify-cli sites:list`, and the site's build settings (is it git-linked, and to which production branch, or manual deploys?).
 - **Stack:** Next.js 14 App Router with `@netlify/plugin-nextjs`; Node 20 on Netlify, Node 22 locally.
 - **Contact:** forms post to `/api/contact`, which saves to the Neon `contacts` table (Netlify Blobs fallback) and emails via Resend only if a key is set (unverified whether it does). No rate limit.
@@ -63,10 +63,10 @@ New sister site being built in parallel by another session: **homes.centrolmatri
 The review cited these file:line references. Re-verify each one before editing; lines may have moved.
 
 **Identity and trust**
-- `content/agency.ts:5,14-15`: +63 WhatsApp fallback; `founder: 'Spartan Rich'`, `location: 'India'`.
-- `content/legal.ts:11`: "operated by Spartan Rich in India". **Ask the owner for the legal operator name and business/postal address.** Until then, don't publish a placeholder: phrase it neutrally and list it under owner input.
+- `content/agency.ts:5,14-15`: +63 WhatsApp fallback; `founder: [operator name]`, `location: 'India'`.
+- `content/legal.ts:11`: "operated by [operator name] in India". **Ask the owner for the legal operator name and business/postal address.** Until then, don't publish a placeholder: phrase it neutrally and list it under owner input.
 - `app/layout.tsx:75`: structured data lists the +63 phone. Switch to the US number.
-- `content/team.ts`: initials only. Make Asutosh the named contact (founder, outreach). Add roles. Leave photo slots that work without photos, or use real photos if the repo has them.
+- `content/team.ts`: initials only. (Superseded: the site shows no personal names.)
 - No postal address anywhere (see the ask list).
 
 **False or unverified claims**
@@ -109,7 +109,7 @@ Proposed site map (keep the old URLs working through redirects):
   5. Free-audit section.
   6. How it works (3 steps).
   7. Pricing teaser.
-  8. Meet Asutosh / team.
+  8. Meet the team (superseded).
   9. FAQ.
   10. Contact block with email, the US phone (AI receptionist note) and the form.
 - **Services** `/services`: one clear section per service, each with what you get, turnaround and a "from" price where `services.json` has one.
@@ -120,14 +120,14 @@ Proposed site map (keep the old URLs working through redirects):
   - Lead & customer follow-up automation.
   - Apps.
 - **Free site audit** `/audit` (NEW, top priority, linked from the main nav). See Phase 2.
-- **Work** `/work`, **Pricing** `/pricing`, **About** `/about` (Asutosh named), **Contact** `/contact`, **Blog** `/blog`.
+- **Work** `/work`, **Pricing** `/pricing`, **About** `/about` (no personal names), **Contact** `/contact`, **Blog** `/blog`.
 - **Verticals:** `/fashion` stays as a landing page (it's linked from emails) but leaves the main nav. Group it in the footer or under Services as "For clothing brands". Add "Real estate" pointing to https://homes.centrolmatrix.com (external, opens normally).
 - **Our products:** Siteory, AngleForge (add it as a product with a link), Recl, GiftFeels, WishCuts. Keep it as a section or `/apps`, framed as "tools we built and use", not the main pitch.
 - **Nav:** Services · Work · Free audit · Pricing · About · Contact (CTA button: "Free site audit"). Mobile: a proper menu sheet with large tap targets.
 
 ### Phase 2: `/audit` landing page (the outreach match)
 - **Personalisation:** reuse `lib/personalize.ts` and the `/fashion` pattern. Support `?brand=&first=&site=`, for example "Hi Kate, here's how the free audit works for katemaller.com". Unknown params fall back to generic copy.
-- **Headline idea:** "Your free store audit, from Asutosh at Centrol Matrix". Optionally add a line for people who got a call: "Got a call from our AI assistant? This is where the report comes from."
+- **Headline idea:** "Your free store audit, from Centrol Matrix". Optionally add a line for people who got a call: "Got a call from our AI assistant? This is where the report comes from."
 - **What's checked,** in owner language, not jargon:
   - Links that show no picture when shared.
   - Page titles Google cuts off.
@@ -135,14 +135,14 @@ Proposed site map (keep the old URLs working through redirects):
   - Product images Google can't read.
   - Missing or slow pages.
 
-  Siteory runs the audit, and Asutosh reviews and emails the report. No scores in marketing copy.
-- **Form:** first name, email, store URL (required), anything else (optional). Post it to `/api/contact` with a `type`/`source` of `audit`. Reuse `components/fashion/SampleForm.tsx` if it fits. After submit, show "Asutosh will email your report within 2 business days".
+  Siteory runs the audit, and we review and email the report. No scores in marketing copy.
+- **Form:** first name, email, store URL (required), anything else (optional). Post it to `/api/contact` with a `type`/`source` of `audit`. Reuse `components/fashion/SampleForm.tsx` if it fits. After submit, show "We’ll email your report within 2 business days".
 - **Also on the page:** what happens next (3 steps), a small AngleForge before/after as "while you're here", the FAQ ("Is it really free?", "Do you need access to my store?" (no, it's from public pages), "Who are you?"), and the contact options.
 - `noindex` is not needed. Give it a proper title and description.
 
 ### Phase 3: Identity & trust
 - **Phone:**
-  - Display **+1 (218) 438-4731** as the main phone sitewide (header or contact, footer, structured data), with the note "Answered 24/7 by our AI assistant; Asutosh calls you back."
+  - Display **+1 (218) 438-4731** as the main phone sitewide (header or contact, footer, structured data), with the note "Answered 24/7 by our AI assistant; we call you back."
   - Change `content/agency.ts` so the phone isn't derived from WhatsApp. Add a separate `phone` / `NEXT_PUBLIC_PHONE`.
   - WhatsApp: keep it as a secondary link only (contact page and footer). **Ask the owner** whether to keep +63 or which number to use. Until answered, keep the existing env value but don't show it in the hero or as a primary CTA.
 - **Email:** keep contact@centrolmatrix.com.
@@ -202,9 +202,9 @@ The Codex CLI is installed (`codex`, v0.166). Use it for well-scoped, parallel w
 Ask once, up front, then continue with neutral wording until answered:
 1. Legal operator name and a business/postal address for the site footer and terms.
 2. WhatsApp: keep +63 951 568 0964 as a secondary contact, switch to another number (which?), or remove it?
-3. A booking link (Cal.com or Calendly) for "Book a call with Asutosh", if any.
+3. A booking link (Cal.com or Calendly) for "Book a call", if any.
 4. Analytics IDs (GA4, Meta Pixel, Search Console verification), if wanted.
-5. A real photo of Asutosh (and the team) for About and `/audit`, if available.
+5. (Superseded: no personal names or photos on the site.)
 
 ## 9. Finish
 

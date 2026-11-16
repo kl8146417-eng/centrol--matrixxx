@@ -40,7 +40,7 @@ export function ContactForm({ service = '' }: { service?: string }) {
   if (state === 'sent') {
     return (
       <div role="status" className="rounded-3xl bg-[#F4F4F2] p-7 sm:p-9">
-        <p className="font-display text-3xl text-ink">Got it. <span className="italic text-accent">Asutosh will reply.</span></p>
+        <p className="font-display text-3xl text-ink">Got it. <span className="italic text-accent">We’ll reply.</span></p>
         <p className="mt-3 text-[16px] text-ink-soft">Usually within one business day, by email.</p>
       </div>
     );

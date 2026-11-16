@@ -54,9 +54,11 @@ export type WorkItem = {
   // X-Frame-Options / restrictive CSP can't be previewed inline, so the "See
   // now" modal falls back to the screenshot + an open-in-new-tab button.
   framable?: boolean;
+  // Kept in the list but not shown anywhere on the site.
+  hidden?: boolean;
 };
 
-export const work: WorkItem[] = [
+const allWork: WorkItem[] = [
   // --- The two live demo sites: powering the scroll embeds on the home page. ---
   {
     name: 'Hotel prototype',
@@ -65,6 +67,7 @@ export const work: WorkItem[] = [
     viewUrl: 'https://hoteldemosite.vishalchauhan.in/',
     embedUrl: 'https://hoteldemosite.vishalchauhan.in/',
     image: '/work/hotel-demo.webp',
+    hidden: true,
     framable: true,
     blurb: 'A booking-ready hotel website prototype: rooms, rates and a clean reservation flow.',
   },
@@ -75,6 +78,7 @@ export const work: WorkItem[] = [
     viewUrl: 'https://dental-demo.vishalchauhan.in/',
     embedUrl: 'https://dental-demo.vishalchauhan.in/',
     image: '/work/dental-demo.webp',
+    hidden: true,
     framable: true,
     blurb: 'A family dental clinic site built to explain treatments and take appointments.',
   },
@@ -143,3 +147,4 @@ export const work: WorkItem[] = [
     blurb: 'A leaner way to run AI workloads without paying enterprise prices for them.',
   },
 ];
+export const work: WorkItem[] = allWork.filter((w) => !w.hidden);

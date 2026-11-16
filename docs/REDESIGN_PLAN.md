@@ -23,7 +23,7 @@ proof of craft.
    giant words (Websites / Apps / UGC ads / Product shoots), then about 4,500px of PG, couples and
    SaaS cards before any fashion work.
 2. **Trust breaks in small ways.** "Role to be added" ×3, two blank WishCuts posters, phone-in-phone
-   Delhi PGs screens, a +63 WhatsApp number on an "India-based" studio, "operated by Spartan Rich",
+   Delhi PGs screens, a +63 WhatsApp number on an "India-based" studio, "operated by [operator name]",
    and a Google Play badge on a pre-register-only app.
 3. **Nothing is measured.** No pixel, no GA, no booking link. The canonical tag points to
    centrolmatrix.com, which still serves a 130-day-old build.
@@ -59,7 +59,7 @@ proof of craft.
 
 **Inputs needed from the team:**
 - Real +91 WhatsApp number
-- Team roles and real photos (Asutosh, Vishal, Karan)
+- Team roles and real photos (superseded: no personal names on the site)
 - Cal.com (or Calendly) link
 - Legal entity name and address for Terms
 - Whether we can show any client work or brand names

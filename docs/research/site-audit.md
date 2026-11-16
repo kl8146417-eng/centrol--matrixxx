@@ -19,7 +19,7 @@
 | Booking link | **None** (no Calendly or cal.com). The FAQ promises "book a 15-minute call". **P1** |
 | Canonical vs sitemap | Canonicals point to `https://centrolmatrix.com/...`, but `sitemap.xml` and `robots.txt` list `https://centrol-matrix.netlify.app`. **P1 (SEO)** |
 | OG image | `og:image` = `https://centrolmatrix.com/og/default.jpg`, which returns **404** on the live domain. The preview's own `/og/default.jpg` returns 200. centrolmatrix.com currently serves an old cached build (Netlify edge Age ≈ 130 days). Share cards will break until this deploy goes live. **P1** |
-| Contact identity | WhatsApp is **+63** (Philippines) on every page. The FAQ says "based in India", and Terms say "operated by **Spartan Rich** in India". Payments are Stripe/Razorpay, the Play developer is "JInx Studios" / "GiftFeels Studio", and the App Store developer is Asutosh Pattanayak. Too many identities. **P1 trust** |
+| Contact identity | WhatsApp is **+63** (Philippines) on every page. The FAQ says "based in India", and Terms say "operated by **[operator name]** in India". Payments are Stripe/Razorpay, the Play developer is "JInx Studios" / "GiftFeels Studio", and the App Store developer is a personal name. Too many identities. **P1 trust** |
 | 3D assets | `/3d/rocket.webp` (in the CTA block on **every page**) and `/3d/setting.webp` (automation bento card) render with a **solid white rectangle background** on dark or blue panels. **P1** |
 | Reveal animations | Sections fade in late. On fast scroll on mobile, whole viewports are blank or faded for about 1–2 s (seen on home, FAQ and process steps). **P2** |
 | Footer | Repeats "Tell us what you're building." directly under the CTA that uses the same line. The "Work" column lists client sites plus "GiftFeels", "DUPGS" (named "Delhi PGs" elsewhere), but omits Siteory, WishCuts, Hanger Club and ORVA. **P2** |
@@ -65,7 +65,7 @@
    - AI automation, SEO & lead gen (scoped)
    - Real estate video (from $197)
 4. **Products: "We don't just pitch it. We ship it."** (3332–7818, **4,486 px tall**). Six large stacked cards: ORVA, Siteory, Delhi PGs, GiftFeels, WishCuts, Hanger Club. Then a "More sites we've shipped" grid of 8 thumbnails (Hotel, Dental, AngleForge, Soni Singh, Kangaroo House, **recl.app**, WWF NGO, CheaperAI).
-5. **Team strip**: avatars "A V K", "Built by Asutosh, Vishal and Karan.", "Meet the team →".
+5. **Team strip**: avatars (initials), "Built by the team.", "Meet the team →".
 6. An empty light-grey band (about 178 px) with no content. **P2**
 7. **Work by category: "Creator-style ads, without the creators."** Tabs: AI UGC ads, Product ads, Fashion clothes, Jewellery video, Social content, Video replication, Beyond fashion · Real estate. A 4-video grid and "See all work".
 8. **How we work: "From brief to live, without hand-offs."** 4 icon cards: Brief, Plan & design, Build & produce, Launch & iterate.
@@ -99,7 +99,7 @@
 - **P1. The products section is 4,486 px** (about 6 desktop screens, about 7,000 px on mobile), placed before any client proof, process or pricing. Four of the six products (Siteory, Delhi PGs, GiftFeels, WishCuts) are unrelated to fashion and D2C. A clothing-brand visitor scrolls through PG listings and a couples app before seeing the fashion work.
 - **P1. "More sites we've shipped" thumbnails crop the left edge of each hero** ("otel, car & / xperiences", "oni Singh : Hair", "ave what / atters. Recall / forever." for **recl.app**). The 8 items in a 5-column grid leave 2 empty slots. On mobile, domains collide across columns ("hoteldemosite.vishalchauhan.indental-…").
 - **P1. Recl is buried.** recl.app is a polished, paid AI-learning SaaS ($9/mo, $60/yr, Chrome extension, Android closed beta, iOS in review). Here it appears only as a cropped 230 px thumbnail labelled "recl.app". It deserves a product card ahead of Delhi PGs if the goal is to show product craft.
-- **P1. Team strip has no photos.** Initials in colored circles. On mobile (≤ 365 px CSS) the strip **overflows horizontally**, forcing one word per line ("Built by / Asutosh, / Vishal / and / Karan.") and causing page-level horizontal scroll on 360 px Android, the most common width in India.
+- **P1. Team strip has no photos.** Initials in colored circles. On mobile (≤ 365 px CSS) the strip **overflows horizontally**, forcing one word per line ("Built by / [names]") and causing page-level horizontal scroll on 360 px Android, the most common width in India.
 - **P1. No social proof anywhere**: no client logos, testimonials, results (ROAS, CTR, CVR), case-study metrics, review stars or "brands we've worked with". The only numbers are the GiftFeels 40K hedge and, on `/apps`, a TrustMRR badge showing **$2,299 total revenue** (which undercuts more than it helps).
 - **P2.** The pricing card "Most popular: Lookbook AI — Set of 25" makes a popularity claim with no evidence. `/pricing` marks **five** packages "Popular".
 - **P2.** Showreel: 25 pieces are duplicated in the DOM for the marquee, which means 50 video elements. The section has about 110 px of dead black space under the strip, then a white gap. The labels mix model names ("Creator-style UGC (Seedance)") into client-facing titles.
@@ -268,7 +268,7 @@
 **Sections**
 - Hero "A small studio that ships."
 - 3 paragraphs plus "How we work" / "What we ship".
-- "Three people. Every product on this site." with cards for Asutosh, Vishal and Karan.
+- "Three people. Every product on this site." with cards for the team.
 - CTA.
 
 **Issues**
@@ -324,7 +324,7 @@
 ## 13. Legal: `/delivery`, `/refunds`, `/privacy`, `/terms`
 
 - These are clean, short and sensible: digital-only delivery, full refund before production, pro-rata after, rush refund if late.
-- **P1.** Terms name the operator as **"Spartan Rich in India"**, an entity name that appears nowhere else. There's no registered address or GST, which Razorpay and Stripe review typically expect on the site.
+- **P1.** Terms name the operator as **"[operator name] in India"**, an entity name that appears nowhere else. There's no registered address or GST, which Razorpay and Stripe review typically expect on the site.
 - **P2.** All four pages say "Last updated 9 October 2026".
 
 ## 14. 404
@@ -357,7 +357,7 @@
 8. **P1. Services aren't sellable.** `/services` is text-only with no prices or examples. Clipping, carousels, social handling and apps have no package. "Eight disciplines" vs 15 services vs 11 pricing categories don't line up.
 9. **P1. Pricing opens with 9 unpriced consulting cards** under a "Fixed prices" headline. D2C packages start about 3 screens down.
 10. **P1. No turnaround on pricing cards**, contradicting the FAQ. "Popular" is used five times.
-11. **P1. Identity inconsistency.** +63 WhatsApp, "based in India", "operated by Spartan Rich", and three different store developer names.
+11. **P1. Identity inconsistency.** +63 WhatsApp, "based in India", "operated by [operator name]", and three different store developer names.
 12. **P1. GiftFeels claims overreach.** The Android app is pre-register only, but shows a "Get it on Google Play" badge. iOS has no ratings. The 40K figure belongs to the web product. The chips are copied nav links.
 13. **P1. UGC contradiction.** "without the creators" (AI) vs "a roster of creators — hired, briefed, and paid".
 14. **P1. Off-ICP, AI-generated blog** ("sell AI websites for $5000", "six figures info products", duplicates, "in 2025").
@@ -393,9 +393,9 @@
 ## Store URLs (every store link found)
 | App | Store | URL | Status (15 Oct 2026) |
 |---|---|---|---|
-| Delhi PGs | Google Play | https://play.google.com/store/apps/details?id=com.delhipgs.app | Live. **100+ downloads**, no rating shown, "Rated for 3+", House & Home, updated Sep 6 2026. Developer listed as **"JInx Studios"** (contact Asutosh Pattanayak, Digapahandi, Odisha). Support support@dupgs.com |
-| GiftFeels: Couples & Friends | Google Play | https://play.google.com/store/apps/details?id=com.giftfeels.app | **Pre-register only (not released).** Developer "GiftFeels Studio" (contact Vishal Chauhan, Mau, UP; vishaal.builds@gmail.com, +91 9005762006). Rated 12+, in-app purchases, Lifestyle, updated Sep 23 2026. No downloads or ratings |
-| GiftFeels: Couples & Friends | App Store | https://apps.apple.com/us/app/giftfeels-couples-friends/id6803380723 | Live, iPhone only. Subtitle "Love Quizzes & Date Ideas". Free + IAP. 88.6 MB. Social Networking. Age 4+. Developer **Asutosh Pattanayak**. **"Hasn't received enough ratings"**. New: "Catch a Memory" widget |
+| Delhi PGs | Google Play | https://play.google.com/store/apps/details?id=com.delhipgs.app | Live. **100+ downloads**, no rating shown, "Rated for 3+", House & Home, updated Sep 6 2026. Developer listed as **"JInx Studios"** (personal contact details on the listing). Support support@dupgs.com |
+| GiftFeels: Couples & Friends | Google Play | https://play.google.com/store/apps/details?id=com.giftfeels.app | **Pre-register only (not released).** Developer "GiftFeels Studio" (personal contact details on the listing). Rated 12+, in-app purchases, Lifestyle, updated Sep 23 2026. No downloads or ratings |
+| GiftFeels: Couples & Friends | App Store | https://apps.apple.com/us/app/giftfeels-couples-friends/id6803380723 | Live, iPhone only. Subtitle "Love Quizzes & Date Ideas". Free + IAP. 88.6 MB. Social Networking. Age 4+. Developer listed under **a personal name**. **"Hasn't received enough ratings"**. New: "Catch a Memory" widget |
 | Recl | Play / App Store | No public store links. Per recl.app FAQ: Android in closed beta on Play, iOS in App Store review. Chrome extension exists | n/a |
 
 Store links found on each site:
@@ -435,7 +435,7 @@ Store links found on each site:
   - **Single $9**: 1 full paid audit (about 25 pages, depth 3).
   - **Pro $49/mo**: 10 audits a month, about $4.90 each.
 - **Product details:** Exports summary.md, prioritized-fixes.md, seo.md, aeo.md and security.md, and outputs prompts for Claude, Cursor, Codex or OpenCode. Honest scope section ("Not a penetration test").
-- **Credit:** "Built by Vishal." (x.com/davishaal). No user counts or ratings shown.
+- **Credit:** A personal "Built by" credit. No user counts or ratings shown.
 
 ## recl.app (redirects to www.recl.app)
 - **Title:** "Recl — AI Learning App to Remember Everything You Save".
